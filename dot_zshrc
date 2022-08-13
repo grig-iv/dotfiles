@@ -2,8 +2,9 @@
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-unsetopt beep
+
 bindkey -v
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/grig/.zshrc'
@@ -11,3 +12,11 @@ zstyle :compinstall filename '/home/grig/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
