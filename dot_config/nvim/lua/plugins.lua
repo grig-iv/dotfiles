@@ -1,5 +1,8 @@
 require('bootstrap')
 
+local setup = function (pluging_name) require(pluging_name).setup {} end
+
+
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }  -- Packer
     use { 'EdenEast/nightfox.nvim' }  -- Colorsheme
@@ -16,6 +19,11 @@ return require('packer').startup(function(use)
     -- Tab line
     use { 'romgrk/barbar.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
+
+    use {
+        'windwp/nvim-autopairs',
+        config = setup('nvim-autopairs')
+    }
 
     -- TODO: move to another file
     if packer_bootstrap then
