@@ -12,4 +12,6 @@ map('v', 'K', '{')
 map('n', 'Q', '@q')
 map('n', 'Y', 'y$')
 
+map('n', '<C-P>', 'J')
+
 map('n', '<Leader>l', ':noh<CR>')
