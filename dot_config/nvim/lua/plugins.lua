@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
     use 'EdenEast/nightfox.nvim'  -- colorsheme
     use 'windwp/nvim-autopairs'  -- auto pairs (){}
     use 'rmagatti/auto-session'  -- session saver
+    use 'kmonad/kmonad-vim'  -- kmonad config syntax highlighting
 
     -- lsp + lsp server manager + (lsp/server manager) mediator
     use 'neovim/nvim-lspconfig'
