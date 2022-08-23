@@ -44,29 +44,13 @@ require('mason-lspconfig').setup {
     ensure_installed = { 'sumneko_lua', 'bashls', 'rust_analyzer' }
 }
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local coq = require('coq')
 require('mason-lspconfig').setup_handlers {
     function (server_name) -- default handler (optional)
-        require('lspconfig')[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities
-        }
+        require('lspconfig')[server_name].setup (
+            coq.lsp_ensure_capabilities {
+                on_attach = on_attach
+            }
+        )
     end
-}
-
-
--- CMP
-local cmp = require('cmp')
-
-cmp.setup {
-    mapping = cmp.mapping.preset.insert {
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    },
-    sources = cmp.config.sources {
-        { name = 'nvim_lsp' }
-    }
 }

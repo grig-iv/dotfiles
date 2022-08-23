@@ -1,26 +1,23 @@
 require('bootstrap')
 
-local setup = function (pluging_name) require(pluging_name).setup {} end
-
-
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'  -- Packer
-    use 'EdenEast/nightfox.nvim'  -- Colorsheme
+    use 'wbthomason/packer.nvim'  -- packer
+    use 'EdenEast/nightfox.nvim'  -- colorsheme
+    use 'windwp/nvim-autopairs'  -- auto pairs (){}
+    use 'rmagatti/auto-session'  -- session saver
 
-    -- LSP stuff
+    -- lsp + lsp server manager + (lsp/server manager) mediator
     use 'neovim/nvim-lspconfig'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
 
-    -- CMP stuff
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
+    -- auto completion
+    use 'ms-jpq/coq_nvim'
 
-    -- Tab line
+    -- tab line + icons
     use 'romgrk/barbar.nvim'
     use 'kyazdani42/nvim-web-devicons'
 
-    use 'windwp/nvim-autopairs'
 
     -- TODO: move to another file
     if packer_bootstrap then
