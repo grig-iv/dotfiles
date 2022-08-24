@@ -12,6 +12,10 @@ map('v', 'K', '{')
 map('n', 'Q', '@q')
 map('n', 'Y', 'y$')
 
-map('n', '<C-P>', 'J')
+map('n', '<C-s>', '<Esc>:w<CR>')
+map('v', '<C-s>', '<Esc>:w<CR>')
+map('i', '<C-s>', '<Esc>:w<CR>')
 
-map('n', '<Leader>l', ':noh<CR>')
+-- utils
+map('n', '<Leader>uj', 'J')
+map('n', '<Leader>ul', ':noh<CR>')
