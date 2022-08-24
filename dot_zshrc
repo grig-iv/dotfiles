@@ -47,12 +47,13 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	g="git" \
-	shd="shutdown -h now" \
+	shdn="shutdown -h now" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="pacman"
 
 alias progs="nvim $HOME/projects/archinstall/progs"
+alias nconf="cd $HOME/.config/nvim && e"
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

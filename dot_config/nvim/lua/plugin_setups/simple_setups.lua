@@ -1,8 +1,9 @@
 -- color scheme
-vim.cmd('colorscheme terafox')
+vim.g.tokyonight_style = "storm"
+vim.cmd('colorscheme tokyonight')
 
--- autopairs
+
 require('nvim-autopairs').setup()
-
--- sessions
 require('auto-session').setup()
+require('trouble').setup()
+require('lspsaga').init_lsp_saga()
