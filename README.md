@@ -1,4 +1,4 @@
-# My dot files ⚙️
+# ⚙️ My dot files 
 
 Settings for:
 - zsh
