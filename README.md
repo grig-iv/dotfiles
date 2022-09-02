@@ -9,5 +9,4 @@
 - zathura
 
 
----
 *managed by chezmoi*
