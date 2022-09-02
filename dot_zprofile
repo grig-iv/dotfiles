@@ -3,5 +3,8 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
+
 
 startx

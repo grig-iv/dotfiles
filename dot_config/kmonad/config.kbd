@@ -32,22 +32,27 @@
 
 (defalias
     mod (tap-next esc (layer-toggle main-mod))
+    ea  (tap-next ent lalt)
+
+    ;; Os specific key maps
+    ln M-p  ;; launcher
+    ls ralt ;; language switcher
 )
 
 (deflayer main
-    _     _    _    _    _    _    _    _    _    _    _    _    _    XX
-    _     _    _    _    _    _    _    _    _    _    _    _    _    XX
+    _     _    _    _    _    _    _    _    _    _    _    _    _    _
+    _     _    _    _    _    _    _    _    _    _    _    _    _    _
     @mod  _    _    _    _    _    _    _    _    _    _    _    _
     _     _    _    _    _    _    _    _    _    _    _    _
-    _     _    _              _                   rctl @lm  ralt
+    _     _    @ea            _                   rctl @lm  ralt
 )
 
 (deflayer main-mod
     _     _    _    _    end  _    _    _    _    _    home _    _    _
-    _     _    _    _    ent  _    _    _    _    _    _    _    _    _
-    _     _    _    del  _    _    lft  down up   rght _    _    _
+    @ln   _    _    _    XX   _    _    _    _    _    _    _    _    _
+    _     _    _    XX   _    _    lft  down up   rght _    _    _
     _     _    _    _    _    _    _    _    _    _    _    _
-    _     _    _              bspc                _    _    _
+    _     @ls  del            bspc                _    _    _
 )
 
 

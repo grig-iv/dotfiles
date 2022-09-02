@@ -2,7 +2,7 @@
 
 xrandr --output HDMI-2 --mode 1920x1080 --rate 60
 xrandr --output DP-0 --mode 2560x1440 --rate 144
-setxkbmap us,ru pc105 grp:ctrls_toggle
+setxkbmap us,ru pc105 grp:alt_shift_toggle 
 
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 unclutter &
