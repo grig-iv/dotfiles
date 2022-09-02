@@ -1,6 +1,6 @@
 ### My dot files ⚙️
 
-**Configs for:**
+Configs for:
 - zsh
 - xinit
 - neovim
