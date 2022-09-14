@@ -1,6 +1,6 @@
-### My dot files ⚙️
+# ⚙️ My dotfiles 
 
-**Configs for:**
+Settings for:
 - zsh
 - xinit
 - neovim
@@ -9,5 +9,4 @@
 - zathura
 
 
----
-*managed by chezmoi*
+*managed with chezmoi*
