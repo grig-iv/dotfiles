@@ -2,7 +2,7 @@ local map = require('utils').map
 
 map('n', '<C-h>', '<Cmd>BufferPrevious<CR>')
 map('n', '<C-l>', '<Cmd>BufferNext<CR>')
-map('n', '<C-c>', '<Cmd>BufferClose<CR>')
+map('n', '<C-q>', '<Cmd>BufferClose<CR>')
 map('n', '<C-p>', '<Cmd>BufferPick<CR>')
 
 map('n', '<Leader>to', '<Cmd>BufferCloseAllButCurrent<CR>')

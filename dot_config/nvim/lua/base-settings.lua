@@ -17,6 +17,6 @@ opt.shiftwidth = 4
 
 opt.wrap = false
 opt.updatetime = 50
-opt.colorcolumn = "100"
+opt.cursorline = true
 
 vim.g.mapleader = " "

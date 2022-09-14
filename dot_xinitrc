@@ -5,7 +5,8 @@ xrandr --output DP-0 --mode 2560x1440 --rate 144
 setxkbmap us,ru pc105 grp:alt_shift_toggle 
 
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+xwallpaper --zoom "$HOME/.local/share/bg/nyc.jpg" &
 unclutter &
-xwallpaper --zoom "$HOME/.local/share/bg/fern.jpg" &
+udiskie &
 
 exec dwm

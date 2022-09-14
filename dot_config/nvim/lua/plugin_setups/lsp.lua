@@ -1,18 +1,6 @@
 -- lspsaga
 local bufopts = { noremap=true, silent=true, buffer=bufnr }
 local map = vim.keymap.set
-map('n', '<Tab>', '<Cmd>Lspsaga hover_doc<CR>', bufopts)
-map('n', '<C-a>', '<Cmd>Lspsaga code_action<CR>', bufopts)
-
-map('n', '<Leader>rn', '<Cmd>Lspsaga rename<CR>', bufopts)
-
--- LSP
-local opts = { noremap=true, silent=true }
-map('n', '<Leader>e', vim.diagnostic.open_float, opts)
-map('n', '[d', vim.diagnostic.goto_prev, opts)
-map('n', ']d', vim.diagnostic.goto_next, opts)
-map('n', '<Leader>q', vim.diagnostic.setloclist, opts)
-
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -34,6 +22,12 @@ local on_attach = function(client, bufnr)
   map('n', '<Leader>f', vim.lsp.buf.formatting, bufopts)
 end
 
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.diagnostics.golangci_lint,
+        require("null-ls").builtins.formatting.prettier,
+    },
+})
 
 -- mason
 require('mason').setup {
@@ -50,7 +44,17 @@ require('mason-lspconfig').setup {
     ensure_installed = { 'sumneko_lua', 'bashls', 'rust_analyzer' }
 }
 
+
 -- coq setup
+vim.g.coq_settings = {
+  keymap = { 
+    pre_select = true,
+    jump_to_mark = "M",
+    bigger_preview = null,
+  },
+  auto_start = 'shut-up',
+}
+
 local coq = require('coq')
 
 -- servers setups
