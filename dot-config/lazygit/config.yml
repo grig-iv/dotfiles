@@ -1,0 +1,38 @@
+disableStartupPopups: true
+gui:
+  border: rounded
+  nerdFontsVersion: '3'
+  showBottomLine: false
+  showCommandLog: false
+  showFileTree: false
+  showListFooter: false
+  showRandomTip: false
+  theme:
+    activeBorderColor:
+    - '#fab387'
+    - bold
+    cherryPickedCommitBgColor:
+    - '#45475a'
+    cherryPickedCommitFgColor:
+    - '#fab387'
+    defaultFgColor:
+    - '#cdd6f4'
+    inactiveBorderColor:
+    - '#6c7086'
+    optionsTextColor:
+    - '#89dceb'
+    searchingActiveBorderColor:
+    - '#f9e2af'
+    selectedLineBgColor:
+    - '#313244'
+    unstagedChangesColor:
+    - '#f38ba8'
+keybinding:
+  universal:
+    nextBlock: <pgdown>
+    nextTab: <right>
+    prevBlock: <pgup>
+    prevTab: <left>
+    quit: <c-q>
+    scrollDownMain: <end>
+    scrollUpMain: <home>
