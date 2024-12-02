@@ -1,0 +1,18 @@
+set ratios 2:3
+set scrolloff 5
+set shellopts '-eu'
+
+
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+        text/*) lf -remote "send $id \$EDITOR \$fx";;
+        *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+
+map <c-q> quit
+map . set hidden!
+
+map a push %mkdir<space>
+map <enter> shell
