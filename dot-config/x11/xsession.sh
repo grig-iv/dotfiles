@@ -1,3 +1,5 @@
+sxhkd &
+
 if [ -f $HOME/.config/wallpaper.tif ]; then
     feh --bg-fill $HOME/.config/wallpaper.jpg
 fi
@@ -8,8 +10,8 @@ if [ "$DESKTOP_SESSION" == "none+dwm" ]; then
 fi
 
 if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
-    mind-shift-st &
-    mind-shift &> $HOME/.local/share/mind-shift.log
+    $HOME/.local/bin/mind-shift-st &
+    $HOME/.local/bin/mind-shift &> $HOME/.local/share/mind-shift.log
 
     while [ -e $HOME/sources/mind-shift/mind-shift ]; do
         mv -f $HOME/sources/mind-shift/mind-shift /tmp/mind-shift
