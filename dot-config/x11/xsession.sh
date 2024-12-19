@@ -1,4 +1,5 @@
 sxhkd &
+unclutter &
 
 if [ -f $HOME/.config/wallpaper.tif ]; then
     feh --bg-fill $HOME/.config/wallpaper.jpg
