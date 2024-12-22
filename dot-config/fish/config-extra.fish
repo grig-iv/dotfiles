@@ -32,6 +32,13 @@ status is-interactive; and begin
     direnv hook fish | source
     source "$CONFIG/fish/colors.fish"
 
+    # binds
+    bind \cq exit
+    bind \cf findAndEdit
+    bind \ck killProcess
+    bind \cl 'clear; commandline -f repaint'
+    bind \cr 'run; commandline -f repaint'
+
     # shortcuts
     abbr -a gc 'cd $CONFIG'
     abbr -a gd 'cd $CONFIG/dotfiles'
@@ -41,18 +48,16 @@ status is-interactive; and begin
     abbr -a gl 'cd $HOME/.local'
     abbr -a gt 'cd $HOME/media/T7'
 
-    abbr -a c 'jump -d $CONFIG; ya'
-    abbr -a s 'jump -d $HOME/sources/; ya'
-    abbr -a d 'jump -r $CONFIG/dotfiles'
+    abbr -a c 'jump -d $CONFIG; yacd'
+    abbr -a s 'jump -d $HOME/sources/; yacd'
+    abbr -a d 'jump -dr $CONFIG/dotfiles; yacd'
 
-    # verbosity and settings that you pretty much just always are going to want
     abbr -a cp 'cp -ivr'
     abbr -a mv 'mv -iv'
     abbr -a rm 'rm -vI'
     abbr -a mkdir 'mkdir -pv'
     abbr -a bc 'bc -ql'
 
-    # colorize commands when possible
     abbr -a grep 'grep --color=auto'
     abbr -a diff 'diff --color=auto'
     abbr -a ip 'ip -color=auto'
@@ -72,19 +77,24 @@ status is-interactive; and begin
     abbr -a m 'cd $MIND & $EDITOR context.md'
     abbr -a gm 'cd $MIND'
 
-    # misc
-    abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d $CONFIG -S dotfiles'
-    abbr -a tlm 'tmuxp load -y main'
-
-    bind \cq exit
-    bind \cf findAndEdit
-    bind \ck killProcess
-    bind \cl 'clear; commandline -f repaint'
-    bind \cr 'run; commandline -f repaint'
-
+    # lf
     function lfcd
         cd $(lf -print-last-dir)
     end
-
     bind \cl 'lfcd; commandline -f execute'
+
+    # yazi
+    function yacd
+        set tmp (mktemp -t "yazi-cwd.XXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+    end
+    bind \ce 'yacd; commandline -f execute'
+
+    # misc
+    abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d $CONFIG -S dotfiles'
+    abbr -a tlm 'tmuxp load -y main'
 end
