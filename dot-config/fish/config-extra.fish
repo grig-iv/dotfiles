@@ -29,6 +29,9 @@ end
 setup_hm_session_vars
 
 status is-interactive; and begin
+    direnv hook fish | source
+    source colors.fish
+
     # shortcuts
     abbr -a gc 'cd $CONFIG'
     abbr -a gd 'cd $CONFIG/dotfiles'
@@ -38,8 +41,9 @@ status is-interactive; and begin
     abbr -a gl 'cd $HOME/.local'
     abbr -a gt 'cd $HOME/media/T7'
 
-    abbr -a jc 'jump -d $CONFIG'
-    abbr -a js 'jump -d $HOME/sources/'
+    abbr -a c 'jump -d $CONFIG; ya'
+    abbr -a s 'jump -d $HOME/sources/; ya'
+    abbr -a d 'jump -r $CONFIG/dotfiles'
 
     # verbosity and settings that you pretty much just always are going to want
     abbr -a cp 'cp -ivr'
@@ -65,7 +69,7 @@ status is-interactive; and begin
     abbr -a gmi 'go mod init'
 
     # notes
-    abbr -a jm 'cd $MIND & $EDITOR context.md'
+    abbr -a m 'cd $MIND & $EDITOR context.md'
     abbr -a gm 'cd $MIND'
 
     # misc
