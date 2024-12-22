@@ -35,6 +35,8 @@ status is-interactive; and begin
     abbr -a gn 'cd $CONFIG/nvim'
     abbr -a gs 'cd $HOME/sources'
     abbr -a gx 'cd $NIXCONF'
+    abbr -a gl 'cd $HOME/.local'
+    abbr -a gt 'cd $HOME/media/T7'
 
     abbr -a jc 'jump -d $CONFIG'
     abbr -a js 'jump -d $HOME/sources/'
