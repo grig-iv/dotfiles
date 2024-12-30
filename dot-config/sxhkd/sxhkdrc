@@ -4,9 +4,6 @@ XF86AudioMute
 XF86Audio{Lower,Raise}Volume
   pamixer -{d,i} 5
 
-print
-  flameshot screen -c
-
 super + Down
   bash -c "echo 'focus -n' > /dev/tcp/127.0.0.1/10005"
 
@@ -45,6 +42,12 @@ super + f
 
 super + p
   dmenu_run
+
+super + l
+  save-to-learn
+
+super + b
+  open-book
 
 super + s
   bash -c "echo 'go-to-win-or-spawn TelegramDesktop telegram-desktop' > /dev/tcp/127.0.0.1/10005"
