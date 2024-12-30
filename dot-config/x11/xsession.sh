@@ -1,4 +1,4 @@
-sxhkd &
+xrandr --output DP-0 --mode 2560x1080 --rate 144
 unclutter &
 
 if [ -f $HOME/.config/wallpaper.tif ]; then
@@ -6,11 +6,12 @@ if [ -f $HOME/.config/wallpaper.tif ]; then
 fi
 
 if [ "$DESKTOP_SESSION" == "none+dwm" ]; then
-    gost &
-    dwm &> $HOME/.local/share/dwm.log
+    $HOME/.local/bin/gost &
+    $HOME/.local/bin/dwm &> $HOME/.local/share/dwm.log
 fi
 
 if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
+    sxhkd &
     $HOME/.local/bin/mind-shift-st &
     $HOME/.local/bin/mind-shift &> $HOME/.local/share/mind-shift.log
 
