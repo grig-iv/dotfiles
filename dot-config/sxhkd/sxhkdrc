@@ -2,7 +2,7 @@ XF86AudioMute
   pamixer -t
 
 XF86Audio{Lower,Raise}Volume
-  pamixer -{d,i} 5
+  wpctl set-volume @DEFAULT_SINK@ 5%{-,+}
 
 super + Down
   bash -c "echo 'focus -n' > /dev/tcp/127.0.0.1/10005"
