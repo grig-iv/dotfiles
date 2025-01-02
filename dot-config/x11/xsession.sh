@@ -12,7 +12,7 @@ fi
 
 if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
     sxhkd &
-    $HOME/.local/bin/mind-shift-st &
+    $HOME/.local/bin/mind-shift-st &> $HOME/.local/share/mind-shift-st.log &
     $HOME/.local/bin/mind-shift &> $HOME/.local/share/mind-shift.log
 
     while [ -e $HOME/sources/mind-shift/mind-shift ]; do
