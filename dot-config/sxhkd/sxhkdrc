@@ -41,7 +41,7 @@ super + f
   bash -c "echo 'go-to-win-or-spawn firefox firefox' > /dev/tcp/127.0.0.1/10005"
 
 super + p
-  dmenu_run
+  rofi -show run
 
 super + l
   save-to-learn
