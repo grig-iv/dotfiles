@@ -19,6 +19,7 @@ function setup_hm_session_vars
     set -gx MIND "$HOME/mind"
     set -gx NVIMCONF "$CONFIG/nvim"
     set -gx NIXCONF /etc/nixos
+    set -gx SVDIR "$HOME/.local/service"
 
     set -gx SKIM_DEFAULT_OPTIONS '--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind \'ctrl-q:abort\''
 
@@ -40,12 +41,14 @@ status is-interactive; and begin
     bind \cr 'run; commandline -f repaint'
 
     # shortcuts
+    abbr -a gh 'cd $HOME'
     abbr -a gc 'cd $CONFIG'
     abbr -a gd 'cd $CONFIG/dotfiles'
     abbr -a gdl 'cd $HOME/Downloads'
     abbr -a gs 'cd $HOME/sources'
     abbr -a gx 'cd $NIXCONF'
     abbr -a gl 'cd $HOME/.local'
+    abbr -a gls 'cd $HOME/.local/share'
     abbr -a glb 'cd $HOME/.local/bin'
     abbr -a gt 'cd $HOME/media/T7'
 
