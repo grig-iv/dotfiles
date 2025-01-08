@@ -1,0 +1,8 @@
+cloud := "$HOME/cloud/FreeTube"
+config := "$HOME/.config/FreeTube"
+
+mkLinks:
+    ln -sf {{cloud}}/history.db {{config}}
+    ln -sf {{cloud}}/playlists.db {{config}}
+    ln -sf {{cloud}}/profiles.db {{config}}
+    ln -sf {{cloud}}/settings.db {{config}}
