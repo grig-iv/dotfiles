@@ -13,7 +13,7 @@ function setup_hm_session_vars
 
     set -gx BROWSER firefox
     set -gx TERMINAL wezterm
-    set -gx EDITOR hx
+    set -gx EDITOR nvim
 
     set -gx CONFIG "$HOME/.config"
     set -gx MIND "$HOME/mind"
