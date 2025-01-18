@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+
+exec mpd --no-daemon ~/.config/mpd/mpd.conf
+
