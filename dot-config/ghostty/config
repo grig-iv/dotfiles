@@ -1,7 +1,10 @@
 theme = catppuccin-mocha
+
 window-decoration = false
 window-padding-x = 8
 window-padding-y = 8
+
+link-url = true
 
 keybind = clear
 keybind = ctrl+shift+v=paste_from_clipboard
