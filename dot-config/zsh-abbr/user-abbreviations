@@ -1,26 +1,50 @@
-abbr "c"="jump -d \$CONFIG; yacd"
-abbr "d"="jump -dr \$CONFIG/dotfiles; yacd"
-abbr "gc"="cd \$CONFIG"
-abbr "gd"="cd \$CONFIG/dotfiles"
-abbr "gdl"="cd \$HOME/Downloads"
-abbr "gh"="cd \$HOME"
-abbr "gl"="cd \$HOME/.local"
-abbr "glb"="cd \$HOME/.local/bin"
-abbr "gls"="cd \$HOME/.local/share"
-abbr "gm"="cd \$MIND"
-abbr "gmi"="go mod init"
-abbr "gmt"="go mod tidy"
-abbr "gn"="cd \$CONFIG/nvim"
-abbr "gs"="cd \$HOME/sources"
-abbr "gt"="cd \$HOME/media/T7"
-abbr "gx"="cd \$NIXCONF"
-abbr "hms"="home-manager switch --flake \$NIXCONF#grig@xtal"
-abbr "ls"="ls -la"
-abbr "lu"="nix flake lock --update-input"
-abbr "m"="cd \$MIND & \$EDITOR context.md"
-abbr "n"="jump -r \$CONFIG/nvim"
-abbr "nd"="nix develop"
-abbr "nrs"="sudo nixos-rebuild switch --flake \$NIXCONF#xtal"
-abbr "s"="jump -d \$HOME/sources/; yacd"
-abbr "t"="jump -d \$HOME/media/T7/torrents"
-abbr "x"="jump -r \$NIXCONF"
+abbr gh='cd $HOME'
+abbr gc='cd $CONFIG'
+abbr gd='cd $CONFIG/dotfiles'
+abbr gdl='cd $HOME/Downloads'
+abbr gs='cd $HOME/sources'
+abbr gx='cd $NIXCONF'
+abbr gl='cd $HOME/.local'
+abbr gls='cd $HOME/.local/share'
+abbr glb='cd $HOME/.local/bin'
+abbr gt='cd $HOME/media/T7'
+
+abbr c='jump -d $CONFIG; yacd'
+abbr s='jump -d $HOME/sources/; yacd'
+abbr d='jump -dr $CONFIG/dotfiles; yacd'
+abbr t='jump -d $HOME/media/T7/torrents'
+
+abbr cp='cp -ivr'
+abbr mv='mv -iv'
+abbr rm='rm -vI'
+abbr mkdir='mkdir -pv'
+abbr bc='bc -ql'
+abbr ls='ls -la'
+
+abbr grep='grep --color=auto'
+abbr diff='diff --color=auto'
+abbr ip='ip -color=auto'
+
+# neovim
+abbr gn='cd $CONFIG/nvim'
+abbr n='jump -r $CONFIG/nvim'
+
+# nix
+abbr hms="home-manager switch --flake \$NIXCONF#$(whoami)@$(hostname)"
+abbr nrs="sudo nixos-rebuild switch --flake \$NIXCONF#$(hostname)"
+abbr nd='nix develop'
+abbr lu='nix flake lock --update-input'
+abbr x='jump -r $NIXCONF'
+
+# go
+abbr gmt='go mod tidy'
+abbr gmi='go mod init'
+
+# notes
+abbr m='cd $MIND & $EDITOR context.md'
+abbr gm='cd $MIND'
+
+# misc
+abbr stw='stow --dotfiles --no-folding -t $HOME -d $CONFIG -S dotfiles'
+abbr tlm='tmuxp load -y main'
+abbr tree='tree --gitignore'
