@@ -78,6 +78,8 @@ status is-interactive; and begin
 
     # wsl
     abbr -a gw 'cd /mnt/c/Users/grig'
+    abbr -a gws 'cd /mnt/c/Users/grig/src'
+    abbr -a gwc 'cd /mnt/c/Users/grig/.config'
     abbr -a gwdl 'cd /mnt/c/Users/grig'
     abbr -a pwsh 'powershell.exe'
     abbr -a pwshc 'powershell.exe -Command'
