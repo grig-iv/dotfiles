@@ -6,12 +6,12 @@ if [ -f $HOME/.config/wallpaper.tif ]; then
 fi
 
 if [ "$DESKTOP_SESSION" == "none+dwm" ]; then
+    sv down $HOME/.local/service/sxhkd
     $HOME/.local/bin/gost &
     $HOME/.local/bin/dwm &> $HOME/.local/share/dwm.log
 fi
 
 if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
-    sxhkd &
     $HOME/.local/bin/mind-shift-st &> $HOME/.local/share/mind-shift-st/log &
     $HOME/.local/bin/mind-shift &> $HOME/.local/share/mind-shift.log
 
