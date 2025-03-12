@@ -1,3 +1,9 @@
 #!/usr/bin/env dash
 
-exec sxhkd
+common="$HOME/.config/sxhkd/sxhkdrc"
+
+if [ "$DESKTOP_SESSION" = "none+mind-shift" ]; then
+    extra="$HOME/.config/sxhkd/sxhkdrc-ms"
+fi
+
+exec sxhkd -c $common $extra

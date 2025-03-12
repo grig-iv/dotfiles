@@ -4,41 +4,11 @@ XF86AudioMute
 XF86Audio{Lower,Raise}Volume
   wpctl set-volume @DEFAULT_SINK@ 5%{-,+}
 
-super + Down
-  bash -c "echo 'focus -n' > /dev/tcp/127.0.0.1/10005"
-
-super + Up
-  bash -c "echo 'focus -p' > /dev/tcp/127.0.0.1/10005"
-
 super + alt + c
   xcolor -s
 
-super + alt + ctrl + q
-  bash -c "echo 'quit' > /dev/tcp/127.0.0.1/10005"
-
-super + alt + f
-  bash -c "echo 'full-screen' > /dev/tcp/127.0.0.1/10005"
-
-super + alt + q
-  bash -c "echo 'kill-client' > /dev/tcp/127.0.0.1/10005"
-
 super + alt + s
   audio-cycle-output
-
-super + ctrl + Next
-  bash -c "echo 'go-to-tag -n' > /dev/tcp/127.0.0.1/10005"
-
-super + ctrl + Prior
-  bash -c "echo 'go-to-tag -p' > /dev/tcp/127.0.0.1/10005"
-
-super + ctrl + shift + Next
-  bash -c "echo 'move-to-tag -n' > /dev/tcp/127.0.0.1/10005"
-
-super + ctrl + shift + Prior
-  bash -c "echo 'move-to-tag -p' > /dev/tcp/127.0.0.1/10005"
-
-super + f
-  bash -c "echo 'go-to-win-or-spawn firefox firefox' > /dev/tcp/127.0.0.1/10005"
 
 super + p
   rofi -show run
@@ -49,12 +19,5 @@ super + l
 super + b
   open-book
 
-super + s
-  bash -c "echo 'go-to-win-or-spawn TelegramDesktop telegram-desktop' > /dev/tcp/127.0.0.1/10005"
-
 super + shift + s
   flameshot gui
-
-super + t
-  bash -c "echo 'go-to-win-or-spawn org.wezfu wezterm' > /dev/tcp/127.0.0.1/10005"
-
