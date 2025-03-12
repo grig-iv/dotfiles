@@ -9,11 +9,15 @@ if [ "$DESKTOP_SESSION" == "xfce" ]; then
     exec startxfce4
 fi
 
+if [ "$DESKTOP_SESSION" == "none+qtile" ]; then
+    exec qtile start 
+fi
+
 if [ "$DESKTOP_SESSION" == "none+dwm" ]; then
     sv down $HOME/.local/service/sxhkd
     $HOME/.local/bin/gost &
     $HOME/.local/bin/dwm &> $HOME/.local/share/dwm.log
-# fi
+fi
 
 if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
     $HOME/.local/bin/mind-shift-st &> $HOME/.local/share/mind-shift-st/log &
