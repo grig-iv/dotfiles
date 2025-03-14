@@ -9,9 +9,22 @@ shift = "shift"
 
 mod = gui
 
+def window_to_prev_group(qtile):
+    if qtile.current_window is not None:
+        prev_group = qtile.current_screen.group.get_previous_group()
+        qtile.current_window.togroup(prev_group.name, switch_group=True)
+
+def window_to_next_group(qtile):
+    if qtile.current_window is not None:
+        next_group = qtile.current_screen.group.get_next_group()
+        qtile.current_window.togroup(next_group.name, switch_group=True)
+
 keys = [
     Key([mod, ctrl], "Next", lazy.screen.next_group(), desc="Move to the group on the right"),
     Key([mod, ctrl], "Prior", lazy.screen.prev_group(), desc="Move to the group on the left"),
+
+    Key([mod, ctrl, shift], "Next", lazy.function(window_to_next_group)),
+    Key([mod, ctrl, shift], "Prior", lazy.function(window_to_prev_group)),
 
     # Switch between windows
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
@@ -52,12 +65,23 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
 
     Key([mod, alt], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, alt], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, alt], "r", lazy.reload_config(), lazy.spawn("/home/grig/.config/polybar/launch.sh"), desc="Reload the config"),
     Key([mod, alt], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, ctrl, alt], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 ]
 
-groups = [Group(i) for i in "123456"]
+groups = []
+group_names = ["1", "2", "3", "4", "5", "6"]
+group_layouts = ["monadtall", "monadtall", "floating", "monadtall", "monadtall", "monadtall"]
+
+
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name=group_names[i],
+            layout=group_layouts[i].lower(),
+            label=group_names[i],
+        ))
 
 for i in groups:
     keys.extend(
@@ -83,20 +107,28 @@ for i in groups:
         ]
     )
 
+layout_theme = {"border_width": 0,
+                "margin_on_single": 12,
+                "single_margin": 12,
+                "margin": 12,
+                "border_focus": "#fab387", 
+                "border_normal": "#8f3d3d",
+                }
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2, margin_on_single=16, margin=2),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Columns(**layout_theme),
+    layout.Max(**layout_theme),
+    # layout.Stack(**layout_theme),
+    # layout.Bsp(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    layout.MonadTall(**layout_theme),
+    layout.MonadThreeCol(**layout_theme),
+    # layout.MonadWide(**layout_theme),
+    # layout.RatioTile(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.TreeTab(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Zoomy(**layout_theme),
 ]
 
 widget_defaults = dict(
@@ -108,25 +140,6 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
