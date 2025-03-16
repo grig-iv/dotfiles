@@ -1,5 +1,5 @@
 from libqtile import bar, layout, qtile, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 
 gui = "mod4"  
@@ -103,6 +103,16 @@ for i in groups:
         ]
     )
 
+groups.append(ScratchPad("scratchpad", [
+        DropDown("term", "telegram-desktop", 
+                 match=Match(wm_class="telegram-desktop"),
+                 x=0.2, y=0.05, width=0.6, height=0.9, on_focus_lost_hide=True)
+    ]))
+
+keys.extend([
+  Key([mod], 't', lazy.group['scratchpad'].dropdown_toggle('term')),
+])
+
 layout_theme = {"border_width": 0,
                 "margin_on_single": 12,
                 "single_margin": 12,
@@ -134,7 +144,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [ Screen() ]
+screens = [Screen()]
 
 # Drag floating layouts.
 mouse = [
@@ -149,16 +159,21 @@ follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
+follow_mouse_focus = False
+
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="dialog"),         # dialog boxes
+        Match(wm_class="download"),       # downloads
+        Match(wm_class="error"),          # error msgs
+        Match(wm_class="file_progress"),  # file progress boxes
+        Match(wm_class="notification"),   # notifications
+        Match(wm_class='pinentry-gtk-2'), # GPG key password entry
+        Match(wm_class="ssh-askpass"),    # ssh-askpass
+        Match(wm_class="toolbar"),        # toolbars
+        Match(title="pinentry"),          # GPG key password entry
     ]
 )
 auto_fullscreen = True
