@@ -1,12 +1,12 @@
 [[manager.prepend_keymap]]
 desc = "Move cursor to the top"
 on = ["<C-PageUp>"]
-run = "arrow -99999999"
+run = "arrow top"
 
 [[manager.prepend_keymap]]
 desc = "Move cursor to the bottom"
 on = ["<C-PageDown>"]
-run = "arrow 99999999"
+run = "arrow bot"
 
 [[manager.prepend_keymap]]
 desc = "Move cursor up half page"
