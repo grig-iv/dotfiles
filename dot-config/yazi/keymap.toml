@@ -1,37 +1,14 @@
-[[manager.prepend_keymap]]
-desc = "Move cursor to the top"
-on = ["<C-PageUp>"]
-run = "arrow top"
+[manager]
+prepend_keymap = [
+	{ on = "<C-PageUp>", run = "arrow top", desc = "Move cursor to the top" },
+    { on = "<C-PageDown>", run = "arrow bot",desc = "Move cursor to the bottom" },
+    { on = "<PageUp>", run = "arrow -50%", desc = "Move cursor up half page" },
+    { on = "<PageDown>", run = "arrow 50%", desc = "Move cursor down half page" },
+    { on = "<C-q>", run = "quit", desc = "Quit yazi" },
+    { on = "%",   run = "toggle_all", desc = "Select all files" },
 
-[[manager.prepend_keymap]]
-desc = "Move cursor to the bottom"
-on = ["<C-PageDown>"]
-run = "arrow bot"
+    # plugins
+    { on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files" },
+    { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+]
 
-[[manager.prepend_keymap]]
-desc = "Move cursor up half page"
-on = ["<PageUp>"]
-run = "arrow -50%"
-
-[[manager.prepend_keymap]]
-desc = "Move cursor down half page"
-on = ["<PageDown>"]
-run = "arrow 50%"
-
-[[manager.prepend_keymap]]
-desc = "Quit yazi"
-on = ["<C-q>"]
-run = "quit"
-
-
-# plugins
-
-[[manager.prepend_keymap]]
-desc = "Chmod on selected files"
-on = ["c", "m"]
-run = "plugin chmod"
-
-[[manager.prepend_keymap]]
-desc = "Enter the child directory, or open the file"
-on = ["<Enter>"]
-run = "plugin smart-enter"
