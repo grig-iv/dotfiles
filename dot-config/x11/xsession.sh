@@ -10,7 +10,7 @@ if [ "$DESKTOP_SESSION" == "xfce" ]; then
 fi
 
 if [ "$DESKTOP_SESSION" == "none+qtile" ]; then
-    $HOME/.config/polybar/launch.sh 
+    $HOME/.config/mind-shift/launch.sh 
     exec qtile start 
 fi
 
