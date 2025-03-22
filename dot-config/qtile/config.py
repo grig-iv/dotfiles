@@ -8,6 +8,7 @@ ctrl = "control"
 shift = "shift"
 
 mod = gui
+terminal = "ghostty"
 
 def window_to_prev_group(qtile):
     if qtile.current_window is not None:
@@ -20,6 +21,16 @@ def window_to_next_group(qtile):
         qtile.current_window.togroup(next_group.name, switch_group=True)
 
 keys = [
+    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
+    Key([mod, alt], "f", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, alt], "r", lazy.reload_config(), lazy.spawn("/home/grig/.config/mind-shift/launch.sh"), desc="Reload the config"),
+    Key([mod, alt], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, ctrl, alt], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+
+    # Switchign between groups
     Key([mod, ctrl], "Next", lazy.screen.next_group(), desc="Move to the group on the right"),
     Key([mod, ctrl], "Prior", lazy.screen.prev_group(), desc="Move to the group on the left"),
 
@@ -59,15 +70,6 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
-
-    Key([mod, alt], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, alt], "r", lazy.reload_config(), lazy.spawn("/home/grig/.config/polybar/launch.sh"), desc="Reload the config"),
-    Key([mod, alt], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, ctrl, alt], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 ]
 
 groups = []
@@ -103,14 +105,24 @@ for i in groups:
         ]
     )
 
+def centerDropDown(width, height):
+    return {
+        "x": (1-width) / 2,
+        "y": (1-height) / 2,
+        "width": width,
+        "height": height,
+    }
+
 groups.append(ScratchPad("scratchpad", [
-        DropDown("term", "telegram-desktop", 
-                 match=Match(wm_class="telegram-desktop"),
-                 x=0.2, y=0.05, width=0.6, height=0.9, on_focus_lost_hide=True)
+        DropDown("tmux-mind", f"{terminal} -e tmuxp load -y mind", 
+                 on_focus_lost_hide=True, **centerDropDown(0.5, 0.95)),
+        DropDown("tmux-scratchpad", f"{terminal} -e tmux new -As scratchpad", 
+                 on_focus_lost_hide=True, **centerDropDown(0.5, 0.5)),
     ]))
 
 keys.extend([
-  Key([mod], 't', lazy.group['scratchpad'].dropdown_toggle('term')),
+  Key([mod], 't', lazy.group['scratchpad'].dropdown_toggle('tmux-scratchpad')),
+  Key([mod], 'm', lazy.group['scratchpad'].dropdown_toggle('tmux-mind')),
 ])
 
 layout_theme = {"border_width": 0,
