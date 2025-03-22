@@ -125,12 +125,13 @@ keys.extend([
   Key([mod], 'm', lazy.group['scratchpad'].dropdown_toggle('tmux-mind')),
 ])
 
-layout_theme = {"border_width": 0,
-                "margin_on_single": 12,
+layout_theme = { "margin_on_single": 12,
                 "single_margin": 12,
                 "margin": 12,
-                "border_focus": "#fab387", 
-                "border_normal": "#8f3d3d",
+                "border_width": 1,
+                "single_border_width": 0,
+                "border_focus": "#89dceb", 
+                "border_normal": "#1e1e2e",
                 }
 
 layouts = [
@@ -174,6 +175,8 @@ cursor_warp = False
 follow_mouse_focus = False
 
 floating_layout = layout.Floating(
+    border_focus="#fab387",
+    border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
