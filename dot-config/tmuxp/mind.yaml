@@ -1,0 +1,4 @@
+session_name: mind
+windows:
+  - panes:
+      - cd $HOME/mind & $EDITOR context.md
