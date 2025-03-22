@@ -2,4 +2,4 @@
 
 pkill mind-shift-st
 
-mind-shift-st 2>&1 | tee -a /tmp/polybar.log & 
+$HOME/.local/bin/mind-shift-st 2>&1 | tee -a /tmp/mind-shift-st.log & 
