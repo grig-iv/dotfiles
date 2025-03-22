@@ -37,7 +37,7 @@ bindkey -s '^Q' 'exit\n'
 bindkey -s '^F' 'findAndEdit\n'           
 bindkey -s '^K' 'killProcess\n'          
 bindkey -s '^L' 'clear\n'               
-bindkey -s '^R' 'run\n'                
+bindkey -s '^R' 'go run .\n'                
 
 
 # lf 
