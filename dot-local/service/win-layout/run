@@ -1,0 +1,3 @@
+#!/usr/bin/env dash
+
+exec $HOME/.local/bin/win-layout
