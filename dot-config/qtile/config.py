@@ -72,18 +72,31 @@ keys = [
     ),
 ]
 
-groups = []
-group_names = ["1", "2", "3", "4", "5", "6"]
-group_layouts = ["monadtall", "monadtall", "floating", "monadtall", "monadtall", "monadtall"]
-
-
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            layout=group_layouts[i].lower(),
-            label=group_names[i],
-        ))
+groups = [
+    Group(
+        name="1",
+        matches=[Match(wm_class="com.mitchellh.ghostty")],
+    ),
+    Group(
+        name="2",
+        matches=[Match(wm_class="Firefox")],
+    ),
+    Group(
+        name="3",
+        matches=[Match(wm_class="TelegramDesktop")],
+    ),
+    Group(
+        name="4",
+        matches=[Match(wm_class="Darktable")],
+    ),
+    Group(
+        name="5",
+    ),
+    Group(
+        name="6",
+        matches=[Match(wm_class="qBittorrent")],
+    ),
+]
 
 for i in groups:
     keys.extend(
