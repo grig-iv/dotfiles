@@ -1,0 +1,15 @@
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[pull]
+	rebase = false
+
+[safe]
+	directory = "/etc/nixos"
+
+[user]
+	email = "abstractgrig@gmail.com"
+	name = "grig-iv"
