@@ -30,7 +30,10 @@ end
 setup_hm_session_vars
 
 status is-interactive; and begin
-    direnv hook fish | source
+    if type -q direnv
+        direnv hook fish | source
+    end
+
     source "$CONFIG/fish/colors.fish"
 
     # binds
