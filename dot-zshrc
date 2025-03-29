@@ -29,7 +29,11 @@ export XCURSOR_THEME="Bibata-Modern-Ice"
 
 
 # Prompt
-PS1="$(plato)"
+if type "$plato" > /dev/null; then
+    PS1="$(plato)"
+else
+    PS1="   > "
+fi
 
 
 # Key bindings
@@ -61,5 +65,7 @@ bindkey -s '^E' 'yacd\n'
 
 
 # integrations
-eval "$(direnv hook zsh)"
+if type "$direnv " > /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 source $HOME/.local/src/zsh-abbr/zsh-abbr.zsh
