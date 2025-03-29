@@ -108,4 +108,6 @@ status is-interactive; and begin
     abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d $CONFIG -S dotfiles'
     abbr -a tlm 'tmuxp load -y main'
     abbr -a tree 'tree --gitignore'
+
+    bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just"
 end
