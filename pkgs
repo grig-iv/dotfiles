@@ -7,11 +7,10 @@ zsh-syntax-highlighting
 git
 lazygit
 
+void-repo-nonfree
 fish-shell
 age
 curl
-gcc
-make
 fd
 skim
 jq
@@ -33,6 +32,10 @@ qmk
 evtest
 
 # dev
+gcc
+make
+pkg-config
+
 lua
 lua-language-server
 StyLua
@@ -43,13 +46,17 @@ goreleaser
 
 
 # xorg
+xclip
+xrandr
+nvidia
 feh
 unclutter
 qtile
-dmenu
+rofi
 dunst
 sxhkd
 flameshot
+nerd-fonts-otf
 
 # desktop
 ghostty
