@@ -14,6 +14,12 @@ if [ ! -d "$HOME/.local/src/plato" ]; then
     just install
 fi
 
+if [ ! -d "$HOME/.local/src/win-layout" ]; then
+    git clone git@github.com:grig-iv/win-layout.git ~/.local/src/win-layout
+    cd ~/.local/src/win-layout
+    just install
+fi
+
 if [ ! -d "$HOME/.local/src/mind-shift-st" ]; then
     git clone git@github.com:grig-iv/mind-shift-st ~/.local/src/mind-shift-st
     cd ~/.local/src/mind-shift-st
