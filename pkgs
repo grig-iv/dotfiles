@@ -7,11 +7,17 @@ zsh-syntax-highlighting
 git
 lazygit
 
+zip
+unzip
+7zip
+xz
+
+curl
+wget
+
 void-repo-nonfree
 fish-shell
 age
-curl
-wget
 fd
 skim
 jq
@@ -19,8 +25,6 @@ stow
 age
 tree
 bottom
-zip
-unzip
 tldr
 neovim
 helix
@@ -46,6 +50,8 @@ go
 gopls
 
 cargo
+
+redis
 
 # xorg
 xclip
