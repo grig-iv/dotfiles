@@ -11,6 +11,7 @@ void-repo-nonfree
 fish-shell
 age
 curl
+wget
 fd
 skim
 jq
@@ -35,6 +36,7 @@ evtest
 gcc
 make
 pkg-config
+openssl-devel
 
 lua
 lua-language-server
@@ -42,8 +44,8 @@ StyLua
 
 go
 gopls
-goreleaser
 
+cargo
 
 # xorg
 xclip
