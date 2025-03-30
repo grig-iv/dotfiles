@@ -108,7 +108,7 @@ status is-interactive; and begin
     bind \ce 'yacd; commandline -f execute'
 
     # misc
-    abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d $CONFIG -S dotfiles'
+    abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d ~/.config/dotfiles/stow -S home'
     abbr -a tlm 'tmuxp load -y main'
     abbr -a tree 'tree --gitignore'
 
