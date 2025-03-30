@@ -20,7 +20,7 @@ function jump
     if test -z "$selection"
         echo "No selection"
         cd -
-        return
+        return 1
     end
 
 

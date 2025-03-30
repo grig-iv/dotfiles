@@ -55,9 +55,9 @@ status is-interactive; and begin
     abbr -a glb 'cd $HOME/.local/bin'
     abbr -a gt 'cd $HOME/media/T7'
 
-    abbr -a c 'jump -d $CONFIG; yacd'
-    abbr -a s 'jump -d $HOME/sources/; yacd'
-    abbr -a d 'jump -dr $CONFIG/dotfiles; yacd'
+    abbr -a c 'jump -d $CONFIG && yacd'
+    abbr -a s 'jump -d $HOME/sources/ && yacd'
+    abbr -a d 'jump -dr $CONFIG/dotfiles && yacd'
     abbr -a t 'jump -d $HOME/media/T7/torrents'
 
     abbr -a cp 'cp -ivr'
