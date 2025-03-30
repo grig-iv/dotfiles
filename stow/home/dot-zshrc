@@ -11,6 +11,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export BROWSER="firefox"
 export TERMINAL="wezterm"
 export EDITOR="nvim"
+export SHELL="/usr/bin/fish"
 
 # Custom paths
 export CONFIG="$HOME/.config"
@@ -27,14 +28,8 @@ export XCURSOR_PATH="$XCURSOR_PATH${XCURSOR_PATH:+:}/etc/profiles/per-user/grig/
 export XCURSOR_SIZE=16
 export XCURSOR_THEME="Bibata-Modern-Ice"
 
-
 # Prompt
-if type "plato" > /dev/null; then
-    PS1="$(plato)"
-else
-    PS1="   > "
-fi
-
+PS1="   > "
 
 # Key bindings
 bindkey -s '^Q' 'exit\n'                   
