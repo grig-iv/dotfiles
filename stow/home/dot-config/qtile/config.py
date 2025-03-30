@@ -75,7 +75,7 @@ keys = [
 groups = [
     Group(
         name="1",
-        matches=[Match(wm_class="com.mitchellh.ghostty")],
+        matches=[],
     ),
     Group(
         name="2",
