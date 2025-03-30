@@ -1,0 +1,83 @@
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
+
+git
+lazygit
+
+fish-shell
+age
+curl
+gcc
+make
+fd
+skim
+jq
+stow
+age
+tree
+bottom
+zip
+unzip
+tldr
+neovim
+helix
+tmux
+python3-tmuxp
+yazi
+glow
+# imagemagick
+qmk
+evtest
+
+# dev
+lua
+lua-language-server
+StyLua
+
+go
+gopls
+goreleaser
+
+
+# xorg
+feh
+unclutter
+qtile
+dmenu
+dunst
+sxhkd
+flameshot
+
+# desktop
+ghostty
+wezterm
+telegram-desktop
+darktable
+zathura
+mpd
+vlc
+gimp
+krusader
+qbittorrent
+firefox
+# zen-browser
+chromium
+tor
+
+# services
+syncthing
+shadowsocks-libev
+
+cups
+cups-filters
+
+ipp-usb
+
+# work
+putty
+remmina
+libreoffice
+
