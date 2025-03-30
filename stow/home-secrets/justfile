@@ -8,4 +8,4 @@ decrypt-all private-key-file:
 
 [working-directory: "./dot-ssh"]
 chmod-ssh:
-    fd --no-ignore --exec chmod 400 {}
+    fd --no-ignore --exclude '*age' --exec chmod 400 {}
