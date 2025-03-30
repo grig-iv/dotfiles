@@ -1,0 +1,11 @@
+#!/usr/bin/env dash
+
+runsvdir $HOME/.local/service &
+xrandr --output DP-0 --mode 2560x1440 --rate 144 
+
+if [ -f $HOME/.local/state/wallpaper.jpg ]; then
+    feh --bg-fill $HOME/.local/state/wallpaper.jpg
+fi
+
+$HOME/.config/mind-shift/launch.sh
+exec /usr/bin/qtile start > /home/grig/log
