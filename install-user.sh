@@ -20,3 +20,5 @@ if [ ! -d "$HOME/.local/src/mind-shift-st" ]; then
     just install-deps
     just install
 fi
+
+ln -sf "/run/media/grig" "$HOME/media"
