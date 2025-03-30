@@ -1,0 +1,2 @@
+remove-broken-links:
+    find . -xtype l -delete
