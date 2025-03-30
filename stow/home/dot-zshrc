@@ -29,7 +29,7 @@ export XCURSOR_THEME="Bibata-Modern-Ice"
 
 
 # Prompt
-if type "$plato" > /dev/null; then
+if type "plato" > /dev/null; then
     PS1="$(plato)"
 else
     PS1="   > "
@@ -68,4 +68,8 @@ bindkey -s '^E' 'yacd\n'
 if type "$direnv " > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
+
 source $HOME/.local/src/zsh-abbr/zsh-abbr.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
