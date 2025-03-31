@@ -4,10 +4,6 @@ if [ ! -d "$HOME/.config/nvim" ]; then
     git clone git@github.com:grig-iv/nvim.git ~/.config/nvim
 fi
 
-if [ ! -d "$HOME/.local/src/zsh-abbr" ]; then
-    git clone --recurse-submodules -j8 https://github.com/olets/zsh-abbr.git ~/.local/src/zsh-abbr
-fi
-
 if [ ! -d "$HOME/.local/src/plato" ]; then
     git clone git@github.com:grig-iv/plato.git ~/.local/src/plato
     cd ~/.local/src/plato

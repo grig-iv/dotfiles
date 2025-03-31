@@ -1,4 +1,42 @@
-alias f="fish"
+# Set PATH with GOBIN and ~/.local/bin
+export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
 
+# XDG directories
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# Default applications
+export BROWSER="firefox"
+export TERMINAL="wezterm"
+export EDITOR="nvim"
+export SHELL="/usr/bin/fish"
+
+# Custom paths
+export CONFIG="$HOME/.config"
+export MIND="$HOME/mind"
+export NIXCONF="/etc/nixos"
+export SVDIR="$HOME/.local/service"
+
+# SKIM (fuzzy finder) default options
+export SKIM_DEFAULT_OPTIONS="--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind 'ctrl-q:abort'"
+
+# Xcursor settings
+export XCURSOR_PATH="$XCURSOR_PATH${XCURSOR_PATH:+:}/etc/profiles/per-user/grig/share/icons"
+export XCURSOR_SIZE=16
+export XCURSOR_THEME="Bibata-Modern-Ice"
+
+# Neovim
+export NVIMCONF="$CONFIG/nvim"
+export VIM="nvim"
+export VI="nvim"
+
+# Prompt
+PS1="   > "
+
+# Binds
 bind '"\C-q": "exit\n"'
 
+# Alias
+alias f="fish"
