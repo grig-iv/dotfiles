@@ -74,6 +74,8 @@ status is-interactive; and begin
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'
     abbr -a n 'jump -r $CONFIG/nvim'
+    abbr -a vi 'nvim'
+    abbr -a vim 'nvim'
 
     # nix
     abbr -a hms "home-manager switch --flake \$NIXCONF#$(whoami)@$(hostname)"
