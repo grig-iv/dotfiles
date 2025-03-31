@@ -8,4 +8,4 @@ if [ -f $HOME/.local/state/wallpaper.jpg ]; then
 fi
 
 $HOME/.config/mind-shift/launch.sh
-exec /usr/bin/qtile start > /home/grig/log
+exec dbus-run-session /usr/bin/qtile start 
