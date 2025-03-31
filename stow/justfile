@@ -2,6 +2,7 @@ stow:
     stow --dotfiles --no-folding -t $HOME -d "{{justfile_directory()}}" -S home
 
 stow-secrets:
+    just -f ./home-secrets/justfile decrypt-all
     stow --dotfiles --no-folding -t $HOME -d "{{justfile_directory()}}" -S home-secrets
 
 stow-root:

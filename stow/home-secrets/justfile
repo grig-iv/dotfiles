@@ -3,7 +3,7 @@ public-key := "age18hjjgcy2jzhwj7qjrp8t8pdrmhckygdt4mv45nqqtcfx9cd8ng3snfls4y"
 encrypt-all:
     fd --no-ignore --glob --type f --exclude '*age' --exclude 'justfile' --exec age --encrypt -r {{public-key}} -o {}.age {} 
 
-decrypt-all private-key-file:
+decrypt-all private-key-file: && chmod-ssh
     fd --no-ignore --glob '*age' --exec age --decrypt -i {{private-key-file}} -o {//}/{/.} {}
 
 [working-directory: "./dot-ssh"]
