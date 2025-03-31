@@ -1,16 +1,6 @@
-git
-lazygit
-
-zip
-unzip
-7zip
-xz
-
-curl
-wget
-
 void-repo-nonfree
 fish-shell
+nix
 age
 fd
 skim
@@ -30,11 +20,25 @@ glow
 qmk
 evtest
 
+git
+lazygit
+
+zip
+unzip
+7zip
+xz
+
+curl
+wget
+
 # dev
 gcc
 make
 pkg-config
 openssl-devel
+cargo
+redis
+nodejs
 
 lua
 lua-language-server
@@ -43,9 +47,6 @@ StyLua
 go
 gopls
 
-cargo
-
-redis
 
 # xorg
 xclip
