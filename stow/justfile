@@ -3,3 +3,6 @@ stow:
 
 stow-secrets:
     stow --dotfiles --no-folding -t $HOME -d "{{justfile_directory()}}" -S home-secrets
+
+stow-root:
+    sudo stow --dotfiles --no-folding -t / -d "{{justfile_directory()}}" -S root
