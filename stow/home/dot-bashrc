@@ -37,3 +37,8 @@ bind '"\C-q": "exit\n"'
 alias f="fish"
 alias vi="nvim"
 alias vim="nvim"
+
+if [ -z "$INIT" ]; then
+    export INIT="true"
+    startx
+fi
