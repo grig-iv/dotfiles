@@ -16,7 +16,7 @@ export SHELL="/usr/bin/fish"
 # Custom paths
 export CONFIG="$HOME/.config"
 export MIND="$HOME/mind"
-export NIXCONF="/etc/nixos"
+export NVIMCONF="$CONFIG/nvim"
 export SVDIR="$HOME/.local/service"
 
 # SKIM (fuzzy finder) default options
@@ -27,11 +27,6 @@ export XCURSOR_PATH="$XCURSOR_PATH${XCURSOR_PATH:+:}/etc/profiles/per-user/grig/
 export XCURSOR_SIZE=16
 export XCURSOR_THEME="Bibata-Modern-Ice"
 
-# Neovim
-export NVIMCONF="$CONFIG/nvim"
-export VIM="nvim"
-export VI="nvim"
-
 # Prompt
 PS1="   > "
 
@@ -40,3 +35,5 @@ bind '"\C-q": "exit\n"'
 
 # Alias
 alias f="fish"
+alias vi="nvim"
+alias vim="nvim"
