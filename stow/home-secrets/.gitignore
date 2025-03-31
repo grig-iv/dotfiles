@@ -1,7 +1,8 @@
 *
 
 !*/
-!secret_*
+!*.age
+!justfile
 !.gitignore
 !.stow-local-ignore
 

@@ -1,0 +1,5 @@
+stow:
+    stow --dotfiles --no-folding -t $HOME -d "{{justfile_directory()}}" -S home
+
+stow-secrets:
+    stow --dotfiles --no-folding -t $HOME -d "{{justfile_directory()}}" -S home-secrets
