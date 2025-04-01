@@ -49,6 +49,7 @@ gopls
 
 
 # xorg
+xprop
 xclip
 xrandr
 nvidia
@@ -60,6 +61,7 @@ dunst
 sxhkd
 flameshot
 nerd-fonts-otf
+picom
 
 # desktop
 ghostty
@@ -72,7 +74,6 @@ vlc
 gimp
 krusader
 qbittorrent
-firefox
 # zen-browser
 chromium
 tor
