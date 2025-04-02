@@ -1,3 +1,4 @@
+# shell
 void-repo-nonfree
 fish-shell
 nix
@@ -16,9 +17,6 @@ tmux
 python3-tmuxp
 yazi
 glow
-# imagemagick
-qmk
-evtest
 
 git
 lazygit
@@ -34,6 +32,7 @@ wget
 # dev
 gcc
 make
+cmake
 pkg-config
 openssl-devel
 cargo
@@ -47,12 +46,12 @@ StyLua
 go
 gopls
 
-
-# xorg
+# desktop shell
 xprop
 xclip
 xrandr
 nvidia
+evtest
 feh
 unclutter
 qtile
@@ -62,6 +61,10 @@ sxhkd
 flameshot
 nerd-fonts-otf
 picom
+udisks2
+udiskie
+qmk
+# imagemagick
 
 # desktop
 ghostty
