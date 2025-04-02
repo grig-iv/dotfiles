@@ -1,6 +1,7 @@
 # shell
 void-repo-nonfree
 fish-shell
+nushell
 nix
 age
 fd
@@ -73,7 +74,9 @@ telegram-desktop
 darktable
 zathura
 mpd
+mpv
 vlc
+ffmpeg6
 gimp
 krusader
 qbittorrent

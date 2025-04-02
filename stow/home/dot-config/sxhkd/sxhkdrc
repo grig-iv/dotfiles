@@ -2,7 +2,7 @@ super + alt + c
   xcolor -s
 
 super + alt + s
-  audio-cycle-output
+  audio-sink-cycle
 
 super + p
   rofi -show run

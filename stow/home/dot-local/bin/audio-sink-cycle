@@ -1,0 +1,12 @@
+#!/usr/bin/env nu
+
+let ignored = "alsa_output.pci-0000_01_00.1.hdmi-stereo" 
+let default = pactl get-default-sink
+
+let sinks = pactl list short sinks | detect columns -n | where column1 != $ignored
+let nextSink = ($sinks | append $sinks | skip until {|x| $x.column1 != $default} | take 1)
+
+pactl set-default-sink ($nextSink | get column0.0)
+
+ffplay -v 0 -volume 50 -nodisp -autoexit "/home/grig/.local/assets/minecraft-item-pop.mp3"
+
