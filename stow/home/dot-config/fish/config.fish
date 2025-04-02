@@ -96,7 +96,7 @@ status is-interactive; and begin
     function lfcd
         cd $(lf -print-last-dir)
     end
-    bind \cl 'lfcd; commandline -f execute'
+    bind \cl 'clear; commandline -f execute'
 
     # yazi
     function yacd
