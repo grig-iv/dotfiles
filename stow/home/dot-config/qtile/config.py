@@ -138,7 +138,7 @@ keys.extend([
   Key([mod], 'm', lazy.group['scratchpad'].dropdown_toggle('tmux-mind')),
 ])
 
-layout_theme = { "margin_on_single": 12,
+layout_theme = {"margin_on_single": 12,
                 "single_margin": 12,
                 "margin": 12,
                 "border_width": 1,
@@ -148,10 +148,10 @@ layout_theme = { "margin_on_single": 12,
                 }
 
 layouts = [
+    layout.Bsp(**layout_theme),
     layout.Columns(**layout_theme),
     layout.Max(**layout_theme),
     # layout.Stack(**layout_theme),
-    # layout.Bsp(**layout_theme),
     # layout.Matrix(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.MonadThreeCol(**layout_theme),
