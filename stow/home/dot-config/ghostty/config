@@ -1,13 +1,19 @@
 theme = catppuccin-mocha
+# custom-shader = tft.glsl
 
 window-decoration = false
 window-padding-x = 8
 window-padding-y = 8
+resize-overlay = never
 
 link-url = true
 
 keybind = clear
+
+keybind = alt+page_up=scroll_page_fractional:-0.5
+keybind = alt+page_down=scroll_page_fractional:+0.5
+keybind = alt+ctrl+page_up=scroll_to_top
+keybind = alt+ctrl+page_down=scroll_to_bottom
+
 keybind = ctrl+shift+v=paste_from_clipboard
 keybind = ctrl+shift+alt+r=reload_config
-
-# custom-shader = tft.glsl
