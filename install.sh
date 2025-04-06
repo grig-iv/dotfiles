@@ -19,3 +19,6 @@ ln -sf /etc/sv/ipp-usb /var/service
 
 # stow
 just -f ./stow stow-root
+
+# user media
+ln -sf "/run/media/grig" "$HOME/media"

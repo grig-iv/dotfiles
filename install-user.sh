@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/usr/bin/env sh
 
 if [ ! -d "$HOME/.config/nvim" ]; then
     git clone git@github.com:grig-iv/nvim.git ~/.config/nvim
@@ -23,4 +23,6 @@ if [ ! -d "$HOME/.local/src/mind-shift-st" ]; then
     just install
 fi
 
-ln -sf "/run/media/grig" "$HOME/media"
+if [ ! -d "$HOME/maps" ]; then
+    git clone git@github.com:grig-iv/maps.git ~/maps
+fi
