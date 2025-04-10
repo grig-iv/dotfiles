@@ -18,6 +18,7 @@ tmux
 python3-tmuxp
 yazi
 glow
+ripgrep
 
 git
 lazygit
@@ -65,7 +66,7 @@ picom
 udisks2
 udiskie
 qmk
-# imagemagick
+ImageMagick
 
 # desktop
 ghostty
