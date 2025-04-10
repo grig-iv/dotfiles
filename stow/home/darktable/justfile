@@ -1,13 +1,16 @@
 mk-pdf:
+    mkdir -p output
     rm -f ./output/*
     mogrify -path output -bordercolor White -border 100x100 -resize 2560x1440 -gravity center -extent 2560x1440 *.jpg
     convert output/*.jpg images.pdf
 
 mk-inst-post:
+    mkdir -p output
     rm -f ./output/*
     for img in *.jpg; do magick "$img" -resize 2500x2500 -gravity center -background white -extent 2600x2600 "output/$img"; done
 
 mk-inst-story:
+    mkdir -p output
     rm -f ./output/*
     for img in *.jpg; do magick "$img" -resize 1400x2500 -gravity center -background white -extent 1440x2560 "output/$img"; done
     rm -f $HOME/quick-share/inst/*
