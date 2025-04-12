@@ -1,6 +1,6 @@
-#!/usr/bin/env dash
+#!/usr/bin/env sh
 
-runsvdir $HOME/.local/service &
+runsvdir $HOME/.local/service > /dev/null 2> /dev/null &
 xrandr --output DP-0 --mode 2560x1440 --rate 144 
 
 if [ -f $HOME/.local/state/wallpaper.jpg ]; then
