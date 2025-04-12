@@ -39,6 +39,10 @@ status is-interactive; and begin
 
     abbr -a grep 'grep -i'
 
+    # void
+    abbr -a xi 'sudo xbps-install -y'
+    abbr -a xq 'xbps-query -Rs'
+
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'
     abbr -a n 'jump -r $CONFIG/nvim'
