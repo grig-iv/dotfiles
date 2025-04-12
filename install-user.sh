@@ -27,7 +27,10 @@ if [ ! -d "$HOME/maps" ]; then
     git clone git@github.com:grig-iv/maps.git ~/maps
 fi
 
-cd $HOME/.local/share/fonts
-just install-jetbrains
+fontDir="$HOME/.local/share/fonts"
+if [ $(ls "$fontDir" | wc -l) -lt 2 ]; then
+    cd $fontDir 
+    just install-jetbrains
+fi
 
 nix run home-manager/master -- switch --flake $HOME/.config/dotfiles/nix#$(hostname)
