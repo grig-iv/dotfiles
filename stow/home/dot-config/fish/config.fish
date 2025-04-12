@@ -41,6 +41,7 @@ status is-interactive; and begin
 
     # void
     abbr -a xi 'sudo xbps-install -y'
+    abbr -a xr 'sudo xbps-remove -y'
     abbr -a xq 'xbps-query -Rs'
 
     # neovim
