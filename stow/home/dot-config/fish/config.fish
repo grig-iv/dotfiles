@@ -37,9 +37,7 @@ status is-interactive; and begin
     abbr -a bc 'bc -ql'
     abbr -a ls 'ls -la'
 
-    abbr -a grep 'grep --color=auto'
-    abbr -a diff 'diff --color=auto'
-    abbr -a ip 'ip -color=auto'
+    abbr -a grep 'grep -i'
 
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'
