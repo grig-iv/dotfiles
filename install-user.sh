@@ -29,3 +29,5 @@ fi
 
 cd $HOME/.local/share/fonts
 just install-jetbrains
+
+nix run home-manager/master -- switch --flake $HOME/.config/dotfiles/nix#$(hostname)

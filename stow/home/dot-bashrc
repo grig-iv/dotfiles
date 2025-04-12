@@ -1,6 +1,10 @@
 # Set PATH with GOBIN and ~/.local/bin
 export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
 
+# home manager variables
+hmVars = "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
+[ -f $hmVars ] && source $hmVars 
+
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"

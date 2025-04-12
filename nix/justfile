@@ -1,0 +1,2 @@
+update input:
+    nix flake lock --update-input {{input}}

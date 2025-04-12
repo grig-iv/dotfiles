@@ -19,7 +19,6 @@ status is-interactive; and begin
     abbr -a gd 'cd $CONFIG/dotfiles'
     abbr -a gdl 'cd $HOME/Downloads'
     abbr -a gs 'cd $HOME/sources'
-    abbr -a gx 'cd $NIXCONF'
     abbr -a gl 'cd $HOME/.local'
     abbr -a gls 'cd $HOME/.local/share'
     abbr -a glb 'cd $HOME/.local/bin'
@@ -51,11 +50,8 @@ status is-interactive; and begin
     abbr -a vim 'nvim'
 
     # nix
-    abbr -a hms "home-manager switch --flake \$NIXCONF#$(whoami)@$(hostname)"
-    abbr -a nrs "sudo nixos-rebuild switch --flake \$NIXCONF#$(hostname)"
+    abbr -a hms "home-manager switch --flake $CONFIG/dotfiles/nix#$(hostname)"
     abbr -a nd 'nix develop'
-    abbr -a lu 'nix flake lock --update-input'
-    abbr -a x 'jump -r $NIXCONF'
 
     # go
     abbr -a gmt 'go mod tidy'
