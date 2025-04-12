@@ -1,1 +1,4 @@
-../../dot-config/helix/scripts/on-insert-exit
+#!/usr/bin/env dash
+
+xkb-switch > $XDG_STATE_HOME/layout
+xkb-switch -s us

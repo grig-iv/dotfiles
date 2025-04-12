@@ -1,1 +1,7 @@
-../../dot-config/helix/scripts/on-insert-enter
+#!/usr/bin/env dash
+
+layout=$(cat $XDG_STATE_HOME/layout)
+
+if [ -n $layout ]; then
+ xkb-switch -s $layout
+fi
