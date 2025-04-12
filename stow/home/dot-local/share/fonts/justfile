@@ -1,0 +1,8 @@
+font-list:
+    fc-list | sed 's|.*/||'
+
+install-jetbrains:
+    curl -LO "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip"
+    unzip -q "JetBrainsMono.zip" -d "JetBrainsMono" 
+    mv JetBrainsMono/JetBrainsMonoNerdFont-* .
+    rm -rf "JetBrainsMono" "JetBrainsMono.zip" 

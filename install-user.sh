@@ -26,3 +26,6 @@ fi
 if [ ! -d "$HOME/maps" ]; then
     git clone git@github.com:grig-iv/maps.git ~/maps
 fi
+
+cd $HOME/.local/share/fonts
+just install-jetbrains
