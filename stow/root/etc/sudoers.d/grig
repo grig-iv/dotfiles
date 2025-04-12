@@ -1,0 +1,3 @@
+grig ALL = NOPASSWD: /usr/bin/reboot
+grig ALL = NOPASSWD: /usr/bin/shutdown
+grig ALL = NOPASSWD: /usr/bin/xbps-install
