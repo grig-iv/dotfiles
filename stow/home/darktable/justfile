@@ -1,3 +1,10 @@
+mk-inst-story:
+    mkdir -p output
+    rm -f ./output/*
+    for img in *.jpg; do magick "$img" -resize 1400x2500 -gravity center -background white -extent 1440x2560 "output/$img"; done
+    rm -f $HOME/quick-share/inst/*
+    cp ./output/* $HOME/quick-share/inst/
+
 mk-pdf:
     mkdir -p output
     rm -f ./output/*
@@ -8,13 +15,6 @@ mk-inst-post:
     mkdir -p output
     rm -f ./output/*
     for img in *.jpg; do magick "$img" -resize 2500x2500 -gravity center -background white -extent 2600x2600 "output/$img"; done
-
-mk-inst-story:
-    mkdir -p output
-    rm -f ./output/*
-    for img in *.jpg; do magick "$img" -resize 1400x2500 -gravity center -background white -extent 1440x2560 "output/$img"; done
-    rm -f $HOME/quick-share/inst/*
-    cp ./output/* $HOME/quick-share/inst/
 
 clean:
     rm -f ./output/*
