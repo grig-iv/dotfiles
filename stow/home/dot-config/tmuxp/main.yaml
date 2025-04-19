@@ -1,4 +1,4 @@
 session_name: main
 windows:
   - panes:
-      - echo 'Hello!'
+      - cd $MIND & $EDITOR context.md
