@@ -17,6 +17,15 @@ ln -sf /etc/sv/cupsd /var/service
 ln -sf /etc/sv/avahi-daemon /var/service
 ln -sf /etc/sv/ipp-usb /var/service
 
+#!/usr/bin/env sh
+
+printf "
+%wheel ALL= NOPASSWD: /usr/bin/xbps-install
+%wheel ALL= NOPASSWD: /usr/bin/xbps-remove
+%wheel ALL= NOPASSWD: /usr/bin/reboot
+%wheel ALL= NOPASSWD: /usr/bin/shutdown
+" >> /etc/sudoers.d/wheel 
+
 # user media
 ln -sf "/run/media/grig" "$HOME/media"
 
