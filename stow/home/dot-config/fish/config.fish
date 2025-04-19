@@ -5,6 +5,8 @@ status is-interactive; and begin
 
     source "$CONFIG/fish/colors.fish"
 
+    fish_add_path "/home/grig/.cache/.bun/bin"
+
     # binds
     bind \cq exit
     bind \cf findAndEdit
