@@ -1,8 +1,5 @@
-# Set PATH with GOBIN and ~/.local/bin
-export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
-
 # home manager variables
-hmVars = "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
+hmVars="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
 [ -f $hmVars ] && source $hmVars 
 
 # XDG directories
@@ -31,8 +28,15 @@ export XCURSOR_PATH="$XCURSOR_PATH${XCURSOR_PATH:+:}/etc/profiles/per-user/grig/
 export XCURSOR_SIZE=16
 export XCURSOR_THEME="Bibata-Modern-Ice"
 
+# Misk
+export GOPATH="$XDG_STATE_HOME/go"
+export GOBIN="$GOPATH/bin"
+
+export JACK_SERVER_NAME=pipewire
+export JACK_NO_AUDIO_RESERVATION=1
+
 # Prompt
-PS1="   > "
+PS1='$(date +%H:%M) > '
 
 # Binds
 bind '"\C-q": "exit\n"'
@@ -42,6 +46,10 @@ alias f="fish"
 alias vi="nvim"
 alias vim="nvim"
 
+# Set PATH 
+export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
+
+# xserver auto start
 if [ -z "$INIT" ]; then
     export INIT="true"
     startx
