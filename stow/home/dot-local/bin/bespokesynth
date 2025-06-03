@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+cd "$HOME/.local/src/BespokeSynth/ignore/build/Source/BespokeSynth_artefacts/Release/"
+
+./BespokeSynth
