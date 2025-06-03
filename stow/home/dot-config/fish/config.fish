@@ -6,6 +6,8 @@ status is-interactive; and begin
     source "$CONFIG/fish/colors.fish"
 
     fish_add_path "/home/grig/.cache/.bun/bin"
+    fish_add_path "/home/grig/go/bin"
+    fish_add_path "/home/grig/opt/REAPER/"
 
     # binds
     bind \cq exit
@@ -28,7 +30,7 @@ status is-interactive; and begin
 
     abbr -a c 'jump -d $CONFIG && yacd'
     abbr -a s 'jump -d $HOME/sources/ && yacd'
-    abbr -a d 'jump -r $CONFIG/dotfiles && yacd'
+    abbr -a d 'jump -d -r $CONFIG/dotfiles && yacd'
     abbr -a t 'jump -d $HOME/media/T7/torrents'
 
     abbr -a cp 'cp -ivr'
