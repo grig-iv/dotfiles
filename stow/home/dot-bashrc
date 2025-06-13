@@ -2,7 +2,7 @@
 export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
 
 # home manager variables
-hmVars = "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
+hmVars="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
 [ -f $hmVars ] && source $hmVars 
 
 # XDG directories
@@ -26,10 +26,6 @@ export SVDIR="$HOME/.local/service"
 # SKIM (fuzzy finder) default options
 export SKIM_DEFAULT_OPTIONS="--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind 'ctrl-q:abort'"
 
-# Xcursor settings
-export XCURSOR_PATH="$XCURSOR_PATH${XCURSOR_PATH:+:}/etc/profiles/per-user/grig/share/icons"
-export XCURSOR_SIZE=16
-export XCURSOR_THEME="Bibata-Modern-Ice"
 
 # Prompt
 PS1="   > "
@@ -41,8 +37,3 @@ bind '"\C-q": "exit\n"'
 alias f="fish"
 alias vi="nvim"
 alias vim="nvim"
-
-if [ -z "$INIT" ]; then
-    export INIT="true"
-    startx
-fi
