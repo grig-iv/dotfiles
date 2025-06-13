@@ -35,6 +35,8 @@ export GOBIN="$GOPATH/bin"
 export JACK_SERVER_NAME=pipewire
 export JACK_NO_AUDIO_RESERVATION=1
 
+. "$HOME/.cargo/env"
+
 # Prompt
 PS1='$(date +%H:%M) > '
 
