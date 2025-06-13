@@ -1,6 +1,7 @@
 theme = catppuccin-mocha
+cursor-text = #555555
+cursor-style = bar
 
-window-decoration = false
 window-padding-x = 8
 window-padding-y = 8
 resize-overlay = never
