@@ -16,13 +16,6 @@ if [ ! -d "$HOME/.local/src/win-layout" ]; then
     just install
 fi
 
-if [ ! -d "$HOME/.local/src/mind-shift-st" ]; then
-    git clone git@github.com:grig-iv/mind-shift-st ~/.local/src/mind-shift-st
-    cd ~/.local/src/mind-shift-st
-    just install-deps
-    just install
-fi
-
 if [ ! -d "$HOME/maps" ]; then
     git clone git@github.com:grig-iv/maps.git ~/maps
 fi
