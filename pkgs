@@ -19,6 +19,8 @@ python3-tmuxp
 yazi
 glow
 ripgrep
+proxychains-ng
+diskonaut
 
 git
 lazygit
@@ -37,9 +39,9 @@ make
 cmake
 pkg-config
 openssl-devel
-cargo
 redis
 nodejs
+
 taplo
 
 lua
@@ -67,6 +69,7 @@ udisks2
 udiskie
 qmk
 ImageMagick
+ncmpcpp 
 
 # desktop
 ghostty
