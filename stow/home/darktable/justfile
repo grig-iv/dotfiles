@@ -1,7 +1,7 @@
 mk-inst-story:
     mkdir -p output
     rm -f ./output/*
-    for img in *.jpg; do magick "$img" -resize 1400x2500 -gravity center -background white -extent 1440x2560 "output/$img"; done
+    for img in *.jpg; do magick "$img" -resize 1300x2500 -gravity center -background '#0c1016' -extent 1440x2560 "output/$img"; done
     rm -f $HOME/quick-share/inst/*
     cp ./output/* $HOME/quick-share/inst/
 
