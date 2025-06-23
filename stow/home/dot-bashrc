@@ -18,10 +18,7 @@ export SHELL="/usr/bin/fish"
 export CONFIG="$HOME/.config"
 export MIND="$HOME/mind"
 export NVIMCONF="$CONFIG/nvim"
-export SVDIR="$HOME/.local/service"
-
-# SKIM (fuzzy finder) default options
-export SKIM_DEFAULT_OPTIONS="--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind 'ctrl-q:abort'"
+export NIXCONF="$CONFIG/nix-config"
 
 
 # Misk
@@ -31,7 +28,9 @@ export GOBIN="$GOPATH/bin"
 export JACK_SERVER_NAME=pipewire
 export JACK_NO_AUDIO_RESERVATION=1
 
-. "$HOME/.cargo/env"
+export SKIM_DEFAULT_OPTIONS="--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind 'ctrl-q:abort'"
+
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
 
 # Prompt
 PS1='$(date +%H:%M) > '

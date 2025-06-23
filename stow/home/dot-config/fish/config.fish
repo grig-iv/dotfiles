@@ -53,7 +53,9 @@ status is-interactive; and begin
     abbr -a vim 'nvim'
 
     # nix
-    abbr -a hms "home-manager switch --flake $CONFIG/dotfiles/nix#$(hostname)"
+    abbr -a gx 'cd $NIXCONF'
+    abbr -a x 'jump -r $NIXCONF'
+    abbr -a hms "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)"
     abbr -a nd 'nix develop'
 
     # go
