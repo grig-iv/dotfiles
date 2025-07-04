@@ -1,0 +1,92 @@
+---
+- name: Prerequsites
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Install psutil and update cache
+      become: yes
+      ansible.builtin.apt:
+        name: python3-psutil
+        update_cache: yes
+
+
+- name: Setup keyboard
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Copy layout to /usr/share/X11/xkb/symbols/ru
+      become: yes
+      ansible.builtin.blockinfile:
+        dest: /usr/share/X11/xkb/symbols/ru
+        content: "{{ lookup('file', './xkb/ru-grig.xkb') }}"
+        marker: "// {mark} ANSIBLE MANAGED BLOCK"    
+        prepend_newline: true
+
+    - name: Add variant to /usr/share/X11/xkb/rules/evdev.xml
+      become: yes
+      ansible.builtin.blockinfile:
+        dest: /usr/share/X11/xkb/rules/evdev.xml
+        insertafter: '<description>Russian \(phonetic\)</description>'
+        marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"    
+        content: |
+          </configItem>
+          </variant>
+          <variant>
+          <configItem>
+          <name>grig</name>
+          <description>Russian (grig)</description>
+
+    - name: Update xkb cache
+      become: yes
+      ansible.builtin.command: dpkg-reconfigure xkb-data
+
+    # some kind of bug with this options, can't put it in a list
+    - name: Set dconf options
+      community.general.dconf:
+        key: "/org/gnome/desktop/input-sources/sources"
+        value: "[('xkb', 'us'), ('xkb', 'ru+grig')]"
+
+    - name: Set dconf options
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/desktop/input-sources/per-window", value: "true" }
+        - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['grp:alt_shift_toggle', 'lv3:ralt_switch']" }
+
+
+- name: Setup cursor
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Install cursor
+      become: yes
+      ansible.builtin.apt:
+        name: bibata-cursor-theme
+
+    - name: Set dconf options
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Bibata-Modern-Ice'" }
+        - { key: "/org/gnome/desktop/interface/cursor-size", value: "22" }
+
+
+- name: Setup cursor
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Install cursor
+      become: yes
+      ansible.builtin.apt:
+        pkg:
+          - gnome-shell-extension-hide-activities
+          - gnome-shell-extension-weather
+          - gnome-shell-extension-top-icons-plus
+          - gnome-shell-extension-no-annoyance
+          - gnome-shell-extension-dashtodock
+
