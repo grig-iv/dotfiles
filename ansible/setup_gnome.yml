@@ -1,0 +1,17 @@
+---
+- name: Setup gnome
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Install extensions
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+          - gnome-shell-extension-hide-activities
+          - gnome-shell-extension-weather
+          - gnome-shell-extension-top-icons-plus
+          - gnome-shell-extension-no-annoyance
+          - gnome-shell-extension-dashtodock
+

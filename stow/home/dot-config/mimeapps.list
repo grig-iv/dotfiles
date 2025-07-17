@@ -1,8 +1,0 @@
-[Default Applications]
-application/pdf=org.pwmt.zathura.desktop
-image/bmp=sxiv.desktop
-image/gif=sxiv.desktop
-image/jpeg=sxiv.desktop
-image/png=sxiv.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop

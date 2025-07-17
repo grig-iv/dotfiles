@@ -1,0 +1,45 @@
+---
+- name: Setup Flatpak applications
+  hosts: localhost
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: Install apt packages
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+          - curl
+          - wget
+          - unzip
+          - zip
+          - git
+          - tmux
+          - tmuxp
+          - stow
+          - just
+          - fd-find
+          - tldr
+          - tree
+          - direnv
+          - bc
+          - age
+          - yt-dlp
+          - btm
+          - flatpak
+
+    - name: Add Flathub repository
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+    - name: Install flatpack applications
+      community.general.flatpak:
+        name: "{{ item }}"
+        state: present
+        remote: flathub
+      loop:
+        - org.telegram.desktop
+        - com.discordapp.Discord
+        - app.zen_browser.zen

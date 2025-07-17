@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars_files:
+    - secrets.yml
+  tasks:
+
+    - name: Ensure .ssh directory exists
+      file:
+        path: ~/.ssh
+        state: directory
+        mode: '0700'
+
+    - name: Copy SSH private key
+      copy:
+        content: "{{ ssh_private_key }}"
+        dest: ~/.ssh/id_ed25519
+        mode: '0600'

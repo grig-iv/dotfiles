@@ -16,7 +16,7 @@ function jump
 
     cd (string replace '~' $HOME $argv)
 
-    set selection (command fd . $find_args | sk)
+    set selection (command fdfind . $find_args | sk)
     if test -z "$selection"
         echo "No selection"
         cd -

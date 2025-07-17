@@ -1,0 +1,28 @@
+---
+- name: Setup cursor
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Install cursor
+      become: yes
+      apt:
+        update_cache: yes
+        pkg: 
+          - bibata-cursor-theme
+          - python3-psutil
+
+    - name: Install psutil and update cache
+      become: yes
+      apt:
+        name: python3-psutil
+
+    - name: Set dconf options
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Bibata-Modern-Ice'" }
+        - { key: "/org/gnome/desktop/interface/cursor-size", value: "22" }
+
+
