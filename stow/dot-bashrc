@@ -1,47 +1,62 @@
 # home manager variables
 hmVars="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 
-[ -f $hmVars ] && source $hmVars 
+[ -f $hmVars ] && source "$hmVars"
+
 
 # XDG directories
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/runtime-$USER}"
+export XDG_BIN_HOME="$HOME/.local/bin"
+
+export PATH="$PATH${PATH:+:}$XDG_BIN_HOME"
 
 # Default applications
 export BROWSER="firefox"
-export TERMINAL="wezterm"
+export TERMINAL="ghostty"
 export EDITOR="nvim"
 export SHELL="/usr/bin/fish"
 
-# Custom paths
+# Custom directories
 export CONFIG="$HOME/.config"
 export MIND="$HOME/mind"
 export NVIMCONF="$CONFIG/nvim"
 export NIXCONF="$CONFIG/nix-config"
 
+# Homebrew
+if [ -d "/home/linuxbrew" ]; then
+    export HOMEBREW_NO_ANALYTICS=1
+    export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+fi
+
+# Go
+if command -v go >/dev/null 2>&1; then
+    export GOPATH="$XDG_STATE_HOME/go"
+    export GOBIN="$GOPATH/bin"
+    export PATH="$PATH:$GOBIN"
+fi
+
+# Rust
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env" 
+fi
 
 # Misk
-export GOPATH="$XDG_STATE_HOME/go"
-export GOBIN="$GOPATH/bin"
-
 export JACK_SERVER_NAME=pipewire
 export JACK_NO_AUDIO_RESERVATION=1
 
 export SKIM_DEFAULT_OPTIONS="--color=fg:#cdd6f4,bg:empty,matched:#89dceb,matched_bg:#1e1e2e,current:#fab387,current_bg:#313244,current_match:#1e1e2e,current_match_bg:#89dceb,spinner:#a6e3a1,info:#bac2de,prompt:#cdd6f4,cursor:#fab387,selected:#eba0ac,header:#94e2d5,border:#6c7086 --bind 'ctrl-q:abort'"
 
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env" 
-
 # Prompt
 PS1='$(date +%H:%M) > '
 
 # Binds
-bind '"\C-q": "exit\n"'
+# bind '"\C-q": "exit\n"'
 
 # Alias
 alias f="fish"
 alias vi="nvim"
 alias vim="nvim"
 
-# Set PATH 
-export PATH="$PATH${PATH:+:}$GOBIN:$HOME/.local/bin"
