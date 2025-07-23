@@ -8,7 +8,7 @@
       become: yes
       blockinfile:
         dest: /usr/share/X11/xkb/symbols/ru
-        content: "{{ lookup('file', './xkb/ru-grig.xkb') }}"
+        content: "{{ lookup('file', './templates/ru-grig.xkb') }}"
         marker: "// {mark} ANSIBLE MANAGED BLOCK"    
         prepend_newline: true
 

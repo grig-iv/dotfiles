@@ -1,14 +1,16 @@
 ---
-- name: Setup Flatpak applications
+- name: Setup packages
   hosts: localhost
-  become: yes
   gather_facts: false
+
   tasks:
     - name: Install apt packages
       become: yes
       apt:
         update_cache: yes
         pkg:
+          - build-essential
+          - fish
           - curl
           - wget
           - unzip
@@ -16,17 +18,37 @@
           - git
           - tmux
           - tmuxp
-          - stow
-          - just
-          - fd-find
           - tldr
-          - tree
           - direnv
-          - bc
-          - age
-          - yt-dlp
-          - btm
           - flatpak
+          - age
+          - bc
+
+          - zathura
+          - gnome-boxes
+
+
+    - name: Install homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+      loop:
+        - stow
+        - just
+        - lazygit
+        - sk
+        - helix
+        - yazi
+        - imagemagick
+        - fd
+        - bottom
+        - yt-dlp
+        - tree
+
+        # lsp
+        - marksman # makrdown
+        - taplo # toml
+        - yaml-language-server # yaml
+     
 
     - name: Add Flathub repository
       community.general.flatpak_remote:
@@ -37,9 +59,15 @@
     - name: Install flatpack applications
       community.general.flatpak:
         name: "{{ item }}"
-        state: present
-        remote: flathub
       loop:
-        - org.telegram.desktop
-        - com.discordapp.Discord
         - app.zen_browser.zen
+        - org.telegram.desktop
+        - org.qbittorrent.qBittorrent
+        - org.darktable.Darktable
+        - md.obsidian.Obsidian
+        - org.remmina.Remmina
+        - fm.reaper.Reaper
+        - com.discordapp.Discord
+        - org.chromium.Chromium
+        - org.libreoffice.LibreOffice
+        - uk.org.greenend.chiark.sgtatham.putty

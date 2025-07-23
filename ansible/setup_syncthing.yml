@@ -1,8 +1,9 @@
 ---
-- name: Install and configure Syncthing
+- name: Setup Syncthing
   hosts: localhost
   vars_files:
     - secrets.yml
+
   tasks:
     - name: Update apt cache
       apt:
@@ -27,12 +28,14 @@
         content: "{{ vars[ansible_hostname + '_syncthing_cert'] }}"
         dest: ~/.local/share/syncthing/cert.pem
         mode: '0644'
+      when: (ansible_hostname + '_syncthing_cert') in vars
 
     - name: Create Syncthing private key file
       copy:
         content: "{{ vars[ansible_hostname + '_syncthing_key'] }}"
         dest: ~/.local/share/syncthing/key.pem
         mode: '0600'
+      when: (ansible_hostname + '_syncthing_key') in vars
 
     - name: Create user systemd directory
       file:
@@ -77,6 +80,5 @@
         state: started
         scope: user
 
-    - name: Display Syncthing web UI information
-      debug:
-        msg: Syncthing is now running on http://127.0.0.1:8384
+    - name: Open web gui
+      shell: xdg-open http://127.0.0.1:8384/

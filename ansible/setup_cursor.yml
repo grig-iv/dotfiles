@@ -12,11 +12,6 @@
           - bibata-cursor-theme
           - python3-psutil
 
-    - name: Install psutil and update cache
-      become: yes
-      apt:
-        name: python3-psutil
-
     - name: Set dconf options
       community.general.dconf:
         key: "{{ item.key }}"

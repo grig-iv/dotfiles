@@ -1,0 +1,24 @@
+---
+- name: Setup neovim
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Clone git repo
+      git:
+        repo: 'git@github.com:grig-iv/nvim.git'
+        dest: ~/.config/nvim
+        update: no
+
+    - name: Install packages
+      community.general.homebrew:
+        name: "{{ item }}"
+      loop:
+        - neovim
+        - ripgrep
+        - tree-sitter
+        - jq
+        - node
+        - lua-language-server
+        - stylua
+      

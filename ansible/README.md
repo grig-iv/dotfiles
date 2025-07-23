@@ -1,22 +1,41 @@
 # Install
+
+1. Add user to sudoers
 ```
 su -
 usermod -aG sudo grig
 reboot
 ```
 
+2. Clone dotfiles repo
 ```
 sudo apt update && sudo apt upgrade -y
-sudo apt install ansible git just
+sudo apt install git
 cd ~/.config
-git clone https://github.com/grig-iv/dotfiles.git
-cd dotfiles/ansible 
+git clone https://github.com/grig-iv/dotfiles.git -b debian
+cd dotfiles
+```
 
-ansible-playbook shell_packages.yml --ask-become-pass  
-ansible-playbook desktop_packages.yml --ask-become-pass  
-ansible-playbook secrets/playbook.yml --ask-become-pass  
-ansible-playbook xkb/playbook.yml --ask-become-pass  
-ansible-playbook cursor_setup.yml --ask-become-pass  
-ansible-playbook gnome_setup.yml --ask-become-pass  
+4. Install Homebrew
+```
+sudo apt install curl
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
+3. Stow
+```
+/home/linuxbrew/.linuxbrew/bin/brew install stow
+/home/linuxbrew/.linuxbrew/bin/stow --dotfiles --no-folding -t $HOME -S stow
+```
+
+5. Ansible 
+```
+/home/linuxbrew/.linuxbrew/bin/brew install ansible
+cd ansible
+
+vi secrets.yml
+
+ansible-playbook setup_xtal.yml --ask-become-pass
+
+git remote set-url origin git@github.com:grig-iv/dotfiles.git
 ```

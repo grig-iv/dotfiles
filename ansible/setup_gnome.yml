@@ -1,9 +1,9 @@
 ---
-- name: Setup gnome
+- name: Setup Gnome
   hosts: localhost
   gather_facts: false
-  tasks:
 
+  tasks:
     - name: Install extensions
       become: yes
       apt:

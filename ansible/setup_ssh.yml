@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Setup ssh 
+  hosts: localhost
   vars_files:
     - secrets.yml
   tasks:
@@ -15,3 +16,8 @@
         content: "{{ ssh_private_key }}"
         dest: ~/.ssh/id_ed25519
         mode: '0600'
+
+    - name: Add known_hosts
+      known_hosts:
+        name: 'github.com'
+        key: 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' 
