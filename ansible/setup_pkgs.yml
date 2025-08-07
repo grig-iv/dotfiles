@@ -28,28 +28,6 @@
           - gnome-boxes
 
 
-    - name: Install homebrew packages
-      community.general.homebrew:
-        name: "{{ item }}"
-      loop:
-        - stow
-        - just
-        - lazygit
-        - sk
-        - helix
-        - yazi
-        - imagemagick
-        - fd
-        - bottom
-        - yt-dlp
-        - tree
-
-        # lsp
-        - marksman # makrdown
-        - taplo # toml
-        - yaml-language-server # yaml
-     
-
     - name: Add Flathub repository
       community.general.flatpak_remote:
         name: flathub
@@ -71,3 +49,39 @@
         - org.chromium.Chromium
         - org.libreoffice.LibreOffice
         - uk.org.greenend.chiark.sgtatham.putty
+        - net.ankiweb.Anki
+        - org.videolan.VLC
+        - io.mpv.Mpv
+
+
+    - name: Install homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+      loop:
+        - stow
+        - just
+        - lazygit
+        - sk
+        - helix
+        - yazi
+        - imagemagick
+        - fd
+        - bottom
+        - yt-dlp
+        - tree
+
+        - marksman # makrdown lsp
+        - taplo # toml lsp
+        - yaml-language-server # yaml lsp
+        
+        - go
+        - gopls
+
+        - node
+
+    - name: Install node packages
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - bun
