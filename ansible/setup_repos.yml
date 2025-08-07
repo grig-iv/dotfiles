@@ -1,0 +1,16 @@
+---
+- name: Setup repos
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Clone maps
+      git:
+        repo: "git@github.com:grig-iv/{{ item.repo }}.git"
+        dest: "{{ item.dest }}"
+        update: no
+      loop:
+        - { repo: "maps", dest: "~/maps" }
+        - { repo: "finances", dest: "~/finances" }
+        - { repo: "plato", dest: "~/sources/plato" }
+
