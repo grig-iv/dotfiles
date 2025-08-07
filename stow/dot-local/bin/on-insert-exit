@@ -1,4 +1,8 @@
 #!/usr/bin/env dash
 
+if ! command -v xkb-switch >/dev/null 2>&1; then
+    exit 0
+fi
+
 xkb-switch > $XDG_STATE_HOME/layout
 xkb-switch -s us
