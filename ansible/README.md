@@ -10,7 +10,7 @@ reboot
 2. Clone dotfiles repo
 ```
 sudo apt update && sudo apt upgrade -y
-sudo apt install git
+sudo apt install git -y
 cd ~/.config
 git clone https://github.com/grig-iv/dotfiles.git -b debian
 cd dotfiles
@@ -35,7 +35,16 @@ cd ansible
 
 vi secrets.yml
 
-ansible-playbook setup_xtal.yml --ask-become-pass
+/home/linuxbrew/.linuxbrew/bin/ansible-playbook setup_xtal.yml --ask-become-pass
 
 git remote set-url origin git@github.com:grig-iv/dotfiles.git
+
+cd ~/sources/plato 
+just
 ```
+
+6. Misc
+- setup browser
+- setup power mode
+- setup display
+- install ghostty 
