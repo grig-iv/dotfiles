@@ -1,4 +1,0 @@
-session_name: main
-windows:
-  - panes:
-      - cd $MIND & $EDITOR context.md

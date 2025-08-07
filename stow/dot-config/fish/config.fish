@@ -85,7 +85,7 @@ status is-interactive; and begin
 
     # misc
     abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d ~/.config/dotfiles/stow -S home'
-    abbr -a tlm 'tmuxp load -y main'
+    abbr -a tmx 'tmux new -A -s main'
     abbr -a tree 'tree --gitignore'
     bind \cg 'lazygit'
 

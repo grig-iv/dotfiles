@@ -17,7 +17,6 @@
           - zip
           - git
           - tmux
-          - tmuxp
           - tldr
           - direnv
           - flatpak
