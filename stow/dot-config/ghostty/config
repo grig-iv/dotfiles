@@ -2,6 +2,9 @@ theme = catppuccin-mocha
 cursor-text = #555555
 cursor-style = bar
 
+command = ~/.config/tmux/try-start-main.sh
+confirm-close-surface = false
+
 window-padding-x = 8
 window-padding-y = 8
 resize-overlay = never
