@@ -39,8 +39,8 @@ if command -v go >/dev/null 2>&1; then
 fi
 
 # Rust
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env" 
+if [ -d "$HOME/.cargo/" ]; then
+    export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 # Misk

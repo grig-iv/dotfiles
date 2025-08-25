@@ -22,9 +22,14 @@
           - flatpak
           - age
           - bc
+          - proxychains4
 
           - zathura
           - gnome-boxes
+
+          - libxcb-xinerama0
+          - libxcb-cursor0
+          - libdbus-glib-1-2
 
 
     - name: Add Flathub repository
@@ -51,6 +56,9 @@
         - net.ankiweb.Anki
         - org.videolan.VLC
         - io.mpv.Mpv
+        - com.github.johnfactotum.Foliate
+        - org.localsend.localsend_app
+        - org.gimp.GIMP
 
 
     - name: Install homebrew packages
@@ -75,6 +83,8 @@
         
         - go
         - gopls
+
+        - rust
 
         - node
 

@@ -23,10 +23,10 @@
         state: directory
         mode: '0700'
 
-    - name: Copy shadowsocks-no config
+    - name: Copy shadowsocks-fi config
       copy:
-        content: "{{ shadowsocks_no }}"
-        dest: ~/.config/shadowsocks/config-no.json
+        content: "{{ shadowsocks_fi }}"
+        dest: ~/.config/shadowsocks/config-fi.json
         mode: '0644'
 
     - name: Copy shadowsocks-nl config
@@ -41,23 +41,23 @@
         state: directory
         mode: '0755'
 
-    - name: Create shadowsocks-no user systemd service file
+    - name: Create shadowsocks-fi user systemd service file
       copy:
         content: |
           [Unit]
-          Description=Shadowsocks-no Client
+          Description=Shadowsocks-fi Client
           After=network.target
 
           [Service]
           Type=simple
-          ExecStart=/usr/bin/ss-local -c %h/.config/shadowsocks/config-no.json
+          ExecStart=/usr/bin/ss-local -c %h/.config/shadowsocks/config-fi.json
           Restart=always
           RestartSec=3
           KillMode=mixed
 
           [Install]
           WantedBy=default.target
-        dest: ~/.config/systemd/user/shadowsocks-no.service
+        dest: ~/.config/systemd/user/shadowsocks-fi.service
         mode: '0644'
 
     - name: Create shadowsocks-nl user systemd service file
@@ -86,7 +86,7 @@
 
     - name: Enable and start shadowsocks user service
       systemd:
-        name: shadowsocks-no
+        name: shadowsocks-fi
         enabled: yes
         state: started
         scope: user
