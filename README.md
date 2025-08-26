@@ -1,3 +1,3 @@
-### TODO
-- create stow dir 
-- create secrets handling
+# My dotifles
+
+Powerd by Ansible and Stow

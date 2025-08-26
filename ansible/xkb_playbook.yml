@@ -2,8 +2,8 @@
 - name: Setup xkb
   hosts: localhost
   gather_facts: false
-  tasks:
 
+  tasks:
     - name: Copy layout to /usr/share/X11/xkb/symbols/ru
       become: yes
       blockinfile:

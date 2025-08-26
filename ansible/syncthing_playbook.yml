@@ -1,41 +1,17 @@
 ---
-- name: Setup Syncthing
+- name: Syncthing setup
   hosts: localhost
+  gather_facts: false
   vars_files:
     - secrets.yml
 
   tasks:
-    - name: Update apt cache
+    - name: Install synctihng
       apt:
         update_cache: yes
-        cache_valid_time: 3600
-      become: yes
-
-    - name: Install Syncthing
-      apt:
         name: syncthing
         state: present
       become: yes
-
-    - name: Create Syncthing config directory
-      file:
-        path: ~/.local/share/syncthing
-        state: directory
-        mode: '0700'
-
-    - name: Create Syncthing certificate file
-      copy:
-        content: "{{ vars[ansible_hostname + '_syncthing_cert'] }}"
-        dest: ~/.local/share/syncthing/cert.pem
-        mode: '0644'
-      when: (ansible_hostname + '_syncthing_cert') in vars
-
-    - name: Create Syncthing private key file
-      copy:
-        content: "{{ vars[ansible_hostname + '_syncthing_key'] }}"
-        dest: ~/.local/share/syncthing/key.pem
-        mode: '0600'
-      when: (ansible_hostname + '_syncthing_key') in vars
 
     - name: Create user systemd directory
       file:

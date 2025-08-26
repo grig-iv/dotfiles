@@ -2,8 +2,8 @@
 - name: Setup cursor
   hosts: localhost
   gather_facts: false
-  tasks:
 
+  tasks:
     - name: Install cursor
       become: yes
       apt:

@@ -1,10 +1,11 @@
 ---
 - name: Setup ssh 
   hosts: localhost
+  gather_facts: false
   vars_files:
     - secrets.yml
-  tasks:
 
+  tasks:
     - name: Ensure .ssh directory exists
       file:
         path: ~/.ssh

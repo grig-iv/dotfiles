@@ -1,22 +1,15 @@
 # Install
 
-1. Add user to sudoers
-```
-su -
-usermod -aG sudo grig
-reboot
-```
-
-2. Clone dotfiles repo
+1. Clone dotfiles repo
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
 cd ~/.config
-git clone https://github.com/grig-iv/dotfiles.git -b debian
+git clone https://github.com/grig-iv/dotfiles.git
 cd dotfiles
 ```
 
-4. Install Homebrew
+2. Install Homebrew
 ```
 sudo apt install curl
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -25,10 +18,11 @@ sudo apt install curl
 3. Stow
 ```
 /home/linuxbrew/.linuxbrew/bin/brew install stow
+rm ~/.bashrc
 /home/linuxbrew/.linuxbrew/bin/stow --dotfiles --no-folding -t $HOME -S stow
 ```
 
-5. Ansible 
+4. Ansible 
 ```
 /home/linuxbrew/.linuxbrew/bin/brew install ansible
 cd ansible
@@ -43,8 +37,14 @@ cd ~/sources/plato
 just
 ```
 
-6. Misc
+5. Misc
 - setup browser
-- setup power mode
+    - install addons
+        - foxyproxy
+        - vaultwarden
+        - i still dont care about cookies
+        - ublock origin
 - setup display
-- install ghostty 
+- manually install
+    - ghostty 
+    - steam

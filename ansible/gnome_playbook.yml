@@ -1,0 +1,27 @@
+---
+- name: Setup Gnome
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Install apt packages
+      become: yes
+      apt:
+        pkg:
+          - gnome-robots
+          - gnome-klotski
+          - gnome-contacts
+          - gnome-tetravex
+        state: absent
+
+    - name: Install psutil
+      apt:
+        name: python3-psutil
+
+    - name: Set dconf options
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/desktop/input-sources/per-window", value: "true" }
+        - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['lv3:ralt_switch']" }
