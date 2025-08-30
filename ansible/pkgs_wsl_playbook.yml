@@ -1,0 +1,58 @@
+---
+- name: Setup packages
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Install apt packages
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+          - build-essential
+          - fish
+          - curl
+          - wget
+          - unzip
+          - zip
+          - git
+          - tmux
+          - direnv
+          - age
+          - bc
+          - proxychains4
+
+    - name: Install homebrew packages
+      community.general.homebrew:
+        name: "{{ item }}"
+      loop:
+        - stow
+        - just
+        - lazygit
+        - sk
+        - helix
+        - yazi
+        - imagemagick
+        - fd
+        - bottom
+        - yt-dlp
+        - tree
+        - tldr
+
+        - marksman # makrdown lsp
+        - taplo # toml lsp
+        - yaml-language-server # yaml lsp
+        
+        - go
+        - gopls
+
+        - rust
+
+        - node
+
+    - name: Install node packages
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - bun

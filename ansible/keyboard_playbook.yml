@@ -47,4 +47,4 @@
         value: "{{ item.value }}"
       loop:
         - { key: "/org/gnome/desktop/input-sources/per-window", value: "true" }
-        - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['lv3:ralt_switch']" }
+        - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['lv3:ralt_switch', 'grp:alt_shift_toggle']" }

@@ -1,0 +1,19 @@
+---
+- import_playbook: pkgs_pc_playbook.yml
+- import_playbook: ssh_playbook.yml
+- import_playbook: neovim_playbook.yml
+- import_playbook: repos_playbook.yml
+- import_playbook: shadowsocks_playbook.yml
+- import_playbook: syncthing_playbook.yml
+- import_playbook: gnome_playbook.yml
+- import_playbook: keyboard_playbook.yml
+- import_playbook: cursor_playbook.yml
+
+- name: Misc
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Install geerlingguy.docker 
+    ansible.builtin.command:
+      cmd: ansible-galaxy install geerlingguy.docker
+    run_once: true
