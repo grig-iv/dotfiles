@@ -1,2 +1,3 @@
 install:
-    ya pack -i
+    ya pkg upgrade
+    ya pkg install

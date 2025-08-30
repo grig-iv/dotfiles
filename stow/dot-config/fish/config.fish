@@ -84,4 +84,19 @@ status is-interactive; and begin
     bind \cg 'lazygit'
 
     bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just"
+
+    # wsl
+    if string match -q "*microsoft*" (cat /proc/version 2>/dev/null)
+        abbr -a gw 'cd /mnt/c/Users/grig'
+        abbr -a gwd 'cd /mnt/c/Users/grig/Downloads'
+        abbr -a gws 'cd /mnt/c/Users/grig/source'
+
+        abbr -a pwsh 'powershell.exe'
+        abbr -a pwshc 'powershell.exe -C'
+    end
+
+    # extra 
+    if test -e "$CONFIG/fish/config_extra.fish"
+        source "$CONFIG/fish/config_extra.fish"
+    end
 end

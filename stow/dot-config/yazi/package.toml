@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "7afba3a"
-hash = "b25c2acb08d9ca5ff5cf71ea764fed8d"
+rev = "d7588f6"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "7afba3a"
-hash = "36c82bb433078e8e752351d961cac777"
+rev = "d7588f6"
+hash = "1adc12c2b2b025411ab61eb8f0879574"
 
 [[plugin.deps]]
 use = "Reledia/glow"
-rev = "c2ed51e"
-hash = "136ce00885041aeee5cf582ccf7a46dc"
+rev = "bd3eaa5"
+hash = "92b5c58159a51c567f82b618cee2b78"
 
 [flavor]
 deps = []
