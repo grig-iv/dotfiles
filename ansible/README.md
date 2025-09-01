@@ -29,7 +29,7 @@ cd ansible
 
 vi secrets.yml
 
-/home/linuxbrew/.linuxbrew/bin/ansible-playbook setup_pc_playbook.yml --ask-become-pass
+/home/linuxbrew/.linuxbrew/bin/ansible-playbook setup_pc.yml --ask-become-pass
 
 git remote set-url origin git@github.com:grig-iv/dotfiles.git
 

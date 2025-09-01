@@ -1,5 +1,5 @@
 ---
-- name: Setup repos
+- name: Repos setup
   hosts: localhost
   gather_facts: false
 

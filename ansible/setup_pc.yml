@@ -1,0 +1,10 @@
+---
+- import_playbook: pkgs_pc.yml
+- import_playbook: ssh.yml
+- import_playbook: neovim.yml
+- import_playbook: repos.yml
+- import_playbook: shadowsocks.yml
+- import_playbook: syncthing.yml
+- import_playbook: gnome.yml
+- import_playbook: keyboard.yml
+- import_playbook: docker.yml

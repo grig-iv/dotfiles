@@ -1,5 +1,5 @@
 ---
-- name: Setup xkb
+- name: Keyboard setup
   hosts: localhost
   gather_facts: false
 

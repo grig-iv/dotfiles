@@ -1,5 +1,5 @@
 ---
-- name: Setup packages
+- name: Packages setup
   hosts: localhost
   gather_facts: false
 

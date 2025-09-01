@@ -1,5 +1,5 @@
 ---
-- name: Setup ssh 
+- name: Ssh setup
   hosts: localhost
   gather_facts: false
   vars_files:

@@ -1,5 +1,5 @@
 ---
-- name: Setup neovim
+- name: Neovim setup
   hosts: localhost
   gather_facts: false
 

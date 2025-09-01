@@ -1,0 +1,30 @@
+---
+- name: Docker setup
+  hosts: localhost
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3  
+
+  tasks:
+    - name: Install apt packages
+      apt:
+        name: python3-debian
+
+    - name: Install geerlingguy.docker 
+      become: no
+      ansible.builtin.command:
+        cmd: ansible-galaxy install geerlingguy.docker
+      run_once: true
+
+    - name: Install docker
+      ansible.builtin.include_role:
+        name: geerlingguy.docker
+      vars:
+        docker_install_compose_plugin: true
+        docker_install_compose: false
+
+    - name: Start and enable Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes

@@ -1,23 +1,27 @@
 ---
-- name: Setup cursor
+- name: Gnome setup
   hosts: localhost
   gather_facts: false
+  become: yes
 
   tasks:
-    - name: Install cursor
-      become: yes
+    - name: Remove packages
       apt:
-        update_cache: yes
-        pkg: 
-          - bibata-cursor-theme
-          - python3-psutil
+        name: gnome-tour
+        state: absent
 
-    - name: Set dconf options
+    - name: Install packages
+      apt:
+        pkg:
+          - python3-psutil
+          - bibata-cursor-theme
+          - gnome-shell-extensions
+          - gnome-shell-extension-prefs
+
+    - name: Set cursor
       community.general.dconf:
         key: "{{ item.key }}"
         value: "{{ item.value }}"
       loop:
         - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Bibata-Modern-Ice'" }
         - { key: "/org/gnome/desktop/interface/cursor-size", value: "22" }
-
-
