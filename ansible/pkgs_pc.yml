@@ -18,17 +18,19 @@
           - git
           - tmux
           - direnv
-          - flatpak
           - age
           - bc
           - proxychains4
 
-          - zathura
-          - gnome-boxes
-
+          - pulseaudio-utils
+          - ffmpeg
           - libxcb-xinerama0
           - libxcb-cursor0
           - libdbus-glib-1-2
+
+          - flatpak
+          - zathura
+          - gnome-boxes
 
 
     - name: Add Flathub repository
@@ -79,6 +81,7 @@
         - yt-dlp
         - tree
         - tldr
+        - nushell
 
         - marksman # makrdown lsp
         - taplo # toml lsp
