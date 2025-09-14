@@ -5,6 +5,8 @@ cursor-style = bar
 command = ~/.config/tmux/try-start-main.sh
 confirm-close-surface = false
 
+window-width = 130
+window-height = 35
 window-padding-x = 8
 window-padding-y = 8
 resize-overlay = never

@@ -40,7 +40,7 @@ status is-interactive; and begin
     abbr -a ls 'ls -la'
     abbr -a grep 'grep -i'
 
-    abbr -a ai 'sudo apt install'
+    abbr -a ai 'sudo apt install -y'
     abbr -a ar 'sudo apt remove'
     abbr -a as 'apt-cache search'
 

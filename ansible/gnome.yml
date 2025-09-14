@@ -25,3 +25,16 @@
       loop:
         - { key: "/org/gnome/desktop/interface/cursor-theme", value: "'Bibata-Modern-Ice'" }
         - { key: "/org/gnome/desktop/interface/cursor-size", value: "22" }
+
+    - name: Setup keybindings
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/screenreader", value: "''" }
+
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'Cycle audio sources'" }
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'/home/grig/.local/bin/audio-sink-cycle'" }
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Alt><Super>S'" }
+
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings", value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" }

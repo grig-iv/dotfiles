@@ -1,9 +1,11 @@
 #!/usr/bin/env nu
 
-let ignored = "alsa_output.pci-0000_01_00.1.hdmi-stereo" 
 let default = pactl get-default-sink
 
-let sinks = pactl list short sinks | detect columns -n | where column1 != $ignored
+let sinks = pactl list short sinks 
+    | detect columns -n 
+    | where not ($it.column1 | str contains "hdmi-stereo")
+
 let nextSink = ($sinks | append $sinks | skip until {|x| $x.column1 != $default} | take 1)
 
 pactl set-default-sink ($nextSink | get column0.0)
