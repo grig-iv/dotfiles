@@ -1,0 +1,40 @@
+---
+- name: Flatpack packages setup
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Install apt packages
+      become: yes
+      apt:
+        - name: flatpak
+
+    - name: Add Flathub repository
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+    - name: Grant filesystem permissions to all Flatpak applications (user)
+      command: "flatpak override --user --filesystem=home"
+
+    - name: Install flatpack applications
+      community.general.flatpak:
+        name: "{{ item }}"
+      loop:
+        - app.zen_browser.zen
+        - org.telegram.desktop
+        - org.qbittorrent.qBittorrent
+        - org.darktable.Darktable
+        - md.obsidian.Obsidian
+        - org.remmina.Remmina
+        - fm.reaper.Reaper
+        - com.discordapp.Discord
+        - org.chromium.Chromium
+        - org.libreoffice.LibreOffice
+        - net.ankiweb.Anki
+        - org.videolan.VLC
+        - io.mpv.Mpv
+        - com.github.johnfactotum.Foliate
+        - org.localsend.localsend_app
+        - org.gimp.GIMP

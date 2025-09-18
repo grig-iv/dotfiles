@@ -1,0 +1,38 @@
+---
+- name: Apt packages setup
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Install common packages
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+          - build-essential
+          - fish
+          - curl
+          - wget
+          - unzip
+          - zip
+          - git
+          - tmux
+          - direnv
+          - age
+          - bc
+          - proxychains4
+
+    - name: Install pc packages
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+          - zathura
+          - gnome-boxes
+          - putty
+          - ffmpeg
+          - pulseaudio-utils
+          - libxcb-xinerama0
+          - libxcb-cursor0
+          - libdbus-glib-1-2
+      when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))

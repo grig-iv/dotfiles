@@ -1,0 +1,21 @@
+---
+- import_playbook: pkgs_apt.yml
+- import_playbook: pkgs_homebrew.yml
+- import_playbook: pkgs_npm.yml
+- import_playbook: ssh.yml
+- import_playbook: neovim.yml
+- import_playbook: repos.yml
+- import_playbook: shadowsocks.yml
+- import_playbook: syncthing.yml
+- import_playbook: docker.yml
+- import_playbook: rsync.yml
+- import_playbook: tailscale.yml
+
+- import_playbook: pkgs_flatpack.yml
+  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+
+- import_playbook: gnome.yml
+  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+
+- import_playbook: keyboard.yml
+  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))

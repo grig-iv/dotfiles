@@ -32,6 +32,8 @@
         value: "{{ item.value }}"
       loop:
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/screenreader", value: "''" }
+        - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-left", value: "['<Super><Shift><Ctrl>Page_Down']" }
+        - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-right", value: "['<Super><Shift><Ctrl>Page_Up']" }
 
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'Cycle audio sources'" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'/home/grig/.local/bin/audio-sink-cycle'" }
