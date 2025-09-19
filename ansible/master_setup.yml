@@ -12,10 +12,10 @@
 - import_playbook: tailscale.yml
 
 - import_playbook: pkgs_flatpack.yml
-  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+  when: ansible_env.WSL_DISTRO_NAME is not defined
 
 - import_playbook: gnome.yml
-  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+  when: ansible_env.WSL_DISTRO_NAME is not defined
 
 - import_playbook: keyboard.yml
-  when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+  when: ansible_env.WSL_DISTRO_NAME is not defined

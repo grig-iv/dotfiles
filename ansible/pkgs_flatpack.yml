@@ -7,7 +7,7 @@
     - name: Install apt packages
       become: yes
       apt:
-        - name: flatpak
+        pkg: flatpak
 
     - name: Add Flathub repository
       community.general.flatpak_remote:

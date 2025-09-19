@@ -1,7 +1,6 @@
 ---
 - name: Create cron job for rsync
   hosts: localhost
-  gather_facts: false
   vars_files:
     - secrets.yml
 
@@ -23,5 +22,5 @@
       cron:
         name: "Sync ideavim config"
         hour: "*"
-        job: rsync /mnt/c/Users/grig/.config/ideavim /home/grig/cloud/resources/configs/
+        job: rsync /mnt/c/Users/grig/.config/ideavim/ideavimrc /home/grig/cloud/resources/configs/
       when: ansible_env.WSL_DISTRO_NAME is defined
