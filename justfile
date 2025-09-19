@@ -5,3 +5,6 @@ stow: remove-broken-links
 remove-broken-links:
     cd $HOME
     find . -xtype l -delete
+
+set-hostname NAME:
+    sudo hostnamectl set-hostname {{NAME}}

@@ -1,7 +1,6 @@
 ---
 - name: Apt packages setup
   hosts: localhost
-  gather_facts: false
 
   tasks:
     - name: Install common packages
@@ -35,4 +34,4 @@
           - libxcb-xinerama0
           - libxcb-cursor0
           - libdbus-glib-1-2
-      when: not (ansible_kernel is search('Microsoft') or ansible_kernel is search('microsoft'))
+      when: ansible_env.WSL_DISTRO_NAME is not defined
