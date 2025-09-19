@@ -22,7 +22,6 @@
           - proxychains4
 
     - name: Install pc packages
-      become: yes
       apt:
         update_cache: yes
         pkg:
@@ -34,4 +33,4 @@
           - libxcb-xinerama0
           - libxcb-cursor0
           - libdbus-glib-1-2
-      when: ansible_env.WSL_DISTRO_NAME is not defined
+      when: ansible_env.XDG_SESSION_TYPE != "tty"
