@@ -9,6 +9,7 @@
         name: "{{ item }}"
         global: true
       loop:
-        - bun
-        - typescript
-        - typescript-language-server
+        - "bun"
+        - "typescript"
+        - "typescript-language-server"
+        - "@ansible/ansible-language-server"
