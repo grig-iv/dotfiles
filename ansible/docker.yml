@@ -11,8 +11,9 @@
         name: python3-debian
 
     - name: Add user to docker group
+      become: yes
       user:
-        name: "{{ ansible_user }}"
+        name: grig
         groups: docker
         append: yes
 
@@ -22,7 +23,6 @@
       run_once: true
 
     - name: Install docker
-      become: yes
       ansible.builtin.include_role:
         name: geerlingguy.docker
       vars:
