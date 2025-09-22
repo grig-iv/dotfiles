@@ -12,4 +12,6 @@
         - "bun"
         - "typescript"
         - "typescript-language-server"
+        - "vscode-langservers-extracted"
+        - "@tailwindcss/language-server"
         - "@ansible/ansible-language-server"

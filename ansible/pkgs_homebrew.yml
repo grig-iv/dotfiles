@@ -7,6 +7,7 @@
     - name: Install homebrew packages
       community.general.homebrew:
         name: "{{ item }}"
+      ignore_errors: true
       loop:
         - stow
         - just
