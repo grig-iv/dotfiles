@@ -22,3 +22,8 @@
       known_hosts:
         name: 'github.com'
         key: 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' 
+
+    - name: Set authorized key 
+      authorized_key:
+        user: "grig"
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILXwpJJwt0V1Iy2CiOkd1wgWtRLVHNDiDHVxHwn6dAc6 grig-iv@tuta.io"
