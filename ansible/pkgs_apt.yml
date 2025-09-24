@@ -19,7 +19,6 @@
           - direnv
           - age
           - bc
-          - proxychains4
 
     - name: Install pc packages
       apt:

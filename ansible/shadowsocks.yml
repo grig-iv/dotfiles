@@ -6,16 +6,11 @@
     - secrets.yml
 
   tasks: 
-    - name: Update apt cache
-      apt:
-        update_cache: yes
-        cache_valid_time: 3600
-      become: yes
-
     - name: Install shadowsocks-libev
       apt:
-        name: shadowsocks-libev
-        state: present
+        pkg: 
+          - shadowsocks-libev
+          - proxychains4
       become: yes
 
     - name: Ensure .config/shadowsocks directory exists
@@ -24,61 +19,42 @@
         state: directory
         mode: '0700'
 
-    - name: Copy shadowsocks-fi config
-      copy:
-        content: "{{ shadowsocks_fi }}"
-        dest: ~/.config/shadowsocks/config-fi.json
-        mode: '0644'
-
-    - name: Copy shadowsocks-nl config
-      copy:
-        content: "{{ shadowsocks_nl }}"
-        dest: ~/.config/shadowsocks/config-nl.json
-        mode: '0644'
-
     - name: Create user systemd directory
       file:
         path: ~/.config/systemd/user
         state: directory
         mode: '0755'
 
-    - name: Create shadowsocks-fi user systemd service file
+    - name: Creating config
+      copy:
+        content: "{{ item.config }}"
+        dest: ~/.config/shadowsocks/config-{{ item.name }}.json
+        mode: '0644'
+      loop:
+        - { name: "fi", config: "{{ shadowsocks_fi }}" }
+        - { name: "nl", config: "{{ shadowsocks_nl }}" }
+
+    - name: Create user systemd service file
       copy:
         content: |
           [Unit]
-          Description=Shadowsocks-fi Client
+          Description=Shadowsocks-{{ item }} Client
           After=network.target
 
           [Service]
           Type=simple
-          ExecStart=/usr/bin/ss-local -c %h/.config/shadowsocks/config-fi.json
+          ExecStart=/usr/bin/ss-local -c %h/.config/shadowsocks/config-{{ item }}.json
           Restart=always
           RestartSec=3
           KillMode=mixed
 
           [Install]
           WantedBy=default.target
-        dest: ~/.config/systemd/user/shadowsocks-fi.service
+        dest: ~/.config/systemd/user/shadowsocks-{{ item }}.service
         mode: '0644'
-
-    - name: Create shadowsocks-nl user systemd service file
-      copy:
-        content: |
-          [Unit]
-          Description=Shadowsocks-nl Client
-          After=network.target
-
-          [Service]
-          Type=simple
-          ExecStart=/usr/bin/ss-local -c %h/.config/shadowsocks/config-nl.json
-          Restart=always
-          RestartSec=3
-          KillMode=mixed
-
-          [Install]
-          WantedBy=default.target
-        dest: ~/.config/systemd/user/shadowsocks-nl.service
-        mode: '0644'
+      loop:
+        - fi
+        - nl
 
     - name: Reload user systemd daemon
       systemd:
@@ -87,14 +63,23 @@
 
     - name: Enable and start shadowsocks user service
       systemd:
-        name: shadowsocks-fi
+        name: shadowsocks-{{ item }}
         enabled: yes
         state: started
         scope: user
+      loop:
+        - fi
+        - nl
 
-    - name: Enable and start shadowsocks-nl user service
-      systemd:
-        name: shadowsocks-nl
-        enabled: yes
-        state: started
-        scope: user
+    - name: Create proxychains config
+      become: yes
+      copy:
+        dest: /etc/proxychains4.conf
+        content: |
+          strict_chain
+          quiet_mode
+          tcp_read_time_out 5000
+          tcp_connect_time_out 3000
+
+          [ProxyList]
+          socks5 127.0.0.1 1080
