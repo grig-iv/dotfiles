@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Ghostty-pi
+Type=Application
+Comment=Rasberry ssh
+Exec=ghostty -e ssh grig@192.168.1.118 -t /home/grig/.config/tmux/try-start-main.sh
+Icon=com.mitchelh.ghostty
+Categories=System;TerminalEmulator;
+Keywords=terminal;tty;pty;
+StartupNotify=true
+StartupWMClass=com.mitchellh.ghostty
+Terminal=false
+Actions=new-window;
+X-GNOME-UsesNotifications=true
+X-TerminalArgExec=-e
+X-TerminalArgTitle=--title=
+X-TerminalArgAppId=--class=
+X-TerminalArgDir=--working-directory=
+X-TerminalArgHold=--wait-after-command
+
+[Desktop Action new-window]
+Name=New Window
+Exec=ghostty
