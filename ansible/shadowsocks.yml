@@ -65,7 +65,7 @@
       systemd:
         name: shadowsocks-{{ item }}
         enabled: yes
-        state: started
+        state: restarted
         scope: user
       loop:
         - fi
