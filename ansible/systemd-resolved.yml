@@ -1,0 +1,28 @@
+---
+- name: systemd-resolved setup 
+  hosts: localhost
+  gather_facts: false
+
+  tasks: 
+    - name: Install pkgs
+      become: yes
+      apt:
+        name: systemd-resolved
+        state: present
+
+    - name: Copy config
+      become: yes
+      copy:
+        content: |
+          [Resolve]
+          DNS=92.63.224.205
+          FallbackDNS=94.140.14.14,1.1.1.1,8.8.8.8,77.88.8.8
+        dest: /etc/systemd/resolved.conf
+        mode: '0644'
+
+    - name: Enable and start shadowsocks user service
+      become: yes
+      systemd:
+        name: systemd-resolved
+        enabled: yes
+        state: restarted
