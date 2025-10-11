@@ -14,12 +14,14 @@ status is-interactive; and begin
     bind \ck killProcess
     bind \cl 'clear; commandline -f repaint'
     bind \cr 'run; commandline -f repaint'
+    bind \cH backward-kill-bigword
 
     # shortcuts
     abbr -a gg 'cd "$(cat $HOME/.config/bookmarks/dirs | sk | sed \'s/\~/\/home\/grig/g\')"'
     abbr -a gh 'cd $HOME'
     abbr -a gc 'cd $CONFIG'
     abbr -a gd 'cd $CONFIG/dotfiles'
+    abbr -a ga 'cd $HOME/ansible/'
     abbr -a gdl 'cd $HOME/Downloads'
     abbr -a gs 'cd $HOME/sources'
     abbr -a gl 'cd $HOME/.local'
