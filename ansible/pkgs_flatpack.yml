@@ -15,9 +15,6 @@
         state: present
         flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 
-    - name: Grant filesystem permissions to all Flatpak applications (user)
-      command: "flatpak override --user --filesystem=home"
-
     - name: Install flatpack applications
       community.general.flatpak:
         name: "{{ item }}"

@@ -1,0 +1,16 @@
+---
+- name: Qmk setup
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Repo setup
+      git:
+        repo: "git@github.com:grig-iv/qmk_firmware.git"
+        dest: "~/sources/qmk_firmware"
+        update: no
+
+    - name: Install package
+      become: yes
+      apt:
+        name: qmk

@@ -4,7 +4,7 @@
   gather_facts: false
 
   tasks:
-    - name: Clone maps
+    - name: Repos setup
       git:
         repo: "git@github.com:grig-iv/{{ item.repo }}.git"
         dest: "{{ item.dest }}"
