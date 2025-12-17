@@ -1,9 +1,12 @@
+command = ~/.config/tmux/try-start-main.sh
+
+term = xterm-256color
+confirm-close-surface = false
+link-url = true
+
 theme = catppuccin-mocha
 cursor-text = #555555
 cursor-style = bar
-
-command = ~/.config/tmux/try-start-main.sh
-confirm-close-surface = false
 
 window-width = 130
 window-height = 35
@@ -11,9 +14,6 @@ window-padding-x = 8
 window-padding-y = 8
 resize-overlay = never
 
-link-url = true
-
 keybind = clear
-
 keybind = ctrl+shift+v=paste_from_clipboard
 keybind = ctrl+shift+alt+r=reload_config
