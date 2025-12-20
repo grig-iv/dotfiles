@@ -15,7 +15,9 @@
         content: |
           {
             PrivateKey: {{ vars['ygg_private_key_' + ansible_hostname] }} 
-            Peers: [ {{ ygg_peers }} ]
+            Peers: [ 
+            {{ ygg_peers }} 
+            ]
             InterfacePeers: {}
             Listen: []
             MulticastInterfaces: [
@@ -33,7 +35,9 @@
             NodeInfo: {}
           }
         dest: /etc/yggdrasil/yggdrasil.conf
+        group: yggdrasil
         mode: '0644'
+      notify: restart yggdrasil
 
     - name: Reload systemd daemon
       systemd:
@@ -44,4 +48,10 @@
         name: yggdrasil
         enabled: yes
         state: started
+
+  handlers:
+    - name: restart yggdrasil
+      systemd:
+        name: yggdrasil
+        state: restarted
 
