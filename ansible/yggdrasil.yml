@@ -49,6 +49,12 @@
         enabled: yes
         state: started
 
+    - name: Add user to a group
+      user:
+        name: grig
+        groups: yggdrasil
+        append: yes
+
   handlers:
     - name: restart yggdrasil
       systemd:
