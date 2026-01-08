@@ -1,0 +1,13 @@
+{
+  "uuid": "local-ip@grig.iv",
+  "name": "Local IP Display",
+  "description": "Shows your local IP address in the top bar",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48"
+  ],
+  "url": "",
+  "version": 1
+}
