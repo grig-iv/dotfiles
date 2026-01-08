@@ -18,10 +18,11 @@ status is-interactive; and begin
 
     # shortcuts
     abbr -a gg 'cd "$(cat $HOME/.config/bookmarks/dirs | sk | sed \'s/\~/\/home\/grig/g\')"'
+    abbr -a ga 'cd $HOME/ansible/'
     abbr -a gh 'cd $HOME'
     abbr -a gc 'cd $CONFIG'
     abbr -a gd 'cd $CONFIG/dotfiles'
-    abbr -a ga 'cd $HOME/ansible/'
+    abbr -a gdt 'cd $HOME/darktable/'
     abbr -a gdl 'cd $HOME/Downloads'
     abbr -a gs 'cd $HOME/sources'
     abbr -a gl 'cd $HOME/.local'

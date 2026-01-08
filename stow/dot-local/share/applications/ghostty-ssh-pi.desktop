@@ -2,7 +2,7 @@
 Name=Ghostty-pi
 Type=Application
 Comment=Rasberry ssh
-Exec=ghostty -e ssh grig@192.168.1.118 -t /home/grig/.config/tmux/try-start-main.sh
+Exec=ghostty -e ssh grig@192.168.1.117 -t /home/grig/.config/tmux/try-start-main.sh
 Icon=com.mitchelh.ghostty
 Categories=System;TerminalEmulator;
 Keywords=terminal;tty;pty;

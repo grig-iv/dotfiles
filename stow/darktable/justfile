@@ -2,15 +2,15 @@ mk-inst-story:
     mkdir -p output
     rm -f ./output/*
     # for img in *.jpg; do magick "$img" -resize 1300x2500 -gravity center -background '#0c1016' -extent 1440x2560 "output/$img"; done
-    for img in *.jpg; do magick "$img" -resize 1330x2500 -gravity center -background 'white' -extent 1440x2560 "output/$img"; done
+    for img in *.jpg; do magick "$img" -resize 1330x2500 -gravity center -background 'black' -extent 1440x2560 "output/$img"; done
     rm -f $HOME/cloud/share/*
     cp ./output/* $HOME/cloud/share/
 
 mk-pdf:
     mkdir -p output
     rm -f ./output/*
-    mogrify -path output -bordercolor White -border 100x100 -resize 2560x1440 -gravity center -extent 2560x1440 *.jpg
-    convert output/*.jpg images.pdf
+    mogrify -path output -background black -bordercolor black -border 50x50 -resize 1600x2400^ -gravity center -extent 1600x2400 *.jpg
+    convert output/*.jpg -background black images.pdf
 
 mk-inst-post:
     mkdir -p output

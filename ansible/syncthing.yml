@@ -6,11 +6,9 @@
     - secrets.yml
 
   tasks:
-    - name: Install synctihng
+    - name: Install pkgs
       apt:
-        update_cache: yes
         name: syncthing
-        state: present
       become: yes
 
     - name: Create user systemd directory

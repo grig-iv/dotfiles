@@ -1,0 +1,57 @@
+---
+- name: Yggdrasil setup
+  hosts: localhost
+  become: yes
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Install pkgs
+      apt:
+        name: yggdrasil
+
+    - name: Create config
+      copy:
+        content: |
+          {
+            PrivateKey: {{ vars['ygg_private_key_' + ansible_hostname] }} 
+            Peers: [ 
+            {{ ygg_peers }} 
+            ]
+            InterfacePeers: {}
+            Listen: []
+            MulticastInterfaces: [
+              {
+                Regex: .*
+                Beacon: true
+                Listen: true
+                Password: ""
+              }
+            ]
+            AllowedPublicKeys: []
+            IfName: auto
+            IfMTU: 65535
+            NodeInfoPrivacy: true
+            NodeInfo: {}
+          }
+        dest: /etc/yggdrasil/yggdrasil.conf
+        group: yggdrasil
+        mode: '0644'
+      notify: restart yggdrasil
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: yes
+
+    - name: Enable and start service
+      systemd:
+        name: yggdrasil
+        enabled: yes
+        state: started
+
+  handlers:
+    - name: restart yggdrasil
+      systemd:
+        name: yggdrasil
+        state: restarted
+
