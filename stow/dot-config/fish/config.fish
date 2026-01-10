@@ -47,11 +47,6 @@ status is-interactive; and begin
     abbr -a ar 'sudo apt remove'
     abbr -a as 'apt-cache search'
 
-    # void
-    abbr -a xi 'sudo xbps-install -y'
-    abbr -a xr 'sudo xbps-remove -y'
-    abbr -a xq 'xbps-query -Rs'
-
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'
     abbr -a n 'jump -r $CONFIG/nvim'
@@ -65,12 +60,6 @@ status is-interactive; and begin
     # notes
     abbr -a m 'cd $MIND & $EDITOR context.md'
     abbr -a gm 'cd $MIND'
-
-    # lf
-    function lfcd
-        cd $(lf -print-last-dir)
-    end
-    bind \cl 'clear; commandline -f execute'
 
     # yazi
     function yacd
@@ -87,13 +76,9 @@ status is-interactive; and begin
     abbr -a stw 'stow --dotfiles --no-folding -t $HOME -d ~/.config/dotfiles/stow -S home'
     abbr -a tmx 'tmux new -A -s main'
     abbr -a tree 'tree --gitignore'
+
     bind \cg 'lazygit'
-
     bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just"
-
-    if command -v direnv > /dev/null
-        direnv hook fish | source
-    end
 
     # wsl
     if string match -q "*microsoft*" (cat /proc/version 2>/dev/null)
