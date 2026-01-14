@@ -27,3 +27,8 @@
       authorized_key:
         user: "grig"
         key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILXwpJJwt0V1Iy2CiOkd1wgWtRLVHNDiDHVxHwn6dAc6 grig-iv@tuta.io"
+
+    - name: Create vps list
+      copy:
+        content: "{{ vps_list }}"
+        dest: ~/.local/share/vps-list
