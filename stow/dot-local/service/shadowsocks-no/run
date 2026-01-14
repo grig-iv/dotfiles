@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec sslocal -c $HOME/.local/service/shadowsocks-no/config.json

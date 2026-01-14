@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec xbindkeys -n -f $HOME/.local/service/xbindkeys/xbindkeysrc
