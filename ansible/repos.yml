@@ -11,6 +11,5 @@
         update: no
       loop:
         - { repo: "maps", dest: "~/maps" }
-        - { repo: "finances", dest: "~/finances" }
         - { repo: "plato", dest: "~/sources/plato" }
 

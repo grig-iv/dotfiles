@@ -7,20 +7,20 @@
   tasks:
     - name: Ensure rsync is installed
       become: yes
-      apt:
-        name: rsync
-        state: present
-        update_cache: yes
+      pacman:
+        pkg: 
+          - rsync
+          - cronie
 
-    - name: Create cron job 
+    - name: vaultwarden backup
       cron:
         name: "Sync vaultwarden data"
         day: "*"
         job: "rsync -av root@{{ vaultwarden_host }}:/root/vaultwarden/data $HOME/.backup/vaultwarden"
 
-    - name: Create cron job 
+    - name: ideavimrc backup
       cron:
         name: "Sync ideavim config"
         hour: "*"
         job: rsync /mnt/c/Users/grig/.config/ideavim/ideavimrc /home/grig/cloud/resources/configs/
-      when: ansible_env.WSL_DISTRO_NAME is defined
+      when: lookup('env', 'WSL_DISTRO_NAME') != ""

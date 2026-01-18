@@ -44,7 +44,3 @@ just
         - vaultwarden
         - i still dont care about cookies
         - ublock origin
-- setup display
-- manually install
-    - ghostty 
-    - steam

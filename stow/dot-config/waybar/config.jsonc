@@ -1,0 +1,49 @@
+{
+    "layer": "top",
+    "margin-top": 4,
+    "margin-bottom": 0,
+    "margin-left": 16,
+    "margin-right": 16,
+    "spacing": 0,
+
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+
+    "modules-left": [
+        "custom/appmenu",
+        "wlr/taskbar",
+        "niri/window"
+    ],
+
+    "modules-center": [
+        "niri/workspaces"
+    ],
+
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "niri/language",
+        "clock",
+        "custom/exit"
+    ],
+
+  "niri/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "focused": "",
+    },
+    "persistent-workspaces": {
+      "*": 2
+    },
+    "disable-scroll": true,
+    "all-outputs": true,
+    "show-special": true
+  },
+
+  "niri/language": {
+    "format": "{short}",
+  },
+}

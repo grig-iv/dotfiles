@@ -26,25 +26,3 @@
           <name>grig</name>
           <description>Russian (grig)</description>
 
-    - name: Update xkb cache
-      become: yes
-      command: dpkg-reconfigure xkb-data
-
-    - name: Install psutil
-      become: yes
-      apt:
-        name: python3-psutil
-
-    # some kind of bug with this options, can't put it in a list
-    - name: Set dconf options
-      community.general.dconf:
-        key: "/org/gnome/desktop/input-sources/sources"
-        value: "[('xkb', 'us'), ('xkb', 'ru+grig')]"
-
-    - name: Set dconf options
-      community.general.dconf:
-        key: "{{ item.key }}"
-        value: "{{ item.value }}"
-      loop:
-        - { key: "/org/gnome/desktop/input-sources/per-window", value: "true" }
-        - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "['lv3:ralt_switch', 'grp:alt_shift_toggle']" }

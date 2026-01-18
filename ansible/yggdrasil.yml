@@ -7,14 +7,14 @@
 
   tasks:
     - name: Install pkgs
-      apt:
+      pacman:
         name: yggdrasil
 
     - name: Create config
       copy:
         content: |
           {
-            PrivateKey: {{ vars['ygg_private_key_' + ansible_hostname] }} 
+            PrivateKey: {{ lookup('vars', 'ygg_key_' + ansible_facts['hostname']) }} 
             Peers: [ 
             {{ ygg_peers }} 
             ]
@@ -34,7 +34,7 @@
             NodeInfoPrivacy: true
             NodeInfo: {}
           }
-        dest: /etc/yggdrasil/yggdrasil.conf
+        dest: /etc/yggdrasil.conf
         group: yggdrasil
         mode: '0644'
       notify: restart yggdrasil

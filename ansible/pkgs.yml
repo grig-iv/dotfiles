@@ -1,0 +1,112 @@
+---
+- name: Packages install
+  hosts: localhost
+  become: yes
+  gather_facts: true
+
+  tasks:
+    - name: essentials
+      pacman:
+        update_cache: yes
+        pkg:
+          - base-devel
+          - dash
+          - fish
+          - curl
+          - wget
+          - unzip
+          - zip
+          - git
+          - tmux
+          - direnv
+          - age
+          - bc
+          - yay
+          - fuse2
+
+    - name: shell
+      pacman:
+        pkg:
+          - stow
+          - just
+          - lazygit
+          - skim
+          - helix
+          - yazi
+          - imagemagick
+          - fd
+          - bottom
+          - yt-dlp
+          - tree
+          - tealdeer
+          - nushell
+          - tailscale
+
+          - marksman # makrdown lsp
+          - taplo-cli # toml lsp
+          - yaml-language-server # yaml lsp
+
+          - go
+          - gopls
+
+          - rust
+
+          - nodejs
+          - npm
+
+    - name: Desktop
+      pacman:
+        update_cache: yes
+        pkg:
+          - polkit-gnome
+          - flatpak
+          - zen-browser
+          - ghostty
+          - telegram-desktop
+          - nheko
+          - qbittorrent
+          - mumble
+          - darktable
+          - remmina
+          - reaper
+          - discord
+          - chromium
+          - libreoffice
+          - vlc
+          - mpv
+          - foliate
+          - gimp
+          - zathura
+          - gnome-boxes
+          - putty
+          - ffmpeg
+          - ttf-jetbrains-mono-nerd
+          - steam
+          - cachyos-gaming-meta
+      when: 
+        - lookup('env', 'XDG_SESSION_TYPE') is defined
+        - lookup('env', 'XDG_SESSION_TYPE') != "tty"
+        - lookup('env', 'XDG_SESSION_TYPE') != ""
+
+    - name: flatpack 
+      flatpak:
+        name: "{{ item }}"
+      loop:
+        - io.anytype.anytype
+      when: 
+        - lookup('env', 'XDG_SESSION_TYPE') is defined
+        - lookup('env', 'XDG_SESSION_TYPE') != "tty"
+        - lookup('env', 'XDG_SESSION_TYPE') != ""
+
+    - name: npm
+      npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - "bun"
+        - "prettier"
+        - "typescript"
+        - "typescript-language-server"
+        - "vscode-langservers-extracted"
+        - "@tailwindcss/language-server"
+        - "@ansible/ansible-language-server"

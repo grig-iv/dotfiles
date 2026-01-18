@@ -43,9 +43,15 @@ status is-interactive; and begin
     abbr -a ls 'ls -la'
     abbr -a grep 'grep -i'
 
+    # apt
     abbr -a ai 'sudo apt install -y'
     abbr -a ar 'sudo apt remove'
     abbr -a as 'apt-cache search'
+
+    # pacman
+    abbr -a pi 'sudo pacman -S'
+    abbr -a pr 'sudo pacman -Rs'
+    abbr -a ps 'pacman -Ss'
 
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'

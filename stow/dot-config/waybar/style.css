@@ -1,0 +1,132 @@
+* {
+    border: none;
+    font-family: "JetbrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+/* Left-most: Arch icon */
+#custom-appmenu {
+    font-size: 4;
+    background-image: url('/usr/share/icons/cachyos.svg');
+    background-color: #1e222a;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0px 12px;
+
+}
+
+/* Right-most: Clock */
+#clock {
+    font-size: 14px;
+    background-color: #1e222a;
+    color: #c0c0c0;
+    border-radius: 0px;
+    padding: 0px 8px;
+}
+
+/* Active window title */
+#window {
+    font-size: 14px;
+    font-weight: 800;
+    color: #e0e0e0;
+    border-radius: 0px;
+    padding: 4px 12px;
+    background-color: #1e222a;
+}
+
+/* workspaces */
+#workspaces {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: 6px 5px;
+    padding: 0px 6px;
+}
+
+#workspaces button {
+    color: #B5E8E0;
+    background: transparent;
+    padding: 4px 4px;
+}
+
+#workspaces button.occupied {
+    color: #A6E3A1;
+}
+
+#workspaces button.active {
+    color: #89B4FA;
+    text-shadow: 0 0 4px #ABE9B3;
+}
+
+#workspaces button.empty {
+    text-shadow: 0 0 4px #ABE9B3;
+}
+
+
+#workspaces button:hover {
+    color: #89B4FA;
+}
+
+#workspaces button.active:hover {}
+
+/* Power/exit button */
+#custom-exit {
+    background-color: #00ac89;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f1117;
+    padding: 0px 6px;
+    margin: 2px 2px 2px 0;
+}
+
+/* Tooltips */
+tooltip {
+    border-radius: 12px;
+    background-color: #0f1117;
+    color: #c0c0c0;
+    padding: 4px 8px;
+}
+
+/* Taskbar */
+#taskbar {
+    background-color: #1e222a;
+    margin: 0px;
+    border-radius: 0px;
+    font-weight: normal;
+}
+
+/* All system info modules */
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#tray,
+#language,
+#custom-updates,
+#custom-notification {
+    background-color: #1e222a;
+    font-size: 14px;
+    font-weight: 800;
+    color: #c0c0c0;
+    border-radius: 0px;
+    padding: 4px 10px;
+}
+
+/* Battery critical warning */
+#battery.critical:not(.charging) {
+    background-color: #e65100;
+    color: #ffffff;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #0f1117;
+        color: #ffffff;
+    }
+}

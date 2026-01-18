@@ -1,14 +1,14 @@
 ---
 - name: Docker setup
   hosts: localhost
-  vars:
-    ansible_python_interpreter: /usr/bin/python3  
 
   tasks:
-    - name: Install apt packages
-      become: yes
-      apt:
-        name: python3-debian
+    - name: essentials
+      pacman:
+        update_cache: yes
+        pkg:
+          - docker
+          - lazydocker
 
     - name: Add user to docker group
       become: yes

@@ -11,14 +11,14 @@
         update: no
 
     - name: Install packages
-      community.general.homebrew:
-        name: "{{ item }}"
-      loop:
-        - neovim
-        - ripgrep
-        - tree-sitter
-        - jq
-        - node
-        - lua-language-server
-        - stylua
+      become: yes
+      pacman:
+        name: 
+          - neovim
+          - ripgrep
+          - tree-sitter
+          - jq
+          - nodejs
+          - lua-language-server
+          - stylua
       
