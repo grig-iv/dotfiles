@@ -58,7 +58,8 @@
       pacman:
         update_cache: yes
         pkg:
-          - polkit-gnome
+          - gnome-keyring
+          - libsecret
           - flatpak
           - zen-browser
           - ghostty

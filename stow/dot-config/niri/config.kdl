@@ -1,26 +1,95 @@
-// https://github.com/YaLTeR/niri/wiki
+// ────────────── Workspaces ──────────────
+workspace "mid"
+workspace "bot"
+workspace "top"
 
-// ────────────── Input Configuration ──────────────
+// ────────────── Window Rules ──────────────
 
-input {
-    keyboard {
-        xkb {
-            layout "us,ru" 
-            variant ",grig"
-            options "grp:alt_shift_toggle,lv3:ralt_switch"
-        }
+    window-rule {
+        geometry-corner-radius 12
+        clip-to-geometry true
     }
 
-    focus-follows-mouse 
-    workspace-auto-back-and-forth 
-}
+    window-rule {
+        match app-id="com.mitchellh.ghostty"
+        open-on-workspace "mid"
+    }
 
-// ────────────── Output Configuration ──────────────
+    window-rule {
+        match app-id="zen"
+        open-on-workspace "mid"
+    }
 
-output "Acer Technologies XB271HU #ASP5iYvK20rd" {
-    mode "2560x1440@143.998" 
-    scale 1 
-}
+    window-rule {
+        match app-id="anytype"
+        open-on-workspace "top"
+    }
+
+    window-rule {
+        match app-id="org.telegram.desktop"
+        open-on-workspace "bot"
+    }
+
+
+// ────────────── Startup Applications ──────────────
+
+    spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
+    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    spawn-sh-at-startup "swww-daemon"
+    spawn-sh-at-startup "swww img ~/.local/assets/wallpaper.jpg --transition-fps 144"
+    spawn-sh-at-startup "waybar"
+
+    spawn-at-startup "Telegram"
+    spawn-at-startup "ghostty"
+    spawn-at-startup "zen-browser"
+    spawn-sh-at-startup "flatpak run io.anytype.anytype &"
+
+    // prefer-no-csd // Disable program decorations
+    screenshot-path null // Disable screenshot saving
+
+// ────────────── Layout Settings ──────────────
+
+    layout {
+        gaps 16 // Gap between windows
+        center-focused-column "never" // Don’t auto-center focused column
+        empty-workspace-above-first
+        always-center-single-column
+
+        preset-column-widths {
+            proportion 0.5
+            proportion 1.0
+        }
+
+        focus-ring {
+            width 1
+            active-color "#85B1CC"
+            inactive-color "#505050"
+        }
+
+        shadow {
+            softness 30
+            spread 5
+            offset x=0 y=5
+            color "#0007"
+        }
+
+        struts {}
+    }
+
+// ────────────── Environment Variables ──────────────
+
+    environment {
+        DISPLAY ":1"
+        ELECTRON_OZONE_PLATFORM_HINT "auto"
+        QT_QPA_PLATFORM "wayland"
+        QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+        XDG_SESSION_TYPE "wayland"
+        XDG_CURRENT_DESKTOP "niri"
+    }
+
+    hotkey-overlay {
+        skip-at-startup
+    }
 
 // ────────────── Keybindings ──────────────
 
@@ -148,49 +217,7 @@ binds {
     MOD+O                               repeat=false { toggle-overview; }
 }
 
-// ────────────── Startup Applications ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
-
-    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
-    spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
-    spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
-    spawn-sh-at-startup "waybar" // Launch waybar
-
-    prefer-no-csd // Disable program decorations
-    screenshot-path null // Disable screenshot saving
-
-// ────────────── Layout Settings ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
-
-    layout {
-        gaps 16 // Gap between windows
-        center-focused-column "never" // Don’t auto-center focused column
-        empty-workspace-above-first
-        always-center-single-column
-
-        preset-column-widths {
-            proportion 0.5
-            proportion 1.0
-        }
-
-        focus-ring {
-            width 2
-            active-color "#00ac89"
-            inactive-color "#505050"
-        }
-
-        shadow {
-            softness 30
-            spread 5
-            offset x=0 y=5
-            color "#0007"
-        }
-
-        struts {}
-    }
-
 // ────────────── Animation Settings ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
     animations {
         workspace-switch {
             spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
@@ -223,32 +250,23 @@ binds {
             spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
         }
     }
+// ────────────── Input Configuration ──────────────
 
-// ────────────── Window Rules ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
-    window-rule {
-        match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-        open-floating true // Always float Firefox PiP windows
+input {
+    keyboard {
+        xkb {
+            layout "us,ru" 
+            variant ",grig"
+            options "grp:alt_shift_toggle,lv3:ralt_switch"
+        }
     }
 
-    window-rule {
-        geometry-corner-radius 16 // Set every window radius to 20
-        clip-to-geometry true
-    }
+    workspace-auto-back-and-forth 
+}
 
-// ────────────── Environment Variables ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#environment
+// ────────────── Output Configuration ──────────────
 
-    environment {
-        DISPLAY ":1"
-        ELECTRON_OZONE_PLATFORM_HINT "auto"
-        QT_QPA_PLATFORM "wayland"
-        QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-        XDG_SESSION_TYPE "wayland"
-        XDG_CURRENT_DESKTOP "niri"
-    }
-
-    hotkey-overlay {
-        skip-at-startup
-    }
+output "Acer Technologies XB271HU #ASP5iYvK20rd" {
+    mode "2560x1440@143.998" 
+    scale 1 
+}
