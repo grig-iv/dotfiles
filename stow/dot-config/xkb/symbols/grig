@@ -1,6 +1,6 @@
 partial alphanumeric_keys
-xkb_symbols "grig" {
-    name[Group1] = "Russian (phonetic with US punctuation)";
+xkb_symbols "basic" {
+    name[Group1] = "Russian (grig)";
     
     // Number row
     key <AE01> { [ 1, exclam, NoSymbol, NoSymbol ] };
@@ -62,4 +62,6 @@ xkb_symbols "grig" {
     // Space and keypad
     key <SPCE> { [ space, space, NoSymbol, NoSymbol ] };
     key <KPDL> { [ period, period, NoSymbol, NoSymbol ] };
+
+    include "level3(ralt_switch)"
 };

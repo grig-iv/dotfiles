@@ -255,9 +255,8 @@ binds {
 input {
     keyboard {
         xkb {
-            layout "us,ru" 
-            variant ",grig"
-            options "grp:alt_shift_toggle,lv3:ralt_switch"
+            layout "us,grig" 
+            options "grp:alt_shift_toggle"
         }
     }
 

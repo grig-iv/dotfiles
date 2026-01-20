@@ -1,0 +1,4 @@
+! include %S/evdev
+
+! layout = symbols
+  grig = grig

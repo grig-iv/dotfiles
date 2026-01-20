@@ -4,25 +4,17 @@
   gather_facts: false
 
   tasks:
-    - name: Copy layout to /usr/share/X11/xkb/symbols/ru
-      become: yes
-      blockinfile:
-        dest: /usr/share/X11/xkb/symbols/ru
-        content: "{{ lookup('file', './templates/ru-grig.xkb') }}"
-        marker: "// {mark} ANSIBLE MANAGED BLOCK"    
-        prepend_newline: true
-
     - name: Add variant to /usr/share/X11/xkb/rules/evdev.xml
       become: yes
       blockinfile:
         dest: /usr/share/X11/xkb/rules/evdev.xml
-        insertafter: '<description>Russian \(phonetic\)</description>'
+        insertafter: '<layoutList>'
         marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"    
         content: |
-          </configItem>
-          </variant>
-          <variant>
-          <configItem>
-          <name>grig</name>
-          <description>Russian (grig)</description>
-
+          <layout>
+            <configItem>
+              <name>grig</name>
+              <shortDescription>grig</shortDescription>
+              <description>Russian (grig)</description>
+            </configItem>
+          </layout>

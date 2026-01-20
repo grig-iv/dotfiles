@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>grig</name> 
+        <shortDescription>grig</shortDescription> 
+        <description>Russian (grig)</description> 
+        <languageList>
+          <iso639Id>rus</iso639Id> 
+        </languageList>
+      </configItem>
+      <variantList/>
+    </layout>
+  </layoutList>
+</xkbConfigRegistry>
