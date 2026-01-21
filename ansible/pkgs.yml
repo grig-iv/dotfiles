@@ -64,14 +64,13 @@
           - zen-browser
           - ghostty
           - telegram-desktop
-          - nheko
           - qbittorrent
-          - mumble
           - darktable
           - remmina
-          - reaper
           - discord
           - chromium
+          - mumble
+          - reaper
           - libreoffice
           - vlc
           - mpv
