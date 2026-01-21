@@ -1,49 +1,45 @@
 {
-    "layer": "top",
-    "margin-top": 4,
-    "margin-bottom": 0,
-    "margin-left": 16,
-    "margin-right": 16,
-    "spacing": 0,
+  "layer": "top",
+  "margin-top": 4,
+  "margin-bottom": 0,
+  "margin-right": 16,
+  "margin-left": 16,
+  "modules-left": ["tray"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "niri/language", "custom/exit"],
 
-    "include": [
-        "~/.config/waybar/modules.json"
-    ],
+  "tray": {
+    "spacing": 10,
+  },
 
-    "modules-left": [
-        "custom/appmenu",
-        "wlr/taskbar",
-        "niri/window"
-    ],
-
-    "modules-center": [
-        "niri/workspaces"
-    ],
-
-    "modules-right": [
-        "tray",
-        "pulseaudio",
-        "niri/language",
-        "clock",
-        "custom/exit"
-    ],
-
-  "niri/workspaces": {
-    "on-click": "activate",
-    "format": "{icon}",
-    "format-icons": {
-      "default": "",
-      "focused": "",
+  "clock": {
+    "format-alt": "{:%A • %B %d • %H:%M}",
+    "tooltip-format": "{calendar}",
+    "locale": "en_US.UTF-8",
+    "calendar": {
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ff6699'><b>{}</b></span>",
+        "weekdays": "<span color='#85B1CC'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
     },
-    "persistent-workspaces": {
-      "*": 2
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
     },
-    "disable-scroll": true,
-    "all-outputs": true,
-    "show-special": true
   },
 
   "niri/language": {
-    "format": "{short}",
+    "format": "{}",
+    "on-click": "niri msg action switch-layout next",
+    "format-en": "🇺🇸",
+    "format-grig": "🇷🇺",
+  },
+
+  "custom/exit": {
+    "format": " 󰐥 ",
+    "on-click": "~/.config/waybar/scripts/power-menu.sh",
+    "tooltip-format": "Power Menu",
   },
 }
