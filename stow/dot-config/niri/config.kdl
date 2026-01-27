@@ -1,7 +1,7 @@
 // ────────────── Workspaces ──────────────
+workspace "top"
 workspace "mid"
 workspace "bot"
-workspace "top"
 
 // ────────────── Window Rules ──────────────
 
@@ -11,25 +11,28 @@ workspace "top"
     }
 
     window-rule {
-        match app-id="com.mitchellh.ghostty"
+        match at-startup=true app-id="com.mitchellh.ghostty"
         open-on-workspace "mid"
+        open-focused false
     }
 
     window-rule {
-        match app-id="zen"
+        match at-startup=true app-id="zen"
         open-on-workspace "mid"
+        open-focused false
     }
 
     window-rule {
-        match app-id="anytype"
+        match at-startup=true app-id="anytype"
         open-on-workspace "top"
+        open-focused true
     }
 
     window-rule {
-        match app-id="org.telegram.desktop"
+        match at-startup=true app-id="org.telegram.desktop"
         open-on-workspace "bot"
+        open-focused false
     }
-
 
 // ────────────── Startup Applications ──────────────
 
@@ -37,7 +40,7 @@ workspace "top"
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "swww-daemon"
     spawn-sh-at-startup "swww img ~/.local/assets/wallpaper.jpg --transition-fps 144"
-    spawn-sh-at-startup "waybar"
+    spawn-sh-at-startup "quickshell -d"
 
     spawn-at-startup "Telegram"
     spawn-at-startup "ghostty"
@@ -122,8 +125,8 @@ binds {
 
     MOD+LEFT                            { focus-column-left; }
     MOD+RIGHT                           { focus-column-right; }
-    MOD+UP                              { focus-window-up; }
-    MOD+DOWN                            { focus-window-down; }
+    MOD+UP                              { focus-window-or-workspace-up; }
+    MOD+DOWN                            { focus-window-or-workspace-down; }
 
     MOD+SHIFT+LEFT                      { move-column-left; }
     MOD+SHIFT+RIGHT                     { move-column-right; }
@@ -151,8 +154,6 @@ binds {
     MOD+CTRL+WHEELSCROLLDOWN            cooldown-ms=150 { move-column-to-workspace-down; }
     MOD+CTRL+WHEELSCROLLUP              cooldown-ms=150 { move-column-to-workspace-up; }
 
-    MOD+NEXT                            { focus-workspace-down; }
-    MOD+PRIOR                           { focus-workspace-up; }
     MOD+SHIFT+NEXT                      { move-column-to-workspace-down; }
     MOD+SHIFT+PRIOR                     { move-column-to-workspace-up; }
 
@@ -250,6 +251,16 @@ binds {
             spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
         }
     }
+
+// ────────────── Cursor ──────────────
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice" // yay bibata-cursor-theme-bin
+    xcursor-size 20
+
+    hide-after-inactive-ms 3000
+}
+
 // ────────────── Input Configuration ──────────────
 
 input {
