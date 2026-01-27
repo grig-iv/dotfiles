@@ -27,6 +27,24 @@ window#waybar {
     padding: 2 6px;
 }
 
+#language:hover {
+    background: #45475a;
+}
+
+#custom-yggdrasil {
+    padding: 0 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+#custom-yggdrasil.degraded {
+    color: #f9e2af;
+}
+
+#custom-yggdrasil.down {
+    color: #f38ba8;
+}
+
 #custom-exit {
     padding: 2px;
 }

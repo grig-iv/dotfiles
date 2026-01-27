@@ -4,15 +4,16 @@
   "margin-bottom": 0,
   "margin-right": 16,
   "margin-left": 16,
-  "modules-left": ["tray"],
+  "modules-left": ["custom/yggdrasil", "tray"],
   "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "niri/language", "custom/exit"],
+  "modules-right": ["niri/language", "pulseaudio", "custom/exit"],
 
   "tray": {
     "spacing": 10,
   },
 
   "clock": {
+    "format": "<b>{:%H:%M}</b>",
     "format-alt": "{:%A • %B %d • %H:%M}",
     "tooltip-format": "{calendar}",
     "locale": "en_US.UTF-8",
@@ -30,11 +31,32 @@
     },
   },
 
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["", ""],
+    },
+    "scroll-step": 1,
+    "on-click": "audio-sink-cycle",
+    "on-click-right": "pavucontrol",
+  },
+
   "niri/language": {
     "format": "{}",
     "on-click": "niri msg action switch-layout next",
     "format-en": "🇺🇸",
     "format-grig": "🇷🇺",
+  },
+
+  "custom/yggdrasil": {
+    "exec": "~/.config/waybar/scripts/yggdrasil-monitor.nu",
+    "return-type": "json",
+    "interval": 60,
+    "format": "{text}",
+    "tooltip": true,
+    "on-click": "yggdrasilctl getpeers | less",
   },
 
   "custom/exit": {
