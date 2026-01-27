@@ -49,9 +49,12 @@ status is-interactive; and begin
     abbr -a as 'apt-cache search'
 
     # pacman
-    abbr -a pi 'sudo pacman -S'
+    abbr -a pi 'sudo pacman -S --noconfirm'
     abbr -a pr 'sudo pacman -Rs'
-    abbr -a ps 'pacman -Ss'
+    abbr -a pf 'pacman -Ss'  # [f]ind
+
+    # ansible
+    abbr -a ap "ansible-playbook"
 
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'
