@@ -45,6 +45,7 @@
           - marksman # makrdown lsp
           - taplo-cli # toml lsp
           - yaml-language-server # yaml lsp
+          - stylua
 
           - go
           - gopls
