@@ -12,7 +12,7 @@ workspace "bot"
 
     window-rule {
         match at-startup=true app-id="com.mitchellh.ghostty"
-        open-on-workspace "mid"
+        open-on-workspace "top"
         open-focused false
     }
 
@@ -20,12 +20,13 @@ workspace "bot"
         match at-startup=true app-id="zen"
         open-on-workspace "mid"
         open-focused false
+        default-column-width { proportion 1.0; }
     }
 
     window-rule {
         match at-startup=true app-id="anytype"
-        open-on-workspace "top"
-        open-focused true
+        open-on-workspace "bot"
+        open-focused false
     }
 
     window-rule {
@@ -33,6 +34,21 @@ workspace "bot"
         open-on-workspace "bot"
         open-focused false
     }
+
+    window-rule {
+        match app-id="org.pulseaudio.pavucontrol"
+        open-floating true
+        default-window-height { fixed 800; }
+        default-column-width { fixed 800; }
+    }
+
+    window-rule {
+        match title="Friends List"
+        open-floating true
+        default-window-height { fixed 800; }
+        default-column-width { fixed 400; }
+    }
+
 
 // ────────────── Startup Applications ──────────────
 
@@ -53,9 +69,17 @@ workspace "bot"
 // ────────────── Layout Settings ──────────────
 
     layout {
-        gaps 16 // Gap between windows
-        center-focused-column "never" // Don’t auto-center focused column
-        empty-workspace-above-first
+        gaps 20
+
+        struts {
+            left 0
+            right -4
+            top -4
+            bottom -4
+        }
+
+        center-focused-column "never" 
+        // empty-workspace-above-first
         always-center-single-column
 
         preset-column-widths {
@@ -70,13 +94,12 @@ workspace "bot"
         }
 
         shadow {
-            softness 30
-            spread 5
+            on
+            softness 10
+            spread 1
             offset x=0 y=5
             color "#0007"
         }
-
-        struts {}
     }
 
 // ────────────── Environment Variables ──────────────
@@ -127,11 +150,15 @@ binds {
     MOD+RIGHT                           { focus-column-right; }
     MOD+UP                              { focus-window-or-workspace-up; }
     MOD+DOWN                            { focus-window-or-workspace-down; }
-
     MOD+SHIFT+LEFT                      { move-column-left; }
     MOD+SHIFT+RIGHT                     { move-column-right; }
-    MOD+SHIFT+UP                        { move-window-up; }
-    MOD+SHIFT+DOWN                      { move-window-down; }
+    MOD+SHIFT+UP                        { move-window-up-or-to-workspace-up; }
+    MOD+SHIFT+DOWN                      { move-window-down-or-to-workspace-down; }
+
+    MOD+PRIOR                           { focus-window-or-workspace-up; }
+    MOD+NEXT                            { focus-window-or-workspace-down; }
+    MOD+SHIFT+NEXT                      { move-column-to-workspace-down; }
+    MOD+SHIFT+PRIOR                     { move-column-to-workspace-up; }
 
     MOD+HOME                            { focus-column-first; }
     MOD+END                             { focus-column-last; }
@@ -153,9 +180,6 @@ binds {
     MOD+WHEELSCROLLUP                   cooldown-ms=150 { focus-workspace-up; }
     MOD+CTRL+WHEELSCROLLDOWN            cooldown-ms=150 { move-column-to-workspace-down; }
     MOD+CTRL+WHEELSCROLLUP              cooldown-ms=150 { move-column-to-workspace-up; }
-
-    MOD+SHIFT+NEXT                      { move-column-to-workspace-down; }
-    MOD+SHIFT+PRIOR                     { move-column-to-workspace-up; }
 
     MOD+WHEELSCROLLRIGHT                { focus-column-right; }
     MOD+WHEELSCROLLLEFT                 { focus-column-left; }
@@ -190,19 +214,19 @@ binds {
     MOD+TAB                             { focus-workspace-previous; }
 
     // ─── Layout Controls ───
-    MOD+CTRL+F                          { expand-column-to-available-width; }
+    MOD+F                               { maximize-window-to-edges; }
+    MOD+SHIFT+F                          { fullscreen-window; }
     MOD+C                               { center-column; }
     MOD+P                               { switch-preset-column-width; }
     MOD+CTRL+C                          { center-visible-columns; }
+    MOD+T                               { toggle-window-floating; }
+    MOD+W                               { toggle-column-tabbed-display; }
+
     MOD+SHIFT+COMMA                     { set-column-width "-10%"; }
     MOD+SHIFT+PERIOD                    { set-column-width "+10%"; }
     MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
     MOD+SHIFT+EQUAL                     { set-window-height "+10%"; }
 
-    // ─── Modes ───
-    MOD+T                               { toggle-window-floating; }
-    MOD+F                               { fullscreen-window; }
-    MOD+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
     MOD+SHIFT+S                         { screenshot; }
