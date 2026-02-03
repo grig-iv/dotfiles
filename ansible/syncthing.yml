@@ -1,0 +1,87 @@
+---
+- name: Syncthing setup
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Install synctihng
+      pacman:
+        pkg: 
+          - syncthing
+          - python-lxml
+      become: yes
+
+    - name: Create user systemd directory
+      file:
+        path: ~/.config/systemd/user
+        state: directory
+        mode: '0755'
+
+    - name: Create Syncthing user systemd service file
+      copy:
+        content: |
+          [Unit]
+          Description=Syncthing - Open Source Continuous File Synchronization
+          Documentation=man:syncthing(1)
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/bin/syncthing serve --no-browser --no-restart --logflags=0
+          Restart=on-failure
+          RestartSec=5
+          SuccessExitStatus=3 4
+          RestartForceExitStatus=3 4
+
+          # Hardening
+          SystemCallArchitectures=native
+          MemoryDenyWriteExecute=true
+          NoNewPrivileges=true
+
+          [Install]
+          WantedBy=default.target
+        dest: ~/.config/systemd/user/syncthing.service
+        mode: '0644'
+
+    - name: Reload user systemd daemon
+      systemd:
+        daemon_reload: yes
+        scope: user
+
+    - name: Enable and start Syncthing user service
+      systemd:
+        name: syncthing
+        enabled: yes
+        state: started
+        scope: user
+
+    - name: Wait for initial config
+      wait_for:
+        path: "~/.local/state/syncthing/config.xml"
+        timeout: 30
+      ignore_errors: yes
+
+    - name: Setup config
+      community.general.xml:
+        path: "~/.local/state/syncthing/config.xml"
+        xpath: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: '/configuration/options/urAccepted', value: '-1' }
+        - { key: '/configuration/options/urSeen', value: '3' }
+        - { key: '/configuration/options/crashReportingEnabled', value: 'false' }
+        - { key: '/configuration/gui/user', value: 'Grig' }
+        - { key: '/configuration/gui/password', value: '$2a$10$Y1ZMogWTiy9lawUx.1GI9Oynw1zRY8II73xU3gcaUtR8bVtxtZ1vO' }
+      notify: restart syncthing
+
+    - name: Open web gui
+      shell: xdg-open http://127.0.0.1:8384/
+
+  handlers:
+    - name: restart syncthing
+      systemd:
+        name: syncthing
+        enabled: yes
+        state: restarted
+        scope: user
