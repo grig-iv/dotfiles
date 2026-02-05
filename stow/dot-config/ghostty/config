@@ -11,7 +11,6 @@ resize-overlay = never
 
 window-padding-x = 8
 window-padding-y = 8
-background-opacity = 0.95
 
 keybind = clear
 keybind = ctrl+shift+v=paste_from_clipboard

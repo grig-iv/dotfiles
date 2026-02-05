@@ -1,1 +1,7 @@
-@theme "./themes/squared"
+@theme "./themes/grig"
+
+configuration {
+  drun {
+    display-name: " ";
+  }
+}

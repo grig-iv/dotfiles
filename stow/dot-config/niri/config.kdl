@@ -49,6 +49,19 @@ workspace "bot"
         default-column-width { fixed 400; }
     }
 
+    layer-rule {
+        match namespace="^rofi$" 
+
+        shadow {
+            on
+            softness 30
+            spread 5
+            offset x=0 y=5
+            color "#00000064"
+        }
+
+        geometry-corner-radius 16
+    }
 
 // ────────────── Startup Applications ──────────────
 
@@ -123,16 +136,13 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+RETURN                          hotkey-overlay-title="Open Terminal: alacritty" { spawn-sh "ghostty"; }
-    MOD+SPACE                           hotkey-overlay-title="Open App Launcher: wofi" { spawn-sh "wofi"; }
-    MOD+B                               hotkey-overlay-title="Open Browser: firefox" { spawn-sh "zen-browser"; }
-    
-    // Please choose your own file manager
-    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
+    MOD+RETURN                          { spawn-sh "ghostty --title='Xtal'"; }
+    MOD+SHIFT+RETURN                    { spawn-sh "ghostty --title='Rassbery' -e ssh grig@192.168.1.117 -t tmux new -A -s main"; }
+    MOD+SPACE                           { spawn-sh "rofi -show drun"; }
+    MOD+B                               { spawn-sh "zen-browser"; }
+    MOD+E                               { spawn-sh "nautilus"; }
 
     // ─── Audio Controls ───
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }

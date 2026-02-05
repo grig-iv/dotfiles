@@ -59,7 +59,10 @@
       pacman:
         update_cache: yes
         pkg:
+          - niri
+          - quickshell
           - gnome-keyring
+          - wofi
           - libsecret
           - flatpak
           - zen-browser
