@@ -19,8 +19,6 @@
           - git
           - tmux
           - direnv
-          - age
-          - bc
           - yay
           - fuse2
 
@@ -41,19 +39,6 @@
           - tealdeer
           - nushell
           - tailscale
-
-          - marksman # makrdown lsp
-          - taplo-cli # toml lsp
-          - yaml-language-server # yaml lsp
-          - stylua
-
-          - go
-          - gopls
-
-          - rust
-
-          - nodejs
-          - npm
 
     - name: Desktop
       pacman:
