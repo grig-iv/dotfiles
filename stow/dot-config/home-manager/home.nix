@@ -17,6 +17,13 @@
     gopls
 
     rustc
+
+    pyright
+    ruff
+
+    gleam
+    erlang
+    rebar3
   ];
 
   programs.home-manager.enable = true;
