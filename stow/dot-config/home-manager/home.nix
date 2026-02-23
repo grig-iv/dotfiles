@@ -24,6 +24,15 @@
     gleam
     erlang
     rebar3
+
+    ocaml
+    opam
+    dune
+    ocamlformat
+    ocamlPackages.odoc
+    ocamlPackages.utop
+    ocamlPackages.ocaml-lsp
+    ocamlPackages.findlib
   ];
 
   programs.home-manager.enable = true;
