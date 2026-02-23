@@ -5,30 +5,17 @@
   "margin-right": 16,
   "margin-left": 16,
   "modules-left": ["custom/yggdrasil", "tray"],
-  "modules-center": ["clock"],
+  "modules-center": ["custom/clock"],
   "modules-right": ["niri/language", "pulseaudio", "custom/exit"],
 
   "tray": {
     "spacing": 10,
   },
 
-  "clock": {
-    "format": "<b>{:%H:%M}</b>",
-    "format-alt": "{:%A • %B %d • %H:%M}",
-    "tooltip-format": "{calendar}",
-    "locale": "en_US.UTF-8",
-    "calendar": {
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ff6699'><b>{}</b></span>",
-        "weekdays": "<span color='#85B1CC'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
-    },
-    "actions": {
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+  "custom/clock": {
+    "exec": "~/.config/waybar/bin/clock.exe",
+    "on-click": "echo 'left-click' > /tmp/clock_pipe",
+    "return-type": "json",
   },
 
   "pulseaudio": {

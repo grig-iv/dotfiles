@@ -69,7 +69,7 @@ workspace "bot"
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "swww-daemon"
     spawn-sh-at-startup "swww img ~/.local/assets/wallpaper.jpg --transition-fps 144"
-    spawn-sh-at-startup "quickshell -d"
+    spawn-sh-at-startup "waybar"
 
     spawn-at-startup "Telegram"
     spawn-at-startup "ghostty"
