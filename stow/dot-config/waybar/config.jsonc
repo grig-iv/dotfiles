@@ -38,7 +38,7 @@
   },
 
   "custom/yggdrasil": {
-    "exec": "~/.config/waybar/scripts/yggdrasil-monitor.nu",
+    "exec": "~/.config/waybar/bin/yggdrasil-monitor.nu",
     "return-type": "json",
     "interval": 60,
     "format": "{text}",
@@ -48,7 +48,7 @@
 
   "custom/exit": {
     "format": " 󰐥 ",
-    "on-click": "~/.config/waybar/scripts/power-menu.sh",
+    "on-click": "~/.config/waybar/bin/power-menu.sh",
     "tooltip-format": "Power Menu",
   },
 }
