@@ -92,7 +92,7 @@ workspace "bot"
         }
 
         center-focused-column "never" 
-        // empty-workspace-above-first
+        empty-workspace-above-first
         always-center-single-column
 
         preset-column-widths {
