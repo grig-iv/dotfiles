@@ -31,6 +31,11 @@ if [ -d "/home/linuxbrew" ]; then
     export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 fi
 
+# Rust
+if [ -d "$HOME/.cargo/" ]; then
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
 # Go
 if command -v go >/dev/null 2>&1; then
     export GOPATH="$XDG_STATE_HOME/go"
@@ -38,9 +43,9 @@ if command -v go >/dev/null 2>&1; then
     export PATH="$PATH:$GOBIN"
 fi
 
-# Rust
-if [ -d "$HOME/.cargo/" ]; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+# Go
+if command -v opam >/dev/null 2>&1; then
+    eval (opam env)
 fi
 
 # Misk
