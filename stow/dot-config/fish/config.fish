@@ -43,18 +43,19 @@ status is-interactive; and begin
     abbr -a ls 'ls -la'
     abbr -a grep 'grep -i'
 
-    # apt
-    abbr -a ai 'sudo apt install -y'
-    abbr -a ar 'sudo apt remove'
-    abbr -a as 'apt-cache search'
+    # package manager
+    if type -q 'apt'
+        abbr -a pi 'sudo apt install -y'
+        abbr -a pr 'sudo apt remove'
+        abbr -a pf 'apt-cache search'
+    else if type -q 'pacman'
+        abbr -a pi 'sudo pacman -S --noconfirm'
+        abbr -a pr 'sudo pacman -Rs'
+        abbr -a pf 'pacman -Ss' 
+    end
 
-    # pacman
-    abbr -a pi 'sudo pacman -S --noconfirm'
-    abbr -a pr 'sudo pacman -Rs'
-    abbr -a pf 'pacman -Ss'  # [f]ind
-
-    # ansible
-    abbr -a ap "ansible-playbook"
+    # nix
+    abbr -a hms 'home-manager switch'
 
     # neovim
     abbr -a gn 'cd $CONFIG/nvim'

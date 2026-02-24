@@ -7,10 +7,13 @@
     nixfmt
 
     nodejs_24
+    vscode-langservers-extracted
+    tailwindcss-language-server
 
     marksman # makrdown lsp
     taplo # toml lsp
     yaml-language-server # yaml lsp
+
     stylua
 
     go
@@ -23,7 +26,6 @@
 
     gleam
     erlang
-    rebar3
 
     ocaml
     opam
