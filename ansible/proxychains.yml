@@ -1,0 +1,30 @@
+---
+- name: Proxychains setup
+  hosts: localhost
+  become: yes
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Install pkgs (apt)
+      apt:
+        name: proxychains4
+      when: ansible_pkg_mgr == "apt"
+
+    - name: Install pkgs (pacman)
+      pacman:
+        name: proxychains4
+      when: ansible_pkg_mgr == "pacmang"
+
+    - name: Create config
+      copy:
+        content: |
+          strict_chain
+          quiet_mode
+          tcp_read_time_out 5000
+          tcp_connect_time_out 3000
+
+          [ProxyList]
+          socks5 {{ socks_addr }} {{ socks_port }}
+        dest: /etc/proxychains4.conf
+        mode: '0644'
