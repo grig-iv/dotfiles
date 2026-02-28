@@ -88,7 +88,7 @@ status is-interactive; and begin
     abbr -a tmx-pi 'ssh grig@192.168.1.117 -t tmux new -A -s main'
     abbr -a tree 'tree --gitignore'
 
-    bind \cg 'lazygit'
+    bind \cg 'run-lazygit'
     bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just"
 
     # wsl

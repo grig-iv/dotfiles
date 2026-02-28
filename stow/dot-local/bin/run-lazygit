@@ -1,0 +1,7 @@
+#!/usr/bin/env nu
+
+if (pwd) starts-with "/mnt/c/" {
+    powershell.exe -c Lazygit
+} else {
+    lazygit
+}
