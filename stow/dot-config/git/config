@@ -15,3 +15,5 @@
 	name = "grig-iv"
 [init]
 	defaultBranch = main
+[core]
+	autocrlf = false
