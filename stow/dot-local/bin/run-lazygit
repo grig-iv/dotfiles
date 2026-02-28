@@ -2,6 +2,25 @@
 
 if (pwd) starts-with "/mnt/c/" {
     powershell.exe -c Lazygit
-} else {
+    return
+} 
+
+let git_check = do -i { git rev-parse --is-inside-work-tree } | complete
+if $git_check.exit_code == 0 {
     lazygit
+} else {
+    let is_dotfiles = (
+        ls | 
+        where type == symlink | 
+        each {|x| readlink $x.name } | 
+        any {|x| $x | str contains '/dotfiles/stow/' }
+    )
+
+    if $is_dotfiles {
+        lazygit -p $"($env.HOME)/.config/dotfiles/" 
+    } else {
+        print $"(ansi red)git repo not found(ansi reset)"
+    }
 }
+
+print ""
