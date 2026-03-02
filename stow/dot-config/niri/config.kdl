@@ -288,6 +288,14 @@ binds {
 
 // ────────────── Cursor ──────────────
 
+gestures {
+    hot-corners {
+        bottom-left
+    }
+}
+
+// ────────────── Cursor ──────────────
+
 cursor {
     xcursor-theme "Bibata-Modern-Ice" // yay bibata-cursor-theme-bin
     xcursor-size 20
