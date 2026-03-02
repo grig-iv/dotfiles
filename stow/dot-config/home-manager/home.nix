@@ -7,8 +7,11 @@
     nixfmt
 
     nodejs_24
-    vscode-langservers-extracted
+    bun
+    prettier
+    typescript-language-server
     tailwindcss-language-server
+    vscode-langservers-extracted
 
     marksman # makrdown lsp
     taplo # toml lsp
