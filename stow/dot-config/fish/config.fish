@@ -10,11 +10,14 @@ status is-interactive; and begin
 
     # binds
     bind \cq exit
+
+    bind \cf kill-line
+    bind \cH backward-kill-bigword
+
     bind \cf findAndEdit
     bind \ck killProcess
     bind \cl 'clear; commandline -f repaint'
     bind \cr 'run; commandline -f repaint'
-    bind \cH backward-kill-bigword
 
     # shortcuts
     abbr -a gg 'cd "$(cat $HOME/.config/bookmarks/dirs | sk | sed \'s/\~/\/home\/grig/g\')"'
