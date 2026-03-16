@@ -6,10 +6,6 @@
   home.packages = with pkgs; [
     nixfmt
 
-    vscode-langservers-extracted
-    tailwindcss-language-server
-    vscode-langservers-extracted
-
     marksman # makrdown lsp
     taplo # toml lsp
     yaml-language-server # yaml lsp

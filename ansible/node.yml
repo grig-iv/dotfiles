@@ -7,3 +7,16 @@
     nodejs_version: "24.x"
   roles:
     - geerlingguy.nodejs
+
+  tasks:
+    - name: Install node packages
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - "bun"
+        - "typescript"
+        - "typescript-language-server"
+        - "vscode-langservers-extracted"
+        - "@tailwindcss/language-server"
+        - "@ansible/ansible-language-server"
