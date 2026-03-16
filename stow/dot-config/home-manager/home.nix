@@ -6,10 +6,7 @@
   home.packages = with pkgs; [
     nixfmt
 
-    nodejs_24
-    bun
-    prettier
-    typescript-language-server
+    vscode-langservers-extracted
     tailwindcss-language-server
     vscode-langservers-extracted
 

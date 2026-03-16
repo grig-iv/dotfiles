@@ -1,0 +1,9 @@
+---
+- name: Node setup
+  hosts: localhost
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    nodejs_version: "24.x"
+  roles:
+    - geerlingguy.nodejs
