@@ -7,6 +7,7 @@ status is-interactive; and begin
 
     fish_add_path "/home/grig/.cache/.bun/bin"
     fish_add_path "/home/grig/go/bin"
+    fish_add_path "/home/grig/.config/pear/bin"
 
     # binds
     bind \cq exit
