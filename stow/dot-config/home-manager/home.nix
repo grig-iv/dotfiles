@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     nixfmt
 
-    nodejs_24
     vscode-langservers-extracted
     tailwindcss-language-server
 
