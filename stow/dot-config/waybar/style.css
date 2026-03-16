@@ -46,7 +46,17 @@ window#waybar {
 }
 
 #custom-exit {
+    font-size: 16px;
     padding: 2px;
+}
+
+#custom-check {
+    font-size: 16px;
+}
+
+#custom-check.done {
+    color: white;
+    background: green;
 }
 
 #custom-exit:hover {
