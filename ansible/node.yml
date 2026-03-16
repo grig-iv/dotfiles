@@ -1,0 +1,23 @@
+---
+- name: Node setup
+  hosts: localhost
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    nodejs_version: "24.x"
+  roles:
+    - geerlingguy.nodejs
+
+  tasks:
+    - name: Install node packages
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+      loop:
+        - "pear"
+        - "bun"
+        - "typescript"
+        - "typescript-language-server"
+        - "vscode-langservers-extracted"
+        - "@tailwindcss/language-server"
+        - "@ansible/ansible-language-server"

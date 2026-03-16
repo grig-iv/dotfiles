@@ -4,16 +4,32 @@
   "margin-bottom": 0,
   "margin-right": 16,
   "margin-left": 16,
-  "modules-left": ["custom/yggdrasil", "tray"],
+  "modules-left": ["custom/todo", "custom/check"],
   "modules-center": ["custom/clock"],
-  "modules-right": ["niri/language", "pulseaudio", "custom/exit"],
+  "modules-right": ["tray", "niri/language", "pulseaudio", "custom/exit"],
 
   "tray": {
     "spacing": 10,
   },
 
+  "custom/todo": {
+    "exec": "~/.config/waybar/bin/wb_todo.exe",
+    "on-click": "echo 'left-click' > /tmp/todo_pipe",
+    "on-click-right": "ghostty -e nvim ~/.local/share/todo",
+    "on-scroll-down": "echo 'scroll-down' > /tmp/todo_pipe",
+    "on-scroll-up": "echo 'scroll-up' > /tmp/todo_pipe",
+    "return-type": "json",
+  },
+
+  "custom/check": {
+    "exec": "~/.config/waybar/bin/wb_check.exe",
+    "format": "{text}",
+    "on-click": "echo 'left-click' > /tmp/check_pipe",
+    "return-type": "json",
+  },
+
   "custom/clock": {
-    "exec": "~/.config/waybar/bin/clock.exe",
+    "exec": "~/.config/waybar/bin/wb_clock.exe",
     "on-click": "echo 'left-click' > /tmp/clock_pipe",
     "return-type": "json",
   },

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Keet
+GenericName=P2P Chat
+Comment=Secure Peer-to-Peer messaging built on Pear Runtime
+Exec=/home/grig/.config/pear/bin/pear run pear://keet
+Icon=/home/grig/.local/assets/keet-color-44px.png
+Terminal=false
+Type=Application
+Categories=Network;Chat;InstantMessaging;
+StartupWMClass=keet

@@ -1,0 +1,2 @@
+roles:
+    ansible-galaxy install geerlingguy.nodejs
