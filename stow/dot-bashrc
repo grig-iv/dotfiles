@@ -25,11 +25,8 @@ export MIND="$HOME/mind"
 export NVIMCONF="$CONFIG/nvim"
 export NIXCONF="$CONFIG/nix-config"
 
-# Homebrew
-if [ -d "/home/linuxbrew" ]; then
-    export HOMEBREW_NO_ANALYTICS=1
-    export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-fi
+# npm
+[ -f /etc/profile.d/npm.sh ] && source /etc/profile.d/npm.sh
 
 # Rust
 if [ -d "$HOME/.cargo/" ]; then
@@ -46,6 +43,12 @@ fi
 # ocaml
 if command -v opam >/dev/null 2>&1; then
     eval $(opam env)
+fi
+
+# Homebrew
+if [ -d "/home/linuxbrew" ]; then
+    export HOMEBREW_NO_ANALYTICS=1
+    export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 fi
 
 # Misk
