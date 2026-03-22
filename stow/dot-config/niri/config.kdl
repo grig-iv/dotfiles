@@ -71,10 +71,8 @@ workspace "bot"
     spawn-sh-at-startup "swww img ~/.local/assets/wallpaper.jpg --transition-fps 144"
     spawn-sh-at-startup "waybar"
 
-    spawn-at-startup "Telegram"
     spawn-at-startup "ghostty"
     spawn-at-startup "zen-browser"
-    spawn-sh-at-startup "flatpak run io.anytype.anytype &"
 
     // prefer-no-csd // Disable program decorations
     screenshot-path null // Disable screenshot saving
