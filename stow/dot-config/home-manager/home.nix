@@ -15,8 +15,6 @@
     go
     gopls
 
-    rustc
-
     pyright
     ruff
 
