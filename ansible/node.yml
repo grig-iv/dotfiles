@@ -2,13 +2,15 @@
 - name: Node setup
   hosts: localhost
   become: true
+  roles:
+    - geerlingguy.nodejs
+  vars_files:
+    - secrets.yml
   vars:
     ansible_python_interpreter: /usr/bin/python3
     nodejs_version: "24.x"
-    npm_config_prefix: "~/local/share/npm"
+    npm_config_prefix: "{{ lookup('env', 'HOME') }}/.local/share/npm"
     nodejs_generate_etc_profile: true
-  roles:
-    - geerlingguy.nodejs
 
   tasks:
     - name: Install node packages
@@ -17,9 +19,56 @@
         global: true
       loop:
         - "pear"
+        - "hypertele"
         - "bun"
         - "typescript"
         - "typescript-language-server"
         - "vscode-langservers-extracted"
         - "@tailwindcss/language-server"
         - "@ansible/ansible-language-server"
+
+    - name: Add authorized key
+      become: false
+      ansible.posix.authorized_key:
+        user: grig
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILXwpJJwt0V1Iy2CiOkd1wgWtRLVHNDiDHVxHwn6dAc6 grig-iv@tuta.io"
+        state: present
+
+    - name: Create hyperssh user service
+      become: false
+      copy:
+        content: |
+          [Unit]
+          Description=Hyperssh server
+          After=network.target
+
+          [Service]
+          ExecStart={{ npm_config_prefix }}/bin/hypertele-server --seed {{ lookup('vars', 'hyperssh_seed_' + ansible_facts['hostname']) }} -l 50022
+          Restart=on-failure
+          RestartSec=5
+          SuccessExitStatus=3 4
+          RestartForceExitStatus=3 4
+
+          # Hardening
+          SystemCallArchitectures=native
+          MemoryDenyWriteExecute=true
+          NoNewPrivileges=true
+
+          [Install]
+          WantedBy=default.target
+        dest: ~/.config/systemd/user/hyperssh.service
+        mode: '0644'
+
+    - name: Reload user systemd daemon
+      become: false
+      systemd:
+        daemon_reload: yes
+        scope: user
+
+    - name: Enable and start Hyperssh user service
+      become: false
+      systemd:
+        name: hyperssh
+        enabled: yes
+        state: started
+        scope: user
