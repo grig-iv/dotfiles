@@ -52,10 +52,12 @@ status is-interactive; and begin
     if type -q 'apt'
         abbr -a pi 'sudo apt install -y'
         abbr -a pr 'sudo apt remove'
+        abbr -a pu 'sudo apt update' 
         abbr -a pf 'apt-cache search'
     else if type -q 'pacman'
         abbr -a pi 'sudo pacman -S --noconfirm'
         abbr -a pr 'sudo pacman -Rs'
+        abbr -a pu 'sudo pacman -S' 
         abbr -a pf 'pacman -Ss' 
     end
 
