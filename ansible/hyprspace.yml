@@ -1,0 +1,44 @@
+---
+- name: Hyprspace setup
+  hosts: localhost
+  become: yes
+  vars_files:
+    - secrets.yml
+  vars:
+    version: v0.13.0
+
+  tasks:
+    - name: Download package
+      get_url:
+        url: "https://github.com/hyprspace/hyprspace/releases/download/{{ version }}/hyprspace-aarch64-linux"
+        dest: /usr/bin/hyprspace
+        mode: "0755"
+
+    - name: Create config
+      copy:
+        content: |
+          {
+            "listenAddresses": [
+              "/ip4/0.0.0.0/tcp/8001",
+              "/ip4/0.0.0.0/udp/8001/quic-v1",
+              "/ip6/::/tcp/8001",
+              "/ip6/::/udp/8001/quic-v1"
+            ],
+            "privateKey": "{{ lookup('vars', 'hyprspace_key_' + ansible_facts['hostname']) }}",
+            "peers": [
+              {
+                "name": "xtal",
+                "id": "12D3KooWNa4uWuijoi6WX8HZcxcwhfiiwhovfYfFq5A8NYNeqEiz"
+              },
+              {
+                "name": "rasberry-pi",
+                "id": "12D3KooWSHYVEYMFZV4fYjpfCDJQ2nzjW1py3eGuesiPYNgUQJSy"
+              },
+              {
+                "name": "work-wsl",
+                "id": "12D3KooWPQA8fEd7SvSh9V4JudsHujh2865gqpjQfJ3ApCdABQgP"
+              }
+            ]
+          }
+        dest: /etc/hyprspace/hs0.json
+        mode: '0644'
