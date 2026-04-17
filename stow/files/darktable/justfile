@@ -1,24 +1,24 @@
-mk-inst-story:
-    mkdir -p output
-    rm -f ./output/*
-    # for img in *.jpg; do magick "$img" -resize 1300x2500 -gravity center -background '#0c1016' -extent 1440x2560 "output/$img"; done
-    for img in *.jpg; do magick "$img" -resize 1330x2500 -gravity center -background 'black' -extent 1440x2560 "output/$img"; done
-    rm -f $HOME/cloud/share/*
-    cp ./output/* $HOME/cloud/share/
+border color percent: reset-output
+    for img in *.jpg; do magick "$img" -bordercolor {{color}} -border {{percent}}% "output/$img"; done
 
-mk-pdf:
-    mkdir -p output
-    rm -f ./output/*
+square color percent: reset-output
+    for img in *.jpg; do magick "$img" -background {{color}} -gravity center -resize 2000x2000 -extent 2000x2000 -bordercolor {{color}} -border {{percent}}% "output/$img"; done
+
+mk-inst-story color: reset-output
+    for img in *.jpg; do magick "$img" -resize 1330x2500 -gravity center -background {{ color }} -extent 1440x2560 "output/$img"; done
+
+mk-pdf: reset-output
     mogrify -path output -background black -bordercolor black -border 50x50 -resize 1600x2400^ -gravity center -extent 1600x2400 *.jpg
     convert output/*.jpg -background black images.pdf
 
-mk-inst-post:
-    mkdir -p output
-    rm -f ./output/*
+mk-inst-post: reset-output
     for img in *.jpg; do magick "$img" -resize 2500x2500 -gravity center -background white -extent 2600x2600 "output/$img"; done
 
-clean:
+reset-output:
+    mkdir -p output
     rm -f ./output/*
+
+clean: reset-output
     rm -f ./*.jpg
 
 sync:
