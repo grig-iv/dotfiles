@@ -17,6 +17,11 @@ mk-inst-post:
     rm -f ./output/*
     for img in *.jpg; do magick "$img" -resize 2500x2500 -gravity center -background white -extent 2600x2600 "output/$img"; done
 
+add-border:
+    mkdir -p output
+    rm -f ./output/*
+    for img in *.jpg; do magick "$img" -bordercolor white -border 8% "output/$img"; done
+
 clean:
     rm -f ./output/*
     rm -f ./*.jpg
