@@ -96,7 +96,7 @@ status is-interactive; and begin
     abbr -a tree 'tree --gitignore'
 
     bind \cg 'run-lazygit; commandline -f repaint'
-    bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just"
+    bind \cj "just --list | tail -n +2 | sed 's/^ *//' | sk | xargs just; commandline -f repaint"
 
     # wsl
     if string match -q "*microsoft*" (cat /proc/version 2>/dev/null)
