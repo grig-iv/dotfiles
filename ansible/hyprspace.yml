@@ -10,9 +10,15 @@
   tasks:
     - name: Download package
       get_url:
-        url: "https://github.com/hyprspace/hyprspace/releases/download/{{ version }}/hyprspace-aarch64-linux"
+        url: "https://github.com/hyprspace/hyprspace/releases/download/{{ version }}/hyprspace-x86_64-linux"
         dest: /usr/bin/hyprspace
         mode: "0755"
+
+    - name: Create config dir
+      file:
+        path: /etc/hyprspace
+        state: directory
+        mode: '0755'
 
     - name: Create config
       copy:
@@ -40,5 +46,5 @@
               }
             ]
           }
-        dest: /etc/hyprspace/hs0.json
+        dest: /etc/hyprspace/hyprspace.json
         mode: '0644'
