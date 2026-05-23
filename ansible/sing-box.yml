@@ -1,0 +1,154 @@
+---
+- name: Setup sing-box
+  hosts: localhost
+  become: true
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Install sing-box
+      community.general.pacman:
+        name: sing-box
+        state: present
+
+    - name: Create config directory
+      file:
+        path: /etc/sing-box
+        state: directory
+
+    - name: Write proxy config
+      copy:
+        dest: /etc/sing-box/proxy.json
+        content: |
+          {
+            "inbounds": [
+              {
+                "type": "socks",
+                "listen": "127.0.0.1",
+                "listen_port": 1080
+              }
+            ],
+            "outbounds": [
+              {
+                "type": "vless",
+                "tag": "proxy",
+                "server": "{{ xray_server_ip }}",
+                "server_port": 443,
+                "uuid": "{{ xray_uuid }}",
+                "flow": "xtls-rprx-vision",
+                "tls": {
+                  "enabled": true,
+                  "server_name": "{{ xray_mimic_domain }}",
+                  "utls": { "enabled": true, "fingerprint": "chrome" },
+                  "reality": {
+                    "enabled": true,
+                    "public_key": "{{ xray_public_key }}",
+                    "short_id": "{{ xray_short_id }}"
+                  }
+                }
+              },
+              { "type": "direct", "tag": "direct" }
+            ],
+            "route": {
+              "rules": [
+                { "ip_is_private": true, "outbound": "direct" }
+              ],
+              "final": "proxy"
+            }
+          }
+      notify: Restart sing-box-proxy
+
+    - name: Write tun config
+      copy:
+        dest: /etc/sing-box/tun.json
+        content: |
+          {
+            "inbounds": [
+              {
+                "type": "tun",
+                "address": "172.19.0.1/30",
+                "auto_route": true,
+                "strict_route": true
+              }
+            ],
+            "outbounds": [
+              {
+                "type": "vless",
+                "tag": "proxy",
+                "server": "{{ xray_server_ip }}",
+                "server_port": 443,
+                "uuid": "{{ xray_uuid }}",
+                "flow": "xtls-rprx-vision",
+                "tls": {
+                  "enabled": true,
+                  "server_name": "{{ xray_mimic_domain }}",
+                  "utls": { "enabled": true, "fingerprint": "chrome" },
+                  "reality": {
+                    "enabled": true,
+                    "public_key": "{{ xray_public_key }}",
+                    "short_id": "{{ xray_short_id }}"
+                  }
+                }
+              },
+              { "type": "direct", "tag": "direct" }
+            ],
+            "route": {
+              "rules": [
+                { "ip_is_private": true, "outbound": "direct" }
+              ],
+              "final": "proxy",
+              "auto_detect_interface": true
+            }
+          }
+
+    - name: Write sing-box-proxy service
+      copy:
+        dest: /etc/systemd/system/sing-box-proxy.service
+        content: |
+          [Unit]
+          Description=sing-box proxy
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/bin/sing-box run -c /etc/sing-box/proxy.json
+          Restart=on-failure
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: Restart sing-box-proxy
+
+    - name: Write sing-box-tun service
+      copy:
+        dest: /etc/systemd/system/sing-box-tun.service
+        content: |
+          [Unit]
+          Description=sing-box tun
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/bin/sing-box run -c /etc/sing-box/tun.json
+          CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+          AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Enable and start sing-box-proxy
+      systemd:
+        name: sing-box-proxy
+        enabled: true
+        state: started
+        daemon_reload: true
+
+    - name: Enable sing-box-tun (but do not start)
+      systemd:
+        name: sing-box-tun
+        enabled: false
+        daemon_reload: true
+
+  handlers:
+    - name: Restart sing-box-proxy
+      systemd:
+        name: sing-box-proxy
+        state: restarted
+        daemon_reload: true
