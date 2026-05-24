@@ -1,65 +1,65 @@
 * {
-    border: none;
-    font-family: "JetbrainsMono Nerd Font";
-    font-size: 14px;
-    color: #cdd6f4;
+  border: none;
+  font-family: "JetbrainsMono Nerd Font";
+  font-size: 14px;
+  color: #cdd6f4;
 }
 
 window#waybar {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .module {
-    background: #313244;
-    padding: 2 8px;
-    border-radius: 4px;
+  background: #162029;
+  padding: 2 8px;
+  border-radius: 4px;
 }
 
 .modules-left .module {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .modules-right .module {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 #language {
-    padding: 2 6px;
+  padding: 2 6px;
 }
 
 #language:hover {
-    background: #45475a;
+  background: #45475a;
 }
 
 #custom-yggdrasil {
-    padding: 0 10px;
-    border-radius: 5px;
-    margin: 0 5px;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin: 0 5px;
 }
 
 #custom-yggdrasil.degraded {
-    color: #f9e2af;
+  color: #f9e2af;
 }
 
 #custom-yggdrasil.down {
-    color: #f38ba8;
+  color: #f38ba8;
 }
 
 #custom-exit {
-    font-size: 16px;
-    padding: 2px;
+  font-size: 16px;
+  padding: 2px;
 }
 
 #custom-check {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 #custom-check.done {
-    color: white;
-    background: green;
+  color: white;
+  background: green;
 }
 
 #custom-exit:hover {
-    color: #ffffff;
-    background: #BD1847;
+  color: #ffffff;
+  background: #bd1847;
 }
