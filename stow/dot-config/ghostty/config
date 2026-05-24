@@ -4,7 +4,7 @@ term = xterm-256color
 confirm-close-surface = false
 link-url = true
 
-theme = Catppuccin Mocha
+theme = Catppuccin Macchiato
 cursor-text = #555555
 cursor-style = bar
 resize-overlay = never
