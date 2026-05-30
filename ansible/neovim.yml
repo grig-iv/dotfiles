@@ -17,6 +17,7 @@
           - neovim
           - ripgrep
           - tree-sitter
+          - tree-sitter-cli
           - jq
           - nodejs
           - lua-language-server
