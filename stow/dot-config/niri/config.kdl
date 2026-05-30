@@ -66,6 +66,7 @@ workspace "bot"
 // ────────────── Startup Applications ──────────────
 
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
+    spawn-at-startup "python" "/home/grig/.config/niri/lang-per-app.py"
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "awww-daemon"
     spawn-sh-at-startup "awww img ~/.local/assets/wallpaper.jpg --transition-fps 144"
