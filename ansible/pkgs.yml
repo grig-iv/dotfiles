@@ -39,6 +39,7 @@
           - tealdeer
           - nushell
           - tailscale
+          - fastfetch
 
     - name: Desktop
       pacman:
