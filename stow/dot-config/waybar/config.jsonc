@@ -4,18 +4,23 @@
   "margin-bottom": 0,
   "margin-right": 16,
   "margin-left": 16,
-  "modules-left": ["tray"],
+  "modules-left": ["custom/weather"],
   "modules-center": ["custom/clock"],
-  "modules-right": ["niri/language", "pulseaudio", "custom/exit"],
-
-  "tray": {
-    "spacing": 10,
-  },
+  "modules-right": ["tray", "niri/language", "pulseaudio", "custom/exit"],
 
   "custom/clock": {
     "exec": "~/.config/waybar/bin/wb_clock.exe",
     "on-click": "echo 'left-click' > /tmp/clock_pipe",
     "return-type": "json",
+  },
+
+  "custom/weather": {
+    "exec": "python ~/.config/waybar/bin/weather.py",
+    "interval": 900,
+  },
+
+  "tray": {
+    "spacing": 10,
   },
 
   "pulseaudio": {
