@@ -9,13 +9,14 @@
   "modules-right": ["tray", "niri/language", "pulseaudio", "custom/exit"],
 
   "custom/clock": {
-    "exec": "~/.config/waybar/bin/wb_clock.exe",
+    "exec": "python -u ~/.config/waybar/bin/clock.py",
     "on-click": "echo 'left-click' > /tmp/clock_pipe",
     "return-type": "json",
   },
 
   "custom/weather": {
     "exec": "python ~/.config/waybar/bin/weather.py",
+    "on-click": "xdg-open https://openweathermap.org/city/581307",
     "interval": 900,
   },
 
