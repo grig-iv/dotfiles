@@ -31,10 +31,8 @@
           - skim
           - helix
           - yazi
-          - imagemagick
           - fd
           - bottom
-          - yt-dlp
           - tree
           - tealdeer
           - nushell
@@ -45,6 +43,9 @@
       pacman:
         update_cache: yes
         pkg:
+          - yt-dlp 
+          - imagemagick
+          - udiskie
           - niri
           - quickshell
           - wofi
