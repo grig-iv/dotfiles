@@ -31,6 +31,14 @@ window#waybar {
   background: #45475a;
 }
 
+#custom-clock.accent {
+  color: #89dceb;
+}
+
+#custom-clock.critical {
+  color: #f38ba8;
+}
+
 #custom-yggdrasil {
   padding: 0 10px;
   border-radius: 5px;
@@ -52,11 +60,6 @@ window#waybar {
 
 #custom-check {
   font-size: 16px;
-}
-
-#custom-check.done {
-  color: white;
-  background: green;
 }
 
 #custom-exit:hover {

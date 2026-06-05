@@ -1,6 +1,7 @@
 import threading
 import lib 
 from datetime import datetime, timedelta
+from datetime import time as timeonly
 import time
 from enum import Enum, auto
 
@@ -54,7 +55,7 @@ def show_alarm_time():
     mins_until_alarm = time_until_alarm.seconds // 60 % 60
 
     classes = []
-    if hours_until_alarm < 8:
+    if hours_until_alarm < 8 or (hours_until_alarm <= 8 and mins_until_alarm <= 30):
         classes.append("critical")
     elif hours_until_alarm < 10: 
         classes.append("accent")
@@ -74,7 +75,7 @@ def on_tick():
     if mode == Mode.Default:
         time_until_alarm = get_time_until_alarm() 
         hours_until_alarm = time_until_alarm.seconds // 3600
-        if hours_until_alarm <= 12:
+        if hours_until_alarm < 12:
             show_alarm_time()
         else:
             show_short_time()

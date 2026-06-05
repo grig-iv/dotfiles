@@ -27,6 +27,6 @@ def waybar_send(text, alt=None, tooltip=None, classes=[]):
         state["tooltip"] = tooltip
 
     if len(classes) > 0:
-        state["classes"] = classes
+        state["class"] = classes
 
     print(json.dumps(state))
