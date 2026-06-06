@@ -1,0 +1,27 @@
+- name: Configure UFW firewall rules
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Allow SSH traffic
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+        comment: 'Allow SSH'
+
+    - name: Allow LocalSend traffic (TCP and UDP)
+      ufw:
+        rule: allow
+        port: '53317'
+        proto: "{{ item }}"
+        comment: 'LocalSend'
+      loop:
+        - tcp
+        - udp
+
+    - name: Set default incoming policy to deny
+      ufw:
+        state: enabled
+        policy: deny
+        direction: incoming
