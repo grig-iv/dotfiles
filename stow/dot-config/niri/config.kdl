@@ -24,9 +24,8 @@ workspace "bot"
     }
 
     window-rule {
-        match at-startup=true app-id="anytype"
-        open-on-workspace "bot"
-        open-focused false
+        match app-id="darktable"
+        default-column-width { proportion 1.0; }
     }
 
     window-rule {
