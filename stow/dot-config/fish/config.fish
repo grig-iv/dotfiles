@@ -29,14 +29,14 @@ status is-interactive; and begin
     abbr -a gd 'cd $CONFIG/dotfiles'
     abbr -a gdt 'cd $HOME/darktable/'
     abbr -a gdl 'cd $HOME/Downloads'
-    abbr -a gs 'cd $HOME/sources'
+    abbr -a gs 'cd $HOME/src'
     abbr -a gl 'cd $HOME/.local'
     abbr -a gls 'cd $HOME/.local/share'
     abbr -a glb 'cd $HOME/.local/bin'
     abbr -a gt 'cd $HOME/media/T7'
 
     abbr -a c 'jump -d $CONFIG && yacd'
-    abbr -a s 'jump -d $HOME/sources/ && yacd'
+    abbr -a s 'jump -d $HOME/src/ && yacd'
     abbr -a d 'jump -d -r $CONFIG/dotfiles && yacd'
     abbr -a t 'jump -d $HOME/media/T7/torrents'
 
