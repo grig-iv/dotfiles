@@ -1,0 +1,17 @@
+layer=top
+anchor=top-center
+max-visible=10
+default-timeout=10000
+
+font=JetbrainsMono Nerd Font 11
+
+text-color=#d8dee9
+background-color=#162029
+border-size=1
+border-radius=12
+border-color=#505050
+max-icon-size=48
+
+outer-margin=0
+margin=8
+
